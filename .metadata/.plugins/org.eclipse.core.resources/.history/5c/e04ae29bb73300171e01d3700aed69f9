@@ -1,0 +1,13 @@
+package com.hellow;
+
+public class hellow {
+	public static void main(String[] args){
+		//System.out.println("Hellow world");
+		Post post = new Post();
+		post.title = "±êÌâ";
+		post.content = "ÄÚÈİ";
+//		post.print();
+		int[] myArray = {100,200,300,400,500};
+		System.out.println(myArray);
+	}
+}
