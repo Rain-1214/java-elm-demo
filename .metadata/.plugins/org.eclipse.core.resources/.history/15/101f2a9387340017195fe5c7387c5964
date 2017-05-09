@@ -1,0 +1,5 @@
+package com.hellow.extend;
+
+public interface A {
+
+}

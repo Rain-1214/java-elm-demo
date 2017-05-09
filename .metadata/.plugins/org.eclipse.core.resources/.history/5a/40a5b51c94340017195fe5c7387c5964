@@ -1,0 +1,11 @@
+package com.hellow.obj;
+
+public class Throws {
+	
+	public static void () throws Number{
+		String a = "123a";
+		int b = Integer.parseInt(a);
+		System.out.println(b);
+	}
+	
+}
