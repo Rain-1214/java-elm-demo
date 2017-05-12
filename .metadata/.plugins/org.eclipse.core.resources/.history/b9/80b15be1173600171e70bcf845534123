@@ -1,0 +1,68 @@
+package com.firstWork;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class Grid {
+	
+	private final int width;
+	private final int height;
+	public final boolean status[][];
+	
+	private Snake snake;
+	private Node food;
+
+	private Direction snakeDirection = Direction.RIGHT;
+	
+	public Grid(int width, int height) {
+
+	   this.width = width;
+	   this.height = height;
+
+	   status = new boolean[width][height];
+
+	   initSnake();
+	   createFood();
+	}
+	
+	private Snake initSnake(){
+		
+		Snake snake = new Snake();
+		
+		int initY = this.height/2;
+		int initX = this.width/2;
+		
+		for(int i = 0; i < initX ; i++){
+			
+			this.status[initY][i] = true;
+			Node node = new Node(i,initY);
+			snake.getBody().addFirst(node);
+			
+		}
+		
+		return snake;
+		
+	}
+	
+	public boolean isSet(int x,int y){
+		return this.status[x][y];
+	}
+	
+	public Node createFood() {
+	    int x, y;
+
+	    // 使用Random设置x和y
+	    
+
+//	    food = new Node(x, y);
+	    return food;
+	}
+	
+	public static void main(String[] args) {
+		
+		Grid grid = new Grid(10,10);
+		System.out.println(Arrays.toString(grid.status));
+		
+	}
+	
+}

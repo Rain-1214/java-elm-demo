@@ -19,14 +19,16 @@ public class Dates {
 	
 	public static void main(String[] args) throws ParseException {
 		
-		Date date = new Date();
-		System.out.println(date);
-		System.out.println(dateFormat(date,"yyyy-MM-dd"));
-		System.out.println(dateFormat(date,"yyyy-MM-dd HH:mm:ss"));
+//		Date date = new Date();
+//		System.out.println(date);
+//		System.out.println(dateFormat(date,"yyyy-MM-dd"));
+//		System.out.println(dateFormat(date,"yyyy-MM-dd HH:mm:ss"));
+//		
+//		String dateStr = "1995-01-02 12:15:02";
+//		Date date2 = StringToDate(dateStr,"yyyy-MM-dd HH:mm:ss");
+//		System.out.println(dateFormat(date2,"yyyy-MM-dd HH:mm:ss"));
 		
-		String dateStr = "1995-01-02 12:15:02";
-		Date date2 = StringToDate(dateStr,"yyyy-MM-dd HH:mm:ss");
-		System.out.println(dateFormat(date2,"yyyy-MM-dd HH:mm:ss"));
+		
 		
 	}
 	

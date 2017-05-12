@@ -1,0 +1,31 @@
+package com.firstWork;
+
+import java.util.LinkedList;
+
+public class Snake {
+	private LinkedList<Node> body = new LinkedList<Node>();
+	
+	public Node eat(Node food){
+		
+	}
+	
+	public Node move(Direction direction){
+		
+	}
+	
+	public Node getHead(){
+		return body.getFirst();
+	}
+	
+	public Node addTail(Node node){
+		this.body.addLast(node);
+		return node;
+	}
+	
+	public LinkedList<Node> getBody(){
+		return body;
+	}
+	
+	
+	
+}

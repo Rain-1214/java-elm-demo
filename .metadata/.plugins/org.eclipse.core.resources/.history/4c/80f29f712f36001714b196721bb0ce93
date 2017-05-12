@@ -1,0 +1,143 @@
+package com.firstWork;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class Grid {
+	
+	private final int width;
+	private final int height;
+	public final boolean status[][];
+	
+	private Snake snake;
+	private Node food;
+
+	private Direction snakeDirection = Direction.RIGHT;
+	
+	
+	
+	public Snake getSnake() {
+		return snake;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public Node getFood() {
+		return food;
+	}
+
+	public Grid(int height, int width) {
+
+	   this.width = width;
+	   this.height = height;
+
+	   status = new boolean[height][width];
+
+	   this.snake = initSnake();
+	   this.food = createFood();
+	   
+	}
+	
+	public void changeDirection(Direction direction){
+		if(!(direction.getDirectionCode() == this.snakeDirection.getDirectionCode())){
+			
+			
+			this.snakeDirection = direction;
+			nextRound()
+			
+		}
+	}
+	
+	private Snake initSnake(){
+		
+		Snake snake = new Snake();
+		
+		int initY = this.height/2;
+		int initX = this.width/2;
+		
+		for(int i = 0; i < initX ; i++){
+			
+			this.status[initY][i] = true;
+			Node node = new Node(i,initY);
+			snake.getBody().addFirst(node);
+			
+		}
+		
+		return snake;
+		
+	}
+	
+	public boolean isSet(int y,int x){
+		return this.status[y][x];
+	}
+	
+	public Node createFood() {
+		Random r = new Random();
+	    int x, y;
+	    x = r.nextInt(this.width - 1);
+	    y = r.nextInt(this.height - 1);
+	    
+	    if (isSet(y,x)){
+	    	createFood();
+	    }else{
+		    food = new Node(x, y);
+	    }
+	    this.status[food.getY()][food.getX()] = true;
+		return food;
+	}
+	
+	public boolean nextRound() {
+		
+		Node oldTail = this.snake.move(this.snakeDirection);
+		
+		int newHeadX = this.snake.getHead().getX();
+		int newHeadY = this.snake.getHead().getY();
+		
+		if((newHeadX >=0 && newHeadX <= this.width) && (newHeadY >=0 && newHeadY <= this.height)){
+			
+			this.status[oldTail.getY()][oldTail.getX()] = false;
+			//System.out.println(oldTail.getX() + "," + oldTail.getY());
+			if(newHeadX == this.food.getX() && newHeadY == this.food.getY()){
+				Node tail = this.snake.eat(this.food, this.snakeDirection);
+				this.snake.getBody().addLast(tail);
+				
+				for(Node node:this.snake.getBody()){
+					this.status[node.getY()][node.getX()] = true;
+				}
+				
+				Node food = createFood();
+				//System.out.println(food.getX() + "," + food.getY());
+				this.status[food.getY()][food.getX()] = true;
+				
+			}else{
+				//System.out.println(food.getX() + "," + food.getY());
+				for(Node node:this.snake.getBody()){
+					//System.out.println(node.getX() + "," + node.getY());
+					this.status[node.getY()][node.getX()] = true;
+				}	
+				
+			}
+			
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public static void show(boolean[][] a){
+		for(int i = 0;i < a.length; i++){
+			System.out.println(Arrays.toString(a[i]));
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+	
+}

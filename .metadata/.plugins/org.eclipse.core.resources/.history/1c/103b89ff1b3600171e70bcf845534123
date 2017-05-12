@@ -1,0 +1,96 @@
+package com.firstWork;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class Grid {
+	
+	private final int width;
+	private final int height;
+	public final boolean status[][];
+	
+	private Snake snake;
+	private Node food;
+
+	private Direction snakeDirection = Direction.RIGHT;
+	
+	public Grid(int height, int width) {
+
+	   this.width = width;
+	   this.height = height;
+
+	   status = new boolean[height][width];
+
+	   initSnake();
+	   createFood();
+	}
+	
+	public Node getFood() {
+		return food;
+	}
+
+	public void setFood(Node food) {
+		this.food = food;
+	}
+
+	private Snake initSnake(){
+		
+		Snake snake = new Snake();
+		
+		int initY = this.height/2;
+		int initX = this.width/2;
+		
+		for(int i = 0; i < initX ; i++){
+			
+			this.status[initY][i] = true;
+			Node node = new Node(i,initY);
+			snake.getBody().addFirst(node);
+			
+		}
+		
+		return snake;
+		
+	}
+	
+	public boolean isSet(int x,int y){
+		return this.status[x][y];
+	}
+	
+	public Node createFood() {
+		Random r = new Random();
+	    int x, y;
+	    x = r.nextInt(this.width - 1);
+	    y = r.nextInt(this.height - 1);
+	    
+	    if (isSet(x,y)){
+	    	createFood();
+	    }else{
+		    food = new Node(x, y);
+	    }
+		return food;
+	}
+	
+	public boolean nextRound() {
+		
+		int oldHeadX = this.snake.getHead().getX();
+		int oldHeadY = this.snake.getHead().getY();
+		
+		this.snake.move(this.snakeDirection);
+		
+		int newHeadX = this.snake.getHead().getX();
+		int newHeadY = this.snake.getHead().getY();
+		
+		if((newHeadX >=0 && newHeadX <= this.width) && (newHeadY >=0 && newHeadY <= this.width)){
+			
+		}
+		
+
+	}
+	
+	public static void main(String[] args) {
+		
+		
+
+	}
+	
+}
