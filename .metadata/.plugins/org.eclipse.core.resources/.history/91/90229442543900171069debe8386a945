@@ -85,10 +85,10 @@ public class Grid {
 	    if (isSet(y,x)){
 	    	createFood();
 	    }else{
-		    this.food = new Node(x, y);
+		    food = new Node(x, y);
 	    }
 	    this.status[food.getY()][food.getX()] = true;
-		return this.food;
+		return food;
 	}
 	
 	public boolean nextRound() {
@@ -103,7 +103,7 @@ public class Grid {
 			this.status[oldTail.getY()][oldTail.getX()] = false;
 			//System.out.println(oldTail.getX() + "," + oldTail.getY());
 			if(newHeadX == this.food.getX() && newHeadY == this.food.getY()){
-				this.snake.eat(this.food, this.snakeDirection);
+				Node food = this.snake.eat(this.food, this.snakeDirection);
 				this.snake.getBody().addLast(oldTail);
 				
 				for(Node node:this.snake.getBody()){
@@ -111,9 +111,9 @@ public class Grid {
 					this.status[node.getY()][node.getX()] = true;
 				}
 				
-				createFood();
+				Node food = createFood();
 				//System.out.println(food.getX() + "," + food.getY());
-				this.status[this.food.getY()][this.food.getX()] = true;
+				this.status[food.getY()][food.getX()] = true;
 				
 			}else{
 				//System.out.println(food.getX() + "," + food.getY());
