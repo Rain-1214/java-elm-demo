@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class DbUtil {
 	private static String jdbcName = "com.mysql.jdbc.Driver";
 	
-	private static String dbUrl = "jdbc:mysql://localhost:3306/db_book";
+	private static String dbUrl = "jdbc:mysql://localhost:3306/db_bank";
 	
 	private static String dbUserName = "root";
 	

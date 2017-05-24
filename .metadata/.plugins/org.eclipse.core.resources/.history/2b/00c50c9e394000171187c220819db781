@@ -1,0 +1,20 @@
+package com.jdbc.hellow;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+
+import util.DbUtil;
+
+public class Demo7 {
+	public static void main(String[] args) throws Exception{
+		
+		DbUtil dbutil = new DbUtil();
+		Connection con = dbutil.getCon();
+		DatabaseMetaData dmd = con.getMetaData();
+		System.out.println(dmd.getDatabaseProductName());
+		System.out.println(dmd.getDriverMajorVersion());
+		System.out.println(dmd.getDriverMinorVersion());
+		con.close();
+		
+	}
+}

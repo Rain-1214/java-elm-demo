@@ -1,0 +1,10 @@
+package com.service;
+
+public class javaWork {
+	
+	public void doTest(){
+		Person ZhangSan = new Person();
+		ZhangSan.test();
+	}
+	
+}
