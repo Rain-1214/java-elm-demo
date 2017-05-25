@@ -1,0 +1,16 @@
+package com.test;
+
+import com.service.Zhangsan;
+import com.service.javaWork;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		javaWork manager = new javaWork();
+		manager.setTester(new Zhangsan());
+		manager.doTest();
+		
+	}
+
+}
