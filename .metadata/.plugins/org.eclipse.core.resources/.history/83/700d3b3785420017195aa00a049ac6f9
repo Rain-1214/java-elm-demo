@@ -1,0 +1,32 @@
+package com.student.test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.student.model.Student;
+import com.student.service.StudentService;
+
+public class T {
+	private ApplicationContext ac;
+	private JdbcTemplate jdbcTemplate;
+	private Student student;
+	@Before
+	public void setUp() throws Exception {
+		ac = new ClassPathXmlApplicationContext("beans.xml");
+	}
+	
+	@Test
+	public void add(){
+		/*StudentService studentService = (StudentService) ac.getBean("studentService");
+		int addNums = studentService.addStudent(new Student("ÀîËÄ",1));
+		System.out.println(addNums);*/
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		String sql = "insert into student values(null,?,?)";
+		Object []params = new Object[]{student.getName(),student.getAge()};
+		int i =jdbcTemplate.update(sql, params);
+		System.out.println(i);
+	}
+}

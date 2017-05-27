@@ -5,15 +5,16 @@
 	
 <struts>
 	
-	<package name="default" namespace="/" extends="struts-default">
+	<package name="default"  extends="struts-default,json-default">
 		
-		<action name="helloworld_*" method="{1}" class="com.imooc.action.HelloWorldAction">
-			<result>/result.jsp</result>
-			<result name="add">{1}.jsp</result>
-			<result name="update">{1}.jsp</result>
+
+		<action name="index" class="com.imooc.action.LoginAction" method="index">
+			<result name="success">/Login.jsp</result>
 		</action>
-		
-		
+			
+		<action name="ajaxTest" class="com.imooc.action.LoginAction" method="ajaxTest">
+			<result name="success" type="json"></result>
+        </action> 
 		
 	</package>
 	

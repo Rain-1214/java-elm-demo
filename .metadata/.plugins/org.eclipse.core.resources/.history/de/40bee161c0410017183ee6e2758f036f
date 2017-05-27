@@ -1,0 +1,5 @@
+package com.imooc.action;
+
+public class LoginAction {
+
+}

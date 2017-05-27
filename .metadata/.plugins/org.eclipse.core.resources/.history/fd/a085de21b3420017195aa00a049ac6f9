@@ -1,0 +1,19 @@
+package com.student.service.impl;
+
+import com.student.dao.BankDao;
+
+public class BankServiceImpl implements BankDao{
+
+	@Override
+	public void inMoney(int money, int userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void OutMoney(int money, int userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

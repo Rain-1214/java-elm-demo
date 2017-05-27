@@ -1,0 +1,48 @@
+package com.imooc.action;
+
+import com.imooc.model.User;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class LoginAction extends ActionSupport implements ModelDriven<User>{
+	
+	
+	
+	public String json;
+	public User user;
+	
+	public String getJson() {
+		return json;
+	}
+
+	public void setJson(String json) {
+		this.json = json;
+	}
+	@Override
+	public String execute() throws Exception {
+//		if (user.getUserName().equals("admin")&&user.getPassWord().equals("admin")) {
+//			return "asuccess";
+//		}else if(user.getUserName().equals("user")&&user.getPassWord().equals("user")){
+//			return "usuccess";
+//		}else{
+//			return "error";
+//		}
+		return "success";
+	}
+	
+	
+	public String ajaxTest(){
+		String name = user.getUserName();
+		json = "ajax∑µªÿ÷µ £∫ "+name;
+		return "success";
+	}
+	
+	public String index(){
+		return SUCCESS;
+	}
+	@Override
+	public User getModel() {
+		// TODO Auto-generated method stub
+		return User;
+	}
+}

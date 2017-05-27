@@ -1,0 +1,13 @@
+package com.student.service.impl;
+
+import com.student.service.BankService;
+
+public class BankServiceImpl implements BankService{
+
+	@Override
+	public void transferAcounts(int account, int userIdA, int userIdB) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

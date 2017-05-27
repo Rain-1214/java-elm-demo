@@ -1,0 +1,25 @@
+package com.student.test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.student.model.Student;
+
+
+public class T {
+	private ApplicationContext ac;
+
+	@Before
+	public void setUp() throws Exception {
+		ac = new ClassPathXmlApplicationContext("beans.xml");
+	}
+	
+	@Test
+	public void add(){
+		StudentService studentService = (StudentService) ac.getBean("studentService");
+		int addNums = studentService.addStudent(new Student("ÀîËÄ",1));
+		System.out.println(addNums);
+	}
+}

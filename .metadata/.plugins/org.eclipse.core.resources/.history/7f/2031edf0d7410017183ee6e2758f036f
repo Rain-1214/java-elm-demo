@@ -1,0 +1,42 @@
+package com.imooc.action;
+
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport implements ServletRequestAware{
+	
+	private static final long serialVersionUID = 1L;
+	
+	private HttpServletRequest request;
+	private String result;
+	
+	
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+	
+	
+	
+	
+	public String index(){
+		return SUCCESS;
+	}
+	@Override
+	public void setServletRequest(HttpServletRequest arg0) {
+		// TODO Auto-generated method stub
+		
+		String userName = request.getParameter("userName");
+		String passWord = request.getParameter("passWord")
+		
+	}
+}
