@@ -1,0 +1,14 @@
+package com.student.mappers;
+
+import java.util.List;
+
+import com.student.model.Student;
+
+public interface AddressMapper {
+
+	
+	public Student findById(int id);
+	
+
+	
+}

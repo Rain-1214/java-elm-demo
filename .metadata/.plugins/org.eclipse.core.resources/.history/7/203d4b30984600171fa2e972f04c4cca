@@ -1,0 +1,21 @@
+package com.student.model;
+
+public class Student {
+	
+	private Integer id;
+	private String name;
+	private Integer age;
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+}

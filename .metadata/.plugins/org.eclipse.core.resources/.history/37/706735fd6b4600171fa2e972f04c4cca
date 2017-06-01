@@ -1,0 +1,9 @@
+package com.student.mappers;
+
+import com.student.model.Student;
+
+public interface StudentMapper {
+	
+	public int add(Student student);
+	
+}

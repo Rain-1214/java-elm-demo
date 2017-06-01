@@ -1,0 +1,51 @@
+package com.student.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.student.mappers.StudentMapper;
+import com.student.model.Student;
+import com.student.util.SqlSessionFactoryUtil;
+
+public class StudentTest {
+	
+	private static Logger logger =Logger.getLogger(StudentTest.class);
+	
+	private SqlSession sqlSession = null;
+	
+	private StudentMapper studentMapper = null;
+
+	@Before
+	public void setUp() throws Exception {
+		sqlSession = SqlSessionFactoryUtil.openSession();
+		studentMapper = sqlSession.getMapper(StudentMapper.class);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		sqlSession.close();
+	}
+	
+	@Test
+	public void testInsert(){
+		logger.info("添加学生");
+		Student student = new Student();
+		student.setName("张三n");
+//		student.setAge(20);
+		int result = studentMapper.updateStudent(student); 
+		sqlSession.commit();
+		System.out.println(result);
+		
+	}
+	
+	
+	
+}
