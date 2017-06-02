@@ -6,4 +6,6 @@ public interface UserDao {
 	
 	public User login(User user);
 	
+	public int insertUser(User user);
+	
 }
