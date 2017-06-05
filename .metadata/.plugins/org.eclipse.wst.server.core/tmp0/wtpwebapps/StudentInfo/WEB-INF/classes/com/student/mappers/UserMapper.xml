@@ -19,5 +19,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertUser" parameterType="User">
 		insert into t_user values(null,#{userName},#{password},#{safetyQuestion},#{safetyAnswer})
 	</insert>
+	
+	<select id="findUser" parameterType="Map" resultType="User">
+		select * from t_user 
+			<where>
+				<if test="id != null">
+					and id = #{id}
+				</if>
+				<if test="userName != null">
+					and userName = #{userName}
+				</if>
+			</where>
+	</select>
+	
+	<update id="updateUser" parameterType="Map">
+		update t_user set password = #{password} where id = #{id}
+	</update>
 
 </mapper> 

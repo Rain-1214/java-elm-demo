@@ -37,6 +37,34 @@ public class User {
 	public void setSafetyAnswer(String safetyAnswer) {
 		this.safetyAnswer = safetyAnswer;
 	}
+	public User(String userName) {
+		super();
+		this.userName = userName;
+	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public User(Integer id, String userName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+	}
+	
+	
+	
+	public User(Integer id, String userName, String password) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", safetyQuestion="
+				+ safetyQuestion + ", safetyAnswer=" + safetyAnswer + "]";
+	}
 	
 	
 	
