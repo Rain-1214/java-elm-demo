@@ -1,7 +1,0 @@
-package com.student.dao;
-
-public interface BankDao {
-	public void inMoney(int money,int id);
-	
-	public void OutMoney(int money,int id);
-}

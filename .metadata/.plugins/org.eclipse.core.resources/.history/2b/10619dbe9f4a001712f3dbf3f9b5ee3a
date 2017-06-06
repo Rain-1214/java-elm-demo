@@ -1,0 +1,19 @@
+package com.student.controller;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.student.service.UserService;
+
+@Controller
+@RequestMapping("/studnet")
+public class StudentController {
+	
+	@Resource
+	public UserService userService;
+	
+	
+	
+}
