@@ -16,7 +16,15 @@ public class Grade {
 	public void setGradeName(String gradeName) {
 		this.gradeName = gradeName;
 	}
-	
+	public Grade() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Grade(Integer id, String gradeName) {
+		super();
+		this.id = id;
+		this.gradeName = gradeName;
+	}
 	
 	
 }

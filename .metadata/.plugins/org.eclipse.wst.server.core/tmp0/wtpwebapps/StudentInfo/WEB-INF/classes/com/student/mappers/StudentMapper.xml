@@ -15,4 +15,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from t_student2
 	</select>
 	
+	<update id="updateStudent" parameterType="Student">
+		update t_student2 set name = #{name},age=#{age},gradeId=#{grade.id} where id = #{id}
+	</update>
+	
+	<delete id="deleteStudent" parameterType="Map">
+		delete from t_student2 
+			<where>
+				<foreach item="id" collection="ids">
+					or id = #{id}
+				</foreach>
+			</where>
+	</delete>
+	
+	<insert id="insertStudent" parameterType="Student">
+		insert into t_student2 values(null,#{name},#{age},#{grade.id})
+	</insert>
+	
 </mapper>

@@ -30,6 +30,18 @@ public class Student {
 	public void setGrade(Grade grade) {
 		this.grade = grade;
 	}
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Student(String name, Integer age, Grade grade) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.grade = grade;
+	}
+	
+	
 	
 	
 	
