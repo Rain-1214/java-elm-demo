@@ -87,7 +87,7 @@ public class StudentController {
 		List<Student> studentList = new ArrayList<Student>();
 		for(Map s:studentMapList){
 			String name = (String) s.get("name");
-			Integer age =(Integer) s.get("age");
+			Integer age = Integer.parseInt((String) s.get("age"));
 			Map grade = (Map) s.get("grade");
 			Integer id = (Integer) grade.get("id");
 			String gradeName = (String) grade.get("gradeName");
