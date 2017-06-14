@@ -1,0 +1,39 @@
+package com.elm.controller;
+
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.elm.service.LocationService;
+
+@Controller
+@RequestMapping("/location")
+public class LocationController {
+	
+	@Resource
+	public LocationService locationService; 
+	
+	@RequestMapping(value ="/getLocation",method = RequestMethod.POST)
+	@ResponseBody
+	public Map getLocation(@RequestBody Map obj,HttpServletRequest request) throws Exception{
+		System.out.println(obj);
+		String a =locationService.analysisLocation("A");
+		System.out.println(a);
+		String b = new String(a.getBytes(),"UTF-8");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("data",b);
+		return map;
+		
+	}
+
+	
+}

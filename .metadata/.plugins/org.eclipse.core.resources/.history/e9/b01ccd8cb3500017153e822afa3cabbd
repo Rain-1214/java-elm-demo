@@ -1,0 +1,5 @@
+package com.elm.util;
+
+public class HttpRequest {
+
+}

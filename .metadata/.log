@@ -4904,3 +4904,259 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jface.text 2 0 2017-06-09 14:51:22.254
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-06-12 10:31:39.423 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-12 10:32:04.223
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Someone'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 4 0 2017-06-12 10:32:09.301
+!MESSAGE WinHttp.DetectAutoProxyConfigUrl for wpad failed with error 'ûÓÐÕҵ½´úÀí·þÎñÆ÷µÄ×Զ¯ÅäÖÃ ' #12180.
+!SESSION 2017-06-12 10:46:47.224 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-12 10:46:56.412
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Someone'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 4 0 2017-06-12 10:46:58.616
+!MESSAGE WinHttp.DetectAutoProxyConfigUrl for wpad failed with error 'ûÓÐÕҵ½´úÀí·þÎñÆ÷µÄ×Զ¯ÅäÖÃ ' #12180.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-12 11:33:28.356
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-12 11:33:28.356
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-06-13 14:17:36.588 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-13 14:18:01.349
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Someone'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 4 0 2017-06-13 14:18:05.949
+!MESSAGE WinHttp.DetectAutoProxyConfigUrl for wpad failed with error 'ûÓÐÕҵ½´úÀí·þÎñÆ÷µÄ×Զ¯ÅäÖÃ ' #12180.
+!SESSION 2017-06-14 10:44:04.128 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-14 10:44:25.453
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Someone'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 4 0 2017-06-14 10:44:29.392
+!MESSAGE WinHttp.DetectAutoProxyConfigUrl for wpad failed with error 'ûÓÐÕҵ½´úÀí·þÎñÆ÷µÄ×Զ¯ÅäÖÃ ' #12180.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-14 10:49:31.224
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-14 10:49:31.225
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-14 10:52:13.655
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-14 10:52:13.656
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 11 2017-06-14 11:45:36.752
+!MESSAGE The model index service was accessed either before it started or after it finished running.
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:126)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelIndex.suggest(EclipseModelIndex.java:212)
+	at org.eclipse.recommenders.models.SimpleModelProvider.acquireModel(SimpleModelProvider.java:70)
+	at org.eclipse.recommenders.models.PoolingModelProvider.access$0(PoolingModelProvider.java:1)
+	at org.eclipse.recommenders.models.PoolingModelProvider$ModelPoolFactoryMediator.makeObject(PoolingModelProvider.java:96)
+	at org.eclipse.recommenders.models.PoolingModelProvider$ModelPoolFactoryMediator.makeObject(PoolingModelProvider.java:1)
+	at org.apache.commons.pool.impl.GenericKeyedObjectPool.borrowObject(GenericKeyedObjectPool.java:1220)
+	at org.eclipse.recommenders.models.PoolingModelProvider.acquireModel(PoolingModelProvider.java:67)
+	at org.eclipse.recommenders.internal.overrides.rcp.RcpOverrideModelProvider.acquireModel(RcpOverrideModelProvider.java:66)
+	at org.eclipse.recommenders.internal.overrides.rcp.OverrideCompletionSessionProcessor.hasModel(OverrideCompletionSessionProcessor.java:121)
+	at org.eclipse.recommenders.internal.overrides.rcp.OverrideCompletionSessionProcessor.startSession(OverrideCompletionSessionProcessor.java:86)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.fireStartSession(IntelligentCompletionProposalComputer.java:304)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.computeCompletionProposals(IntelligentCompletionProposalComputer.java:170)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:333)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:337)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:331)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:288)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:560)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:494)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:487)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1747)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor$AdaptedSourceViewer.doOperation(CompilationUnitEditor.java:184)
+	at org.eclipse.ui.texteditor.ContentAssistAction$1.run(ContentAssistAction.java:84)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.texteditor.ContentAssistAction.run(ContentAssistAction.java:81)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:473)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:118)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+	at sun.reflect.GeneratedMethodAccessor56.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:282)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:264)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:152)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:494)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:488)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:210)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:286)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:507)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:558)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:378)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:324)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:86)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1270)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1078)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Control.traverse(Control.java:4286)
+	at org.eclipse.swt.widgets.Control.translateMnemonic(Control.java:4128)
+	at org.eclipse.swt.widgets.Composite.translateMnemonic(Composite.java:1295)
+	at org.eclipse.swt.widgets.Control.translateMnemonic(Control.java:4146)
+	at org.eclipse.swt.widgets.Display.translateMnemonic(Display.java:4910)
+	at org.eclipse.swt.widgets.Display.filterMessage(Display.java:1288)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3820)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-06-14 12:56:42.744
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-06-14 12:56:42.744
+!MESSAGE Multiple Contexts have a path of "/StudentInfo".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Publishing failed with multiple errors
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\asm-3.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\asm-commons-3.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\asm-tree-3.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\c3p0-0.9.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\com.springsource.net.sf.cglib-2.2.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\com.springsource.org.aopalliance-1.0.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\commons-logging-1.1.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\cors-filter-1.7.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.210
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\jackson-annotations-2.2.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\jackson-core-2.2.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\jackson-core-asl-1.8.8.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\jackson-databind-2.2.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\jackson-mapper-asl-1.8.8.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\jackson-module-jaxb-annotations-2.2.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\java-property-utils-1.9.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\javassist-3.11.0.GA.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\log4j-1.2.16.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\mybatis-3.2.5.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\mybatis-spring-1.2.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\mysql.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\ognl-3.0.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-aop-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-aspects-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-beans-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-context-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-core-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-expression-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-jdbc-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-orm-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-tx-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.211
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-web-4.0.6.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2017-06-14 12:56:59.212
+!MESSAGE Could not delete H:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudentInfo\WEB-INF\lib\spring-webmvc-4.0.6.RELEASE.jar. May be locked by another process.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-14 15:27:51.449
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-06-14 15:27:51.450
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

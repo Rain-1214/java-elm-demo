@@ -1,0 +1,22 @@
+package com.elm.service.impl;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.elm.service.LocationService;
+import com.elm.util.HttpRequest;
+
+@Service("locationService")
+public class LocationServiceImpl implements LocationService{
+	
+	public HttpRequest httpRequest;
+
+	@Override
+	public String analysisLocation(String location) {
+		
+		String s=HttpRequest.sendGet("http://api.map.baidu.com/geocoder/v2/", "location=38.76623,116.43213&ak=ExYQ53a0MI8lkOYh7S16oZMbeSgCkmpw");
+		return s;
+	}
+
+}

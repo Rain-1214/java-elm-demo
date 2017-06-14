@@ -1,9 +1,0 @@
-package com.student.dao;
-
-import com.student.entity.Grade;
-
-public interface GradeMapper {
-
-	public Grade findById(int id);
-	
-}

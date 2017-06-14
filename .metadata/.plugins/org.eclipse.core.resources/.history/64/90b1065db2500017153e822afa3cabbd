@@ -1,0 +1,9 @@
+package com.elm.service;
+
+import java.util.Map;
+
+public interface LocationService {
+	
+	public String analysisLocation();
+	
+}
