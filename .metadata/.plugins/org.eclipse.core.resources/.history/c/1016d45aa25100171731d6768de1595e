@@ -77,7 +77,6 @@ public class LocationController {
 		String resultJson = locationService.findAddress(query, city, location);
 		Map<String,Object> map = new HashMap<String,Object>();
 		JSONObject jsonObject = JSONObject.fromObject(resultJson);
-		map.put("data",resultJson);
 		return map;
 	}
 	

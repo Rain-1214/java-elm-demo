@@ -11,6 +11,6 @@ public interface LocationService {
 	
 	public ArrayList<String> findHotCity();
 	
-	public String findAddress(String query,String city,String location);
+	public String findAddress();
 	
 }

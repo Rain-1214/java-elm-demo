@@ -62,23 +62,6 @@ public class LocationController {
 		return map;
 		
 	}
-	
-	@RequestMapping(value ="/searchAddress",method = RequestMethod.POST)
-	@ResponseBody
-	public Map searchAddress(@RequestBody Map obj,HttpServletRequest request){
-		String query = (String) obj.get("searchText");
-		String city = (String) obj.get("currentLocation");
-		String location= "";
-		if(obj.get("latitude") != null && obj.get("longitude") != null){
-			String latitude = (String) obj.get("latitude");
-			String longitude = (String) obj.get("longitude");
-			location = latitude + "," + longitude;
-		}
-		String resultJson = locationService.findAddress(query, city, location);
-		Map<String,Object> map = new HashMap<String,Object>();
-		JSONObject jsonObject = JSONObject.fromObject(resultJson);
-		map.put("data",resultJson);
-		return map;
-	}
+
 	
 }

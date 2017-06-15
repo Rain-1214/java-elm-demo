@@ -42,7 +42,7 @@ public class LocationServiceImpl implements LocationService{
 	@Override
 	public String findAddress(String query, String city, String location) {
 
-		String url = "http://api.map.baidu.com/place/v2/suggestion";
+		String url = "http://api.map.baidu.com/place/v2/suggestion/";
 		String s = HttpRequest.sendGet(url,"query=" + query + "&ak=" + appKey + "&output=json" + "&region=" + city + "&city_limit=true");
 		return s;
 
