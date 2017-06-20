@@ -68,10 +68,11 @@ public class LocationController {
 	public Map searchAddress(@RequestBody Map obj,HttpServletRequest request){
 		String query = (String) obj.get("searchText");
 		String city = (String) obj.get("currentLocation");
+		System.out.println(obj);
 		String location= "";
 		if(obj.get("latitude") != null && obj.get("longitude") != null){
-			String latitude = (String) obj.get("latitude");
-			String longitude = (String) obj.get("longitude");
+			Double latitude = (Double) obj.get("latitude");
+			Double longitude = (Double) obj.get("longitude");
 			location = latitude + "," + longitude;
 		}
 		String resultJson = locationService.findAddress(query, city, location);

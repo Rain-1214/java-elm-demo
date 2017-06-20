@@ -1,0 +1,10 @@
+package com.elm.entity;
+
+public class ShopType {
+
+	private Integer id;
+	private String typeName;
+	private String typeLogo;
+	
+	
+}

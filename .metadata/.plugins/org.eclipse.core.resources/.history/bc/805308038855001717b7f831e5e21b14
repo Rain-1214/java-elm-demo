@@ -1,0 +1,9 @@
+package com.elm.service.impl;
+
+import com.elm.service.ShopService;
+
+public class ShopServiceImpl implements ShopService{
+	
+	
+	
+}

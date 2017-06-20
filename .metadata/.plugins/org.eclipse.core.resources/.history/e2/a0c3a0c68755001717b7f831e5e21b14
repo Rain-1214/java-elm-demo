@@ -1,0 +1,30 @@
+package com.elm.entity;
+
+public class ShopType {
+
+	private Integer id;
+	private String shopTypeName;
+	private String shopTypePic;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getShopTypeName() {
+		return shopTypeName;
+	}
+	public void setShopTypeName(String shopTypeName) {
+		this.shopTypeName = shopTypeName;
+	}
+	public String getShopTypePic() {
+		return shopTypePic;
+	}
+	public void setShopTypePic(String shopTypePic) {
+		this.shopTypePic = shopTypePic;
+	}
+	
+	
+	
+	
+}
