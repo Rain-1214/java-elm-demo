@@ -36,7 +36,6 @@ public class HttpRequest {
                     connection.getInputStream(),"UTF-8"));
             String line;
             while ((line = in.readLine()) != null) {
-            	System.out.println(line);
                 result += line;
             }
         } catch (Exception e) {

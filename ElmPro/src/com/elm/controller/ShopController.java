@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.elm.entity.Shop;
 import com.elm.entity.ShopType;
 import com.elm.service.ShopService;
 
@@ -31,6 +31,22 @@ public class ShopController {
 		if(shopTypeList != null){
 			map.put("stateCode", 0);
 			map.put("data", shopTypeList);
+			map.put("message","success");
+		}else{
+			map.put("stateCode", 1);
+			map.put("message","Õ¯¬ÁŒ Ã‚");
+		}
+		return map;
+	}
+	
+	@RequestMapping(value ="/shopList",method = RequestMethod.POST)
+	@ResponseBody
+	public Map shopList(HttpServletRequest request) throws Exception{
+		List<Shop> shopList = shopService.findShopList();
+		Map<String,Object> map = new HashMap<String,Object>();
+		if(shopList != null){
+			map.put("stateCode", 0);
+			map.put("data", shopList);
 			map.put("message","success");
 		}else{
 			map.put("stateCode", 1);

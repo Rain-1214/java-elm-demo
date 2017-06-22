@@ -1,9 +1,0 @@
-package com.elm.dao;
-
-import java.util.Map;
-
-public interface LocationDao {
-
-	public Map<String,String> findHotCity();
-	
-}

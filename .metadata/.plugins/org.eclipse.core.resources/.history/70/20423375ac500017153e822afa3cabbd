@@ -1,5 +1,0 @@
-package com.elm.service;
-
-public interface LocationService {
-
-}

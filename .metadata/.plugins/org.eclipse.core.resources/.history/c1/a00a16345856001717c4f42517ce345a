@@ -1,0 +1,13 @@
+package com.elm.entity;
+
+public class ShopProperty {
+	
+	private Integer id;
+	private Integer newUserFavorable;
+	private Integer safeguard;
+	private Integer invoice;
+	private Integer hummingbrid;
+	private Integer shopId;
+	
+	
+}

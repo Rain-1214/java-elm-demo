@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.elm.dao.ShopDao;
+import com.elm.entity.Shop;
 import com.elm.entity.ShopType;
 import com.elm.service.ShopService;
 
@@ -19,6 +20,11 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public List<ShopType> findShopType() {
 		return shopDao.findShopType();
+	}
+
+	@Override
+	public List<Shop> findShopList() {
+		return shopDao.findShopList();
 	}
 	
 	
