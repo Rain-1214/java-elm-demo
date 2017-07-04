@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.elm.dao.ShopDao;
+import com.elm.entity.FoodType;
 import com.elm.entity.Shop;
 import com.elm.entity.ShopType;
 import com.elm.service.ShopService;
@@ -26,7 +27,10 @@ public class ShopServiceImpl implements ShopService{
 	public List<Shop> findShopList() {
 		return shopDao.findShopList();
 	}
-	
-	
+
+	@Override
+	public List<FoodType> findFoodType(Integer shopId) {
+		return shopDao.findFoodType(shopId);
+	}
 	
 }

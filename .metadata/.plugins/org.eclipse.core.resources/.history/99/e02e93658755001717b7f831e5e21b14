@@ -1,5 +1,0 @@
-package com.elm.dao;
-
-public interface ShopDao {
-
-}

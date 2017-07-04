@@ -32,5 +32,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findShopList" resultMap="resultShopMap">
 		select * from t_shop
 	</select>
+	
+	<resultMap type="FoodType" id="resultFoodMap">
+		<result property="id" column="id"/>
+		<result property="listName" column="listName"/>
+		<result property="description" column="description"/>
+		<result property="shopId" column="shopId"/>
+		<association property="foodList" column="id" select="com.elm.dao.ShopDao.findFood"></association>
+	</resultMap>
+	
+	<select id="findFoodType" parameterType="Integer" resultMap="resultFoodMap">
+		select * from t_foodtypelist where shopId = #{shopId}
+	</select>
+		
+	<select id="findFood" parameterType="Integer" resultType="Food">
+		select * from t_foodlist where foodTypeId = #{id}
+	</select>
 		
 </mapper>

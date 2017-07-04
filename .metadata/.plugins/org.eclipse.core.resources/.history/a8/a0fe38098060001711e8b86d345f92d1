@@ -1,0 +1,17 @@
+package com.elm.entity;
+
+public class Food {
+	
+	private Integer id;
+	private String foodName;
+	private String foodInfo;
+	private String foodPic;
+	private double price;
+	private Integer countMonth;
+	private double goodEvaluate;
+	private String type;
+	private Integer inventory;
+	private Integer shopId;
+	private Integer foodTypeId;
+	
+}
