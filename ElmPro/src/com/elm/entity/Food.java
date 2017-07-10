@@ -1,5 +1,7 @@
 package com.elm.entity;
 
+import java.util.List;
+
 public class Food {
 	
 	private Integer id;
@@ -9,9 +11,11 @@ public class Food {
 	private double price;
 	private Integer countMonth;
 	private double goodEvaluate;
-	private String type;
+	private Integer type;
 	private Integer inventory;
 	private Integer foodTypeId;
+	private List<FoodProperty> foodPropertyList;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -54,10 +58,10 @@ public class Food {
 	public void setGoodEvaluate(double goodEvaluate) {
 		this.goodEvaluate = goodEvaluate;
 	}
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	public Integer getInventory() {
@@ -72,6 +76,13 @@ public class Food {
 	public void setFoodTypeId(Integer foodTypeId) {
 		this.foodTypeId = foodTypeId;
 	}
+	public List<FoodProperty> getFoodPropertyList() {
+		return foodPropertyList;
+	}
+	public void setFoodPropertyList(List<FoodProperty> foodPropertyList) {
+		this.foodPropertyList = foodPropertyList;
+	}
+	
 	
 	
 	

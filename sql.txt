@@ -1,0 +1,434 @@
+CREATE TABLE t_bookType(
+	id int primary key auto_increment,
+	bookTypeName varchar(20),
+	bookTypeDesc varchar(200)
+);
+
+CREATE TABLE t_book(
+	id int primary key auto_increment,
+	bookName varchar(20),
+	author varchar(10),
+	price decimal(6,2),
+	bookTypeId int,
+	constraint `fk` foreign key(`bookTypeId`) references `t_bookType`(`id`)
+);
+
+
+
+---------------------------
+
+SELECT id,stuName,age,sex,gradeName FROM t_student;
+
+SELECT * FROM t_student;
+
+SELECT stuName,id,age,sex,gradeName FROM t_student;
+
+
+SELECT stuName,gradeName FROM t_student;
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE age < 20;
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE age IN (21,30);
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE age NOT IN (11,22);
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE age BETWEEN 10 AND 30;
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE age NOT BETWEEN 10 AND 30;
+
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE stuName LIKE '张三';
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE stuName LIKE '张三%';
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE stuName LIKE '%张三%';
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE age IS NULL;
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE gradeName = '一年级';
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE gradeName = '一年级' AND age = 30;
+
+SELECT stuName,gradeName,id,age FROM t_student WHERE gradeName = '一年级' OR age = 30;
+
+
+SELECT DISTINCT gradeName FROM t_student;
+
+SELECT * FROM t_student ORDER BY age DESC; /*ASC 升序 DESC 降序 */ 
+
+SELECT gradeName,GROUP_CONCAT(stuName) FROM t_student GROUP BY gradeName;
+
+SELECT gradeName,COUNT(stuName) FROM t_student GROUP BY gradeName;
+
+SELECT gradeName,GROUP_CONCAT(stuName) FROM t_student GROUP BY gradeName WITH ROLLUP;
+
+SELECT * FROM t_student LIMIT 0,2;
+
+SELECT * FROM t_student LIMIT 2,2;
+
+-------------------------------------------------------
+
+
+SELECT COUNT(*) AS total FROM t_grade;
+
+SELECT COUNT(*) FROM t_grade GROUP BY stuName;
+
+SELECT stuName,SUM(score) FROM t_grade WHERE stuName = '张三';
+
+SELECT stuName,SUM(score) FROM t_grade GROUP BY stuName;
+
+SELECT stuName,AVG(score) FROM t_grade GROUP BY stuName;
+
+SELECT stuName,MAX(score) FROM t_grade GROUP BY stuName;
+
+SELECT stuName,MAX(score) FROM t_grade WHERE stuName = '张三';
+
+SELECT stuName,MIN(score) FROM t_grade GROUP BY stuName;
+
+
+
+-------------------------------------------------
+
+
+SELECT * FROM t_book,t_booktype;
+
+SELECT * FROM t_book,t_booktype WHERE t_book.`bookTypeId` = t_booktype.`id`;
+
+SELECT tb.`bookName`,tb.`author`,tbt.`bookTypeName` FROM t_book tb,t_booktype tbt WHERE tb.`bookTypeId` = tbt.`id`;
+
+SELECT * FROM t_book tb LEFT JOIN t_booktype tby ON tb.`bookTypeId` = tby.`id`;
+
+SELECT tb.`bookName`,tb.`author`,tby.`bookTypeName` FROM t_book tb LEFT JOIN t_booktype tby ON tb.`bookTypeId` = tby.`id`;
+
+SELECT * FROM t_book tb RIGHT JOIN t_booktype tby ON tb.`bookTypeId` = tby.`id`;
+
+SELECT tb.`bookName`,tb.`author`,tby.`bookTypeName` FROM t_book tb LEFT JOIN t_booktype tby ON tb.`bookTypeId` = tby.`id` WHERE tb.`id` > 1 AND tb.`author` = '大仲马';
+
+
+
+-----------------------------------------------
+
+SELECT id FROM t_booktype;
+
+SELECT * FROM t_book WHERE bookTypeId IN (SELECT id FROM t_booktype);
+
+SELECT * FROM t_book WHERE bookTypeId NOT IN (SELECT id FROM t_booktype);
+
+SELECT * FROM t_book tb WHERE tb.`price`>=(SELECT price FROM t_pricelevel WHERE priceLevel = 1); 
+
+SELECT * FROM t_book WHERE EXISTS (SELECT * FROM t_pricelevel);
+
+SELECT * FROM t_book WHERE NOT EXISTS (SELECT * FROM t_pricelevel);
+
+SELECT * FROM t_book WHERE price >= ANY (SELECT price FROM t_pricelevel);
+
+SELECT * FROM t_book WHERE price >= ALL (SELECT price FROM t_pricelevel);
+
+-------------------------------------------------
+
+INSERT INTO t_book VALUES(NULL,'我爱我家',20,'张三',1);
+
+INSERT INTO t_book(id,bookName,price,author) VALUES(NULL,'我爱我家2',20,'张三');
+
+INSERT INTO t_book(id,bookName,price,author) VALUES(NULL,'我爱我家4',20,'张三'),(NULL,'我爱我家3',20,'张三');
+
+UPDATE t_book SET bookName='Java编程思想',price=120 WHERE id = 1;
+
+UPDATE t_book SET bookName='我',price=120 WHERE bookName LIKE '%生理学%';
+
+DELETE FROM t_book WHERE id = 5;
+
+DELETE FROM t_book WHERE bookName = "我";
+
+
+------------------------------------------------
+
+CREATE TABLE t_user(
+	id INT,
+	userName VARCHAR(20),
+	PASSWORD VARCHAR(20),
+	INDEX (userName)
+);
+
+CREATE TABLE t_user2(
+	id INT,
+	userName VARCHAR(20),
+	PASSWORD VARCHAR(20),
+	UNIQUE INDEX index_userName(userName)
+);
+
+CREATE TABLE t_user3(
+	id INT,
+	userName VARCHAR(20),
+	PASSWORD VARCHAR(20),
+	INDEX index_userName(userName,PASSWORD)
+);
+
+
+CREATE INDEX index_userName ON t_user4(userName);
+
+DROP INDEX index_userName ON t_user4;
+
+
+----------------------------------
+
+
+CREATE VIEW v1 AS SELECT * FROM t_book;
+
+CREATE VIEW v2 AS SELECT bookName,price FROM t_book;
+
+CREATE VIEW v3(b,p) AS SELECT bookName,price FROM t_book;
+
+SELECT * FROM v1;
+
+SELECT * FROM v2;
+
+SELECT * FROM v3;
+
+CREATE VIEW v4 AS SELECT bookName,bookTypeName FROM t_book,t_booktype WHERE t_book.`bookTypeId` = t_bookType.`id`;
+
+SELECT * FROM v4;
+
+DESC v4;
+
+SHOW TABLE STATUS LIKE 'v4';
+
+SHOW TABLE STATUS LIKE 't_book';
+
+SELECT * FROM v1;
+
+CREATE OR REPLACE VIEW v1 (bookName,price) AS SELECT bookName,price FROM t_book;
+
+ALTER VIEW v1 AS SELECT * FROM t_book;
+
+INSERT INTO v1 VALUES (NULL,'java good ',120,'sun',1);
+
+UPDATE v1 SET bookName = '书1' WHERE id = 10;
+
+DELETE FROM v1 WHERE id = 11;
+
+DROP VIEW IF EXISTS v2;
+
+----------------------------------------
+
+CREATE TRIGGER trig_book AFTER INSERT
+	ON t_book FOR EACH ROW
+		UPDATE t_bookType SET bookNum = bookNum + 1 WHERE new.bookTypeId=t_booktype.id;
+		
+INSERT INTO t_book VALUES(NULL,'java好',100,'ke',1);
+
+DELIMITER |
+CREATE TRIGGER trig_book2 AFTER DELETE
+	ON t_book FOR EACH ROW
+	BEGIN
+		UPDATE t_bookType SET bookNum = bookNum - 1 WHERE old.bookTypeId=t_booktype.id;
+		INSERT INTO t_log VALUES(NULL,NOW(),'在表里删除了一条数据');
+		DELETE FROM t_test WHERE old.bookTypeId = t_test.`id`;
+	END
+|
+DELIMITER;
+
+DELETE FROM t_book WHERE id = 110014;
+
+SHOW TRIGGERS;
+
+DROP TRIGGER trig_book ;
+
+DROP TRIGGER trig_book2;
+
+-----------------------------------------------------------
+
+SELECT CURDATE(),CURTIME(),MONTH(birthday) AS m FROM t_t;
+
+SELECT userName,CHAR_LENGTH(userName),UPPER(userName),LOWER(UPPER(userName)) FROM t_t;
+
+SELECT num,ABS(num) FROM t_t;
+
+SELECT num,SQRT(num) FROM t_t;
+
+SELECT num,MOD(num,3) FROM t_t;
+
+INSERT INTO t_t VALUES(NULL,'2013-1-1','a',1,MD5('123456'));
+
+INSERT INTO t_t VALUES(NULL,'2013-1-1','a',1,PASSWORD('123456'));
+
+INSERT INTO t_t VALUES(NULL,'2013-1-1','a',1,PASSWORD('123456'),ENCODE('abdddd','aa'));
+
+SELECT DECODE(pp,'aa') FROM t_t WHERE id = 5;
+
+SELECT DECODE(pp,'aa1') FROM t_t WHERE id = 5;
+
+
+-------------------------------------------------
+
+DELIMITER &&
+CREATE PROCEDURE pro_book (IN bT INT,OUT counnt_num INT)
+	READS SQL DATA
+	BEGIN
+		SELECT COUNT(*) FROM t_book WHERE bookTypeId = bT;
+	END
+	&&
+DELIMITER
+
+CALL pro_book(2,@total);
+
+DELIMITER &&
+CREATE FUNCTION func_book(bookId INT)
+	RETURNS VARCHAR(20)
+	BEGIN
+		RETURN ( SELECT bookName FROM t_book WHERE id=bookId );
+	END
+	&&
+DELIMITER
+
+SELECT func_book(1);
+
+---------------------------------------------------
+
+DELIMITER &&
+CREATE PROCEDURE pro_user()
+	BEGIN
+		DECLARE a,b VARCHAR(20);
+		INSERT INTO t_user VALUES(NULL,a,b);
+	END
+	&&
+DELIMITER;
+
+CALL pro_user();
+
+DELIMITER &&
+CREATE PROCEDURE pro_user2()
+	BEGIN
+		DECLARE a,b VARCHAR(20);
+		SET a = 'aaaa',b = 'bbbb';
+		INSERT INTO t_user VALUES(NULL,a,b);
+	END
+	&&
+DELIMITER;
+
+CALL pro_user2();
+
+
+DELIMITER &&
+CREATE PROCEDURE pro_user3()
+	BEGIN
+		DECLARE a,b VARCHAR(20);
+		SELECT userName,PASSWORD INTO a,b FROM t_user2 WHERE id = 1;
+		INSERT INTO t_user VALUES(NULL,a,b);
+	END
+	&&
+DELIMITER;
+
+CALL pro_user3();
+
+DELIMITER &&
+CREATE PROCEDURE pro_user4()
+	BEGIN
+		DECLARE a,b VARCHAR(20);
+		DECLARE cur_t_user2 CURSOR FOR SELECT userName,PASSWORD FROM t_user2;
+		OPEN cur_t_user2;
+		FETCH cur_t_user2 INTO a,b;
+		INSERT INTO t_user VALUES(NULL,a,b);
+		CLOSE cur_t_user2;
+	END
+	&&
+DELIMITER;
+
+CALL pro_user4();
+
+DELIMITER &&
+CREATE PROCEDURE pro_user5(IN bookId INT)
+	BEGIN
+		SELECT COUNT(*) INTO @num FROM t_user WHERE id = bookId;
+		IF @num > 0 THEN UPDATE t_user SET userName = '123456' WHERE id = bookId;
+		ELSE INSERT INTO t_user VALUES(NULL,'123456789','12134565'); 
+		END IF;
+	END
+	&&
+DELIMITER;
+
+CALL pro_user5(5);
+
+DELIMITER &&
+CREATE PROCEDURE pro_user6(IN bookId INT)
+	BEGIN
+		SELECT COUNT(*) INTO @num FROM t_user WHERE id = bookId;
+		CASE @num
+			WHEN 1 THEN UPDATE t_user SET userName='java' WHERE id=bookId;
+			WHEN 2 THEN INSERT INTO t_user VALUES(NULL,'123234','456456');
+			ELSE INSERT INTO t_user VALUES(NULL,'1asad89','12asdf134565'); 
+		END CASE;
+	END
+	&&
+DELIMITER;
+
+CALL pro_user6(2);
+
+
+DELIMITER &&
+CREATE PROCEDURE pro_user7(IN totalNum INT)
+	BEGIN
+		aaa:LOOP
+			SET totalNum = totalNum - 1;
+			IF totalNum = 0 THEN LEAVE aaa;
+			END IF;
+			INSERT INTO t_user VALUES(totalNum,'aaaaaa','22222');		
+		END LOOP aaa;
+	END
+	&&
+DELIMITER;
+
+DELETE FROM t_user;
+
+CALL pro_user7(10)
+
+
+DELIMITER &&
+CREATE PROCEDURE pro_user8(IN totalNum INT)
+	BEGIN
+		aaa:LOOP
+			SET totalNum = totalNum - 1;
+			IF totalNum = 0 THEN LEAVE aaa;
+			ELSEIF totalNum = 3 THEN ITERATE aaa;
+			END IF;
+			INSERT INTO t_user VALUES(totalNum,'aaaaaa','22222');		
+		END LOOP aaa;
+	END
+	&&
+DELIMITER;
+
+DELETE FROM t_user;
+
+CALL pro_user8(10);
+
+
+DELIMITER &&
+CREATE PROCEDURE pro_user9(IN totalNum INT)
+	BEGIN
+	  REPEAT
+	    SET totalNum = totalNum - 1 ;
+	    INSERT INTO t_user VALUES(totalNum,'aaaaaa','22222');
+	    UNTIL totalNum = 1 
+	  END REPEAT;
+	END
+&&
+DELIMITER;
+
+CALL pro_user9(10);
+
+DELIMITER &&
+CREATE PROCEDURE pro_user10(IN totalNum INT)
+	BEGIN
+	  WHILE totalNum > 0 DO
+	    SET totalNum = totalNum - 1 ;
+	    INSERT INTO t_user VALUES(totalNum,'aaaaaa','22222');   
+	  END WHILE;
+	END
+&&
+DELIMITER;
+
+CALL pro_user10(10);
+
+DROP PROCEDURE pro_user10;
+
+------------------------------------------

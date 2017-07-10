@@ -69,3 +69,9 @@
 127.0.0.1 - - [04/Jul/2017:14:56:34 +0800] "POST /ElmPro/shop/shopTypeList.do HTTP/1.1" 200 2756
 127.0.0.1 - - [04/Jul/2017:14:56:34 +0800] "POST /ElmPro/shop/shopList.do HTTP/1.1" 200 1037
 127.0.0.1 - - [04/Jul/2017:14:56:35 +0800] "POST /ElmPro/shop/shopFoodTypeList.do HTTP/1.1" 500 6315
+127.0.0.1 - - [04/Jul/2017:15:00:29 +0800] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [04/Jul/2017:15:00:35 +0800] "POST /ElmPro/shop/shopList.do HTTP/1.1" 200 1037
+127.0.0.1 - - [04/Jul/2017:15:00:35 +0800] "POST /ElmPro/shop/shopTypeList.do HTTP/1.1" 200 2756
+127.0.0.1 - - [04/Jul/2017:15:00:37 +0800] "POST /ElmPro/shop/shopFoodTypeList.do HTTP/1.1" 200 1126
+127.0.0.1 - - [04/Jul/2017:15:03:00 +0800] "POST /ElmPro/shop/shopFoodTypeList.do HTTP/1.1" 200 1126
+127.0.0.1 - - [04/Jul/2017:15:12:01 +0800] "POST /ElmPro/shop/shopFoodTypeList.do HTTP/1.1" 200 1126

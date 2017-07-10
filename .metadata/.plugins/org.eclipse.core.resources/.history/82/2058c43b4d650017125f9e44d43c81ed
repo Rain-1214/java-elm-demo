@@ -1,0 +1,10 @@
+package com.elm.entity;
+
+public class FoodProperty {
+
+	private Integer id;
+	private String typeName;
+	private Integer foodId;
+	
+	
+}

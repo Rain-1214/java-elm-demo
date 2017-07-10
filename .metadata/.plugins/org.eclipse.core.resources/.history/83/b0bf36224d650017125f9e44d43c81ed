@@ -1,0 +1,5 @@
+package com.elm.entity;
+
+public class FoodPropertyDetail {
+
+}

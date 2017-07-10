@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elm.dao.ShopDao">
+	
+	<select id="findShopType" resultType="ShopType">
+		select * from t_shopType
+	</select>
+	
+	<select id="findShopPropery" parameterType="Integer" resultType="ShopProperty">
+		select * from t_shopproperty where id = #{id}
+	</select>
+	
+	<resultMap type="Shop" id="resultShopMap">
+		<result property="id" column="id"/>
+		<result property="shopName" column="shopName"/>
+		<result property="shopLogo" column="shopLogo"/>
+		<result property="shopNptice" column="shopNptice"/>
+		<result property="isBrand" column="isBrand"/>
+		<result property="serveEvaluate" column="serveEvaluate"/>
+		<result property="foodEvaluate" column="foodEvaluate"/>
+		<result property="countOrder" column="countOrder"/>
+		<result property="deliveryCost" column="deliveryCost"/>
+		<result property="startCost" column="startCost"/>
+		<result property="latitude" column="latitude"/>
+		<result property="longitude" column="longitude"/>
+		<result property="averageUserCost" column="averageUserCost"/>
+		<association property="shopProperty" column="id" select="com.elm.dao.ShopDao.findShopPropery"></association>
+	</resultMap>
+	
+	<select id="findShopList" resultMap="resultShopMap">
+		select * from t_shop
+	</select>
+	
+	<resultMap type="FoodType" id="resultFoodMap">
+		<result property="id" column="id"/>
+		<result property="listName" column="listName"/>
+		<result property="description" column="description"/>
+		<result property="shopId" column="shopId"/>
+		<association property="foodList" column="id" select="com.elm.dao.ShopDao.findFood"></association>
+	</resultMap>
+	
+	<select id="findFoodType" parameterType="Integer" resultMap="resultFoodMap">
+		select * from t_foodtypelist where shopId = #{shopId}
+	</select>
+	
+	<resultMap type="Food" id="resultFoodMap">
+		<association property="foodPropertyList" column="id" select="com.elm.dao.ShopDao.findFoodProperty"></association>
+	</resultMap>
+		
+	<select id="findFood" parameterType="Integer" resultMap="resultFoodMap">
+		select * from t_foodlist where foodTypeId = #{id}
+	</select>
+	
+	<resultMap type="Food" id=""></resultMap>
+	
+	<select id="findFoodProperty" parameterType="Integer">
+		
+	</select>
+		
+</mapper>
