@@ -1,7 +1,12 @@
 package com.elm.entity;
 
 public class ShopType {
-
+	/**
+	 * id唯一标识
+	 * typeName 类型名称
+	 * typeLogo 类型logo
+	 */
+	
 	private Integer id;
 	private String typeName;
 	private String typeLogo;

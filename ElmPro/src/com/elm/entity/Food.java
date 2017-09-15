@@ -3,7 +3,18 @@ package com.elm.entity;
 import java.util.List;
 
 public class Food {
-	
+	/**
+	 *  id 唯一标识
+	 *  foodName 食品名称
+	 *  foodInfo 食品简介
+	 *  foodPic 食品图片
+	 *  price 价格
+	 *  countMonth 月销售
+	 *  goodEvaluate 好评率
+	 *  type 是否是多规格商品
+	 *  inventory 存货
+	 *  foodTypeId 多规格对应ID
+	 */
 	private Integer id;
 	private String foodName;
 	private String foodInfo;

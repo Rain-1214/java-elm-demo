@@ -1,7 +1,11 @@
 package com.elm.entity;
 
 public class City {
-
+	/**
+	 *  id 唯一标识
+	 *  name 城市名称
+	 *  hotCityId 是否是热门城市 1 => 是
+	 */
 	private Integer id;
 	private String name;
 	private Integer hotCityId;

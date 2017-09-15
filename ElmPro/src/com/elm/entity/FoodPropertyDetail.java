@@ -1,7 +1,12 @@
 package com.elm.entity;
 
 public class FoodPropertyDetail {
-
+	/**
+	 * id 唯一标识
+	 * name 类型名称
+	 * price 该类型的价格浮动
+	 * foodTypeId 对应的为哪个大类的类型
+	 */
 	private Integer id;
 	private String name;
 	private double price;

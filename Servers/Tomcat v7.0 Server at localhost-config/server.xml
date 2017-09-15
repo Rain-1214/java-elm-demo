@@ -115,6 +115,7 @@
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
 
+		<!--	<Context path="" docBase="MyWeb" debug="0" reloadable="true" crossContext="true"> </Context> -->
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
         <!--
@@ -126,7 +127,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="HelloWorld" path="/HelloWorld" reloadable="true" source="org.eclipse.jst.jee.server:HelloWorld"/></Host>
+      <Context docBase="ElmPro" path="/ElmPro" reloadable="true" source="org.eclipse.jst.jee.server:ElmPro"/></Host>
     </Engine>
   </Service>
 </Server>

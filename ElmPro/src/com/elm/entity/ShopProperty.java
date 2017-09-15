@@ -1,7 +1,14 @@
 package com.elm.entity;
 
 public class ShopProperty {
-	
+	/**
+	 * id 唯一标识
+	 * newUserFavorable 新用户优惠
+	 * safeguard 保价
+	 * invoice 发票
+	 * hummingbird 蜂鸟专送
+	 * shopId 对应商店ID
+	 */
 	private Integer id;
 	private Integer newUserFavorable;
 	private Integer safeguard;

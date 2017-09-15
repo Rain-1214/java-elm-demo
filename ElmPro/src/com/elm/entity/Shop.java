@@ -1,7 +1,21 @@
 package com.elm.entity;
 
 public class Shop {
-
+	/**
+	 *  id 唯一标识
+	 *  shopName 商店名称
+	 *  shopLogo 商店logo
+	 *  shopNptice 商店公告
+	 *  isBrand 是否是品牌
+	 *  serveEvaluate 服务评价
+	 *  foodEvaluate 食品评价
+	 *  countOrder 总订单数量
+	 *  deliveryCost 配送费
+	 *  startCost 起送费
+	 *  latitude,longitude 经纬度
+	 *  averageUserCost 平均每人花销
+	 *  
+	 */
 	private Integer id;
 	private String shopName;
 	private String shopLogo;

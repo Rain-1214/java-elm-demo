@@ -1,0 +1,1 @@
+ INSERT INTO t_foodlist VALUES(NULL,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',20,88,0.99,1,-1,2);

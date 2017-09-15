@@ -3,7 +3,13 @@ package com.elm.entity;
 import java.util.List;
 
 public class FoodType {
-
+	/**
+	 * id 唯一标识
+	 * listName 食品类别名字
+	 * description 简介
+	 * shopId 对应的商店
+	 * foodList 该类型下的食品
+	 */
 	private Integer id;
 	private String listName;
 	private String description;
