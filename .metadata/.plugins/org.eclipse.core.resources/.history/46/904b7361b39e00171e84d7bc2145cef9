@@ -1,0 +1,7 @@
+package com.elm.service.impl;
+
+import com.elm.service.UserService;
+
+public class UserServiceImpl implements UserService{
+
+}

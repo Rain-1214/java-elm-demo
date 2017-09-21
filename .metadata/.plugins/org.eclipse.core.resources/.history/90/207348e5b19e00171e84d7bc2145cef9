@@ -1,0 +1,10 @@
+package com.elm.service;
+
+import org.springframework.stereotype.Service;
+
+@Service("UserService")
+public interface UserService {
+
+	
+	
+}

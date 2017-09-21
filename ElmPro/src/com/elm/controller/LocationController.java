@@ -28,6 +28,7 @@ public class LocationController {
 	@RequestMapping(value ="/getLocation",method = RequestMethod.POST)
 	@ResponseBody
 	public Map getLocation(@RequestBody Map obj,HttpServletRequest request) throws Exception{
+		
 		Double latitude = (Double) obj.get("latitude");
 		Double longitude = (Double) obj.get("longitude");
 		String resultJson =locationService.analysisLocation(latitude + "," + longitude);

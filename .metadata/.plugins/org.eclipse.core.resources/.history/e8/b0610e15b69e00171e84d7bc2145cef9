@@ -1,0 +1,8 @@
+package com.elm.entity;
+
+public class Hongbao {
+
+	private int id;
+	
+	
+}
