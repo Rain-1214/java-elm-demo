@@ -23,8 +23,6 @@ import com.elm.util.HttpRequest;
 @RequestMapping("/shop")
 public class ShopController {
 	
-	public HttpRequest httpRequest;
-	
 	@Resource
 	public ShopService shopService;
 	

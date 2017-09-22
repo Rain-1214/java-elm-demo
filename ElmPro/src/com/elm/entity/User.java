@@ -13,19 +13,18 @@ public class User {
 	 * address µØÖ·
 	 * hongBao ºì°ü
 	 */
-	private int id;
+	private Integer id;
 	private String userName;
 	private String password;
 	private String phoneNumber;
 	private String userImg;
-	private int activityPoints;
+	private Integer activityPoints;
 	private List address;
 	private List hongBao;
-	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getUserName() {
@@ -52,10 +51,10 @@ public class User {
 	public void setUserImg(String userImg) {
 		this.userImg = userImg;
 	}
-	public int getActivityPoints() {
+	public Integer getActivityPoints() {
 		return activityPoints;
 	}
-	public void setActivityPoints(int activityPoints) {
+	public void setActivityPoints(Integer activityPoints) {
 		this.activityPoints = activityPoints;
 	}
 	public List getAddress() {
@@ -70,10 +69,5 @@ public class User {
 	public void setHongBao(List hongBao) {
 		this.hongBao = hongBao;
 	}
-	
-	
-	
-	
-	
 	
 }

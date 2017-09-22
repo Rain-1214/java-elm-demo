@@ -1,26 +1,34 @@
 package com.elm.entity;
 
 public class Hongbao {
-
-	private int id;
-	private String hongBaoName;
+	/**
+	 * id 唯一标识
+	 * hongbaoName 红包名称
+	 * fillMoney 满多少
+	 * minusNum 减多少
+	 * userId 对应用户ID
+	 * hongbaoState 红包对应状态      0=》已过期             1=》已使用                2=》正常
+	 * hongbaoRule 红包规则
+	 * 
+	 */
+	private Integer id;
+	private String hongbaoName;
 	private double fillMoney;
 	private double minusNum;
-	private int userId;
-	private int hongBaoState;
-	private int hongBaoRules;
-	
-	public int getId() {
+	private Integer userId;
+	private Integer hongbaoState;
+	private HongbaoRule hongbaoRule;
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getHongBaoName() {
-		return hongBaoName;
+	public String getHongbaoName() {
+		return hongbaoName;
 	}
-	public void setHongBaoName(String hongBaoName) {
-		this.hongBaoName = hongBaoName;
+	public void setHongbaoName(String hongbaoName) {
+		this.hongbaoName = hongbaoName;
 	}
 	public double getFillMoney() {
 		return fillMoney;
@@ -34,23 +42,23 @@ public class Hongbao {
 	public void setMinusNum(double minusNum) {
 		this.minusNum = minusNum;
 	}
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public int getHongBaoState() {
-		return hongBaoState;
+	public Integer getHongbaoState() {
+		return hongbaoState;
 	}
-	public void setHongBaoState(int hongBaoState) {
-		this.hongBaoState = hongBaoState;
+	public void setHongbaoState(Integer hongbaoState) {
+		this.hongbaoState = hongbaoState;
 	}
-	public int getHongBaoRules() {
-		return hongBaoRules;
+	public HongbaoRule getHongbaoRule() {
+		return hongbaoRule;
 	}
-	public void setHongBaoRules(int hongBaoRules) {
-		this.hongBaoRules = hongBaoRules;
+	public void setHongbaoRule(HongbaoRule hongbaoRule) {
+		this.hongbaoRule = hongbaoRule;
 	}
 	
 	

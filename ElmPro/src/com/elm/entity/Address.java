@@ -2,7 +2,19 @@ package com.elm.entity;
 
 public class Address {
 	
-	private int id;
+	/**
+	 * id 唯一标识
+	 * userName 用户名字
+	 * sex 性别
+	 * phoneNumber 电话
+	 * addressName 地址名称
+	 * addressDetail 地址详细信息
+	 * tag 地址标签
+	 * lat,lon 经纬度
+	 * userId 对应哪个用户
+	 */
+	
+	private Integer id;
 	private String userName;
 	private String sex;
 	private String phoneNumber;
@@ -11,12 +23,11 @@ public class Address {
 	private String tag;
 	private double lat;
 	private double lon;
-	private int userId;
-	
-	public int getId() {
+	private Integer userId;
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getUserName() {
@@ -67,12 +78,14 @@ public class Address {
 	public void setLon(double lon) {
 		this.lon = lon;
 	}
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
+	
 	
 	
 	
