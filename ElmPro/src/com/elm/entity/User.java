@@ -10,6 +10,8 @@ public class User {
 	 * phoneNumber 手机
 	 * userImg 头像
 	 * activityPoints 积分
+	 * safetyQuestion 安全问题
+	 * safetyAnswer 安全答案
 	 * address 地址
 	 * hongBao 红包
 	 */
@@ -19,8 +21,11 @@ public class User {
 	private String phoneNumber;
 	private String userImg;
 	private Integer activityPoints;
+	private String safetyQuestion;
+	private String safetyAnswer;
 	private List address;
-	private List hongBao;
+	private List hongbao;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -57,6 +62,18 @@ public class User {
 	public void setActivityPoints(Integer activityPoints) {
 		this.activityPoints = activityPoints;
 	}
+	public String getSafetyQuestion() {
+		return safetyQuestion;
+	}
+	public void setSafetyQuestion(String safetyQuestion) {
+		this.safetyQuestion = safetyQuestion;
+	}
+	public String getSafetyAnswer() {
+		return safetyAnswer;
+	}
+	public void setSafetyAnswer(String safetyAnswer) {
+		this.safetyAnswer = safetyAnswer;
+	}
 	public List getAddress() {
 		return address;
 	}
@@ -64,10 +81,26 @@ public class User {
 		this.address = address;
 	}
 	public List getHongBao() {
-		return hongBao;
+		return hongbao;
 	}
-	public void setHongBao(List hongBao) {
-		this.hongBao = hongBao;
+	public void setHongBao(List hongbao) {
+		this.hongbao = hongbao;
 	}
+	
+	
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public User(String userName, String password, String safetyQuestion, String safetyAnswer) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.safetyQuestion = safetyQuestion;
+		this.safetyAnswer = safetyAnswer;
+	}
+	
+	
 	
 }

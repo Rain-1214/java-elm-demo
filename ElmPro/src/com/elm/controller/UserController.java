@@ -28,14 +28,47 @@ public class UserController {
 	
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	@ResponseBody
-	public Map userLogin(@RequestBody Map obj,HttpServletRequest httpRequest) {
+	public Map userLogin(@RequestBody Map obj,HttpServletRequest httpRequest,HttpServletResponse httpResponse) {
 		Map map = new HashMap<Object,String>();
 		String userName = (String) obj.get("userName");
 		String password = (String) obj.get("password");
-		System.out.println(userName);
-		System.out.println(password);
-		User user = userService.findUserByName(userName, password);
-		map.put("data", user);
+		String code = (String) obj.get("code");
+		code = code.toUpperCase();
+		String sessionId = httpRequest.getSession().getId();
+		String imgCode = (String) httpRequest.getSession().getAttribute(sessionId+"imageCode");
+		if(!code.equals(imgCode)){
+			map.put("stateCode",0);
+			map.put("message", "验证码错误");
+			return map;
+		}else{
+			User user = userService.findUserByNameAndPass(userName, password);
+			user.setPassword(null);
+			if(user.equals(null)){
+				map.put("stateCode", 0);
+				map.put("message", "用户名或密码错误");
+			}else{
+				map.put("stateCode",1);
+				map.put("data", user);
+				map.put("message", "登录成功");
+			}
+			return map;
+		}
+		
+	}
+	
+	@RequestMapping(value = "/checkUserName",method = RequestMethod.POST)
+	@ResponseBody
+	public Map checkUserName(@RequestBody Map obj,HttpServletRequest httpRequest){
+		Map map = new HashMap<String,Object>();
+		String userName = (String) obj.get("userName");
+		User user = userService.findUserByName(userName);
+		if(user == null){
+			map.put("stateCode", 1);
+			map.put("message", "用户名可用");
+		}else{
+			map.put("stateCode", 0);
+			map.put("message","用户名已存在");
+		}
 		return map;
 	}
 	
@@ -46,7 +79,7 @@ public class UserController {
 		response.setContentType("image/jpeg");//设置响应类型，告知浏览器输出的是图片  
         response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容  
         response.setHeader("Cache-Control", "no-cache");  
-        response.setHeader("Set-Cookie", "name=value; HttpOnly");//设置HttpOnly属性,防止Xss攻击  
+        response.setHeader("Set-Cookie", "name=value; HttpOnly");
         response.setDateHeader("Expire", 0);  
 		RandomValidateCode randomValidateCode = new RandomValidateCode();
 		
@@ -60,5 +93,63 @@ public class UserController {
 		return map;
 		
 	}
+	
+	@RequestMapping(value = "/register",method = RequestMethod.POST)
+	@ResponseBody
+	public Map register(@RequestBody Map obj,HttpServletRequest request){
+		String userName = (String) obj.get("userName");
+		String password = (String) obj.get("password");
+		String safetyQuestion = (String) obj.get("safetyQuestion");
+		String safetyAnswer = (String) obj.get("safetyAnswer");
+		String code= (String) obj.get("code");
+		code = code.toUpperCase();
+		String sessionId = request.getSession().getId();
+		String imgcode = (String) request.getSession().getAttribute(sessionId + "imageCode");
+		
+		System.out.println(code);
+		System.out.println(imgcode);
+		Map map = new HashMap<String,Object>();
+		
+		if(imgcode.equals(code)){
+			User user = new User(userName, password, safetyQuestion, safetyAnswer);
+			Integer resultNum = userService.insertUser(user);
+			if(resultNum == 1){
+				User userRegistered = userService.findUserByName(userName);
+				userRegistered.setPassword(null);
+				map.put("stateCode", 1);
+				map.put("data", userRegistered);
+				map.put("message", "注册成功");
+			}else{
+				map.put("stateCode", 0);
+				map.put("message", "网路错误，请重试");
+			}
+		}else{
+			map.put("stateCode", 0);
+			map.put("message", "验证码不正确");
+		}
+		
+		return map;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

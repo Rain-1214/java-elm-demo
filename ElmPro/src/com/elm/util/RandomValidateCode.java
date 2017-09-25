@@ -142,8 +142,8 @@ public class RandomValidateCode {
 		  
 		//将生成的验证码放入session  
 		String sessionId = request.getSession().getId();//获取session的id  
-		request.getSession().setAttribute(sessionId+key, randomString);  
-		System.out.println("生成的验证码为：" + randomString);  
+		request.getSession().setAttribute(sessionId+key, randomString);
+		//System.out.println("生成的验证码为：" + randomString);  
 		  
 		g.dispose();//释放绘图资源  
 		try {  

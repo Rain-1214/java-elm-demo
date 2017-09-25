@@ -4,9 +4,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.elm.dao.UserDao">
+
+	<resultMap type="User" id="resultUserMap">
+		<result property="id" column="id"/>
+		<result property="userName" column="userName"/>
+		<result property="password" column="password"/>
+		<result property="phoneNumber" column="phoneNumber"/>
+		<result property="userImg" column="userImg"/>
+		<result property="activityPoints" column="activityPoints"/>
+		<result property="safetyQuestion" column="safetyQuestion"/>
+		<result property="safetyAnswer" column="safetyAnswer"/>
+		<association property="address" column="id" select="com.elm.dao.UserDao.findAddress"></association>
+		<association property="hongbao" column="id" select="com.elm.dao.UserDao.findHongbao"></association>
+	</resultMap>
 	
-	<select id="findUserByName" resultType="User">
+	<resultMap type="Hongbao" id="resultHongbaoMap">
+		<result property="id" column="id"/>
+		<result property="hongbaoName" column="hongbaoName"/>
+		<result property="fillMoney" column="fillMoney"/>
+		<result property="minusMoney" column="minusMoney"/>
+		<result property="userId" column="userId"/>
+		<result property="hongbaoState" column="hongbaoState"/>
+		<association property="hongbaoRule" column="id" select="com.elm.dao.UserDao.findHongbaoRule"></association>
+	</resultMap>
+	
+	<select id="findAddress" resultType="Address">
+		select * from t_address where userId = #{id}
+	</select>
+	
+	<select id="findHongbao" resultMap="resultHongbaoMap" resultType="Hongbao">
+		select * from t_hongbao where userId = #{id}
+	</select>
+	
+	<select id="findHongbaoRule" resultType="HongbaoRule">
+		select * from t_hongbaorules where hongbaoId = #{id}
+	</select>
+	
+	<select id="findUserByNameAndPass" resultMap="resultUserMap" resultType="User">
 		select * from t_user where userName = #{0} and password = #{1}
 	</select>
+	
+	<select id="findUserByName" resultType="User">
+		select * from t_user where userName = #{userName}
+	</select>
+	
+	<insert id="insertUser" parameterType="User">
+		insert into t_user values(null,#{userName},#{password},"","",0,#{safetyQuestion},#{safetyAnswer})
+	</insert>
 	
 </mapper>
