@@ -16,7 +16,7 @@ public class Address {
 	
 	private Integer id;
 	private String userName;
-	private String sex;
+	private Integer sex;
 	private String phoneNumber;
 	private String addressName;
 	private String addressDetail;
@@ -36,10 +36,10 @@ public class Address {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getSex() {
+	public Integer getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 	public String getPhoneNumber() {

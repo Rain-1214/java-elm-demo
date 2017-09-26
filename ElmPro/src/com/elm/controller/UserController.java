@@ -42,13 +42,18 @@ public class UserController {
 			return map;
 		}else{
 			User user = userService.findUserByNameAndPass(userName, password);
-			user.setPassword(null);
-			if(user.equals(null)){
+			if(user == null){
 				map.put("stateCode", 0);
 				map.put("message", "用户名或密码错误");
 			}else{
+				Map userMap = new HashMap<String,Object>();
+				userMap.put("userName", user.getUserName());
+				userMap.put("userImg", user.getUserImg());
+				userMap.put("phoneNumber", user.getPhoneNumber());
+				userMap.put("address", user.getAddress());
+				userMap.put("hongbao", user.getHongBao());
 				map.put("stateCode",1);
-				map.put("data", user);
+				map.put("data", userMap);
 				map.put("message", "登录成功");
 			}
 			return map;
@@ -115,9 +120,14 @@ public class UserController {
 			Integer resultNum = userService.insertUser(user);
 			if(resultNum == 1){
 				User userRegistered = userService.findUserByName(userName);
-				userRegistered.setPassword(null);
+				Map userMap = new HashMap<String,Object>();
+				userMap.put("userName", userRegistered.getUserName());
+				userMap.put("userImg", userRegistered.getUserImg());
+				userMap.put("phoneNumber", userRegistered.getPhoneNumber());
+				userMap.put("address", userRegistered.getAddress());
+				userMap.put("hongbao", userRegistered.getHongBao());
 				map.put("stateCode", 1);
-				map.put("data", userRegistered);
+				map.put("data", userMap);
 				map.put("message", "注册成功");
 			}else{
 				map.put("stateCode", 0);
