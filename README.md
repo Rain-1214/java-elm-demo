@@ -108,6 +108,8 @@ POST
 ### 参数
 无
 ### 返回示例
+<pre>
+	<code>
     {
       stateCode:0, // 1 成功 0 失败
       message:"success", // "网络问题" .....
@@ -120,5 +122,7 @@ POST
           ...  
         ]  
     }  
+	</code>
+</pre>
     
 
