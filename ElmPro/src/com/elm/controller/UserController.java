@@ -50,6 +50,7 @@ public class UserController {
 				userMap.put("userName", user.getUserName());
 				userMap.put("userImg", user.getUserImg());
 				userMap.put("phoneNumber", user.getPhoneNumber());
+				userMap.put("activityPoints",user.getActivityPoints());
 				userMap.put("address", user.getAddress());
 				userMap.put("hongbao", user.getHongBao());
 				map.put("stateCode",1);
@@ -124,6 +125,7 @@ public class UserController {
 				userMap.put("userName", userRegistered.getUserName());
 				userMap.put("userImg", userRegistered.getUserImg());
 				userMap.put("phoneNumber", userRegistered.getPhoneNumber());
+				userMap.put("activityPoints",userRegistered.getActivityPoints());
 				userMap.put("address", userRegistered.getAddress());
 				userMap.put("hongbao", userRegistered.getHongBao());
 				map.put("stateCode", 1);
