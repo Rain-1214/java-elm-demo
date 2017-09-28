@@ -11,30 +11,28 @@ elm 是模仿饿了么的一个demo java-elm-deom是java对应开发的后台应
 
 目前实现的接口 我还在用本地(穷逼没钱租服务器) 所以我的前缀是localhost:8080/ElmPro/..... 前端那边用webpack启另外端口的开发然后 用proxy代理转发 然后java这边配置了跨域 就这样。。。
 
-PS：我Java实力 比较一般。。较一般。。一般。。般。。 所以还希望各路大神指点。
+PS：我Java实力 比较一般。。较一般。。一般。。般。。 所以还希望各路大神指点。  
 PPS：QQ ==> 453430651 微信 ==> as453430651 
 
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
-<a href="title1">验证用户名是否存在</a>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
+<a href="#title1">验证用户名是否存在</a><br>
 
 
-### <a name="title1">验证用户名是否存在<</a>
+### <a name="title1">验证用户名是否存在 </a>
 #### 请求地址
  /User/checkUserName.do
 #### 请求方式
