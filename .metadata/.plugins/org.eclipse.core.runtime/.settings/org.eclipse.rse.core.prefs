@@ -1,4 +1,3 @@
-activeuserprofiles=DESKTOP-JLSBS89;Team
 eclipse.preferences.version=1
-org.eclipse.rse.systemtype.local.systemType.defaultUserId=Someone
-useridperkey=DESKTOP-JLSBS89.Local\=Someone;
+org.eclipse.rse.systemtype.local.systemType.defaultUserId=admin
+useridperkey=admin-PC.Local\=admin;
