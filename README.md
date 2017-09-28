@@ -117,5 +117,5 @@ POST
             typeName:..., //店铺类型名称
             typeLogo:..., //店铺类型LOGO
           },...
-       ]
+        ]
     }
