@@ -27,8 +27,8 @@ userName | Y            | String|用户名
 
 ### 返回示例
     {
- 	    stateCode:0, // 1 成功 0 失败
- 	    message:"用户名可用", // "用户名不可用" .....
+      stateCode:0, // 1 成功 0 失败
+      message:"用户名可用", // "用户名不可用" .....
     }
 
 ## 获取图片验证码
@@ -59,16 +59,16 @@ safetyAnswer  | Y            | String|安全问题答案
 
 ### 返回示例
     {
- 	    stateCode:1, // 1 成功 0 失败
- 	    message:"注册成功", // "验证码错误" .....
- 	    data:{
-			  userName:...,
-			  userImg:..., //头像
-			  phoneNumber:..., 
-			  activityPoints:..., //活动积分
-			  address:[], //该用户的地址
-			  hongbao:[]  //该用户红包
- 	  	}
+      stateCode:1, // 1 成功 0 失败
+      message:"注册成功", // "验证码错误" .....
+        data:{
+          userName:...,
+          userImg:..., //头像
+          phoneNumber:..., 
+          activityPoints:..., //活动积分
+          address:[], //该用户的地址
+          hongbao:[]  //该用户红包
+        }
     }
 
 
@@ -88,16 +88,16 @@ code     | Y            | String|验证码(图片)
 
 ### 返回示例
     {
- 	    stateCode:0, // 1 成功 0 失败
- 	    message:"登录成功", // "验证码错误" .....
- 	    data:{
-			  userName:...,
-			  userImg:..., //头像
-        phoneNumber:..., 
-        activityPoints:..., //活动积分
-        address:[], //该用户的地址
-        hongbao:[]  //该用户红包
- 	  	}
+      stateCode:0, // 1 成功 0 失败
+      message:"登录成功", // "验证码错误" .....
+        data:{
+          userName:...,
+          userImg:..., //头像
+          phoneNumber:..., 
+          activityPoints:..., //活动积分
+          address:[], //该用户的地址
+          hongbao:[]  //该用户红包
+       }
     }
 
 ## 登录
@@ -109,13 +109,13 @@ POST
 无
 ### 返回示例
     {
- 	    stateCode:0, // 1 成功 0 失败
- 	    message:"success", // "网络问题" .....
- 	    data:[
-			  {
-          id:..,
-          typeName:..., //店铺类型名称
-          typeLogo:..., //店铺类型LOGO
-        }
- 	    ]
+      stateCode:0, // 1 成功 0 失败
+      message:"success", // "网络问题" .....
+        data:[
+          {
+            id:..,
+            typeName:..., //店铺类型名称
+            typeLogo:..., //店铺类型LOGO
+          },...
+       ]
     }
