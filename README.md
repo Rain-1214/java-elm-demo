@@ -15,22 +15,15 @@ PS：我Java实力 比较一般。。较一般。。一般。。般。。 所以
 PPS：QQ ==> 453430651 微信 ==> as453430651 
 
 <a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title1">验证用户名是否存在</a><br>
-
+<a href="#title2">获取图片验证码</a><br>
+<a href="#title3">注册</a><br>
+<a href="#title4">登录</a><br>
+<a href="#title5">获取全部店铺类型</a><br>
+<a href="#title6">获取所有店铺</a><br>
+<a href="#title7">获取店铺所有商品</a><br>
+<a href="#title8">根据经纬度获取地址</a><br>
+<a href="#title9">获取热门城市</a><br>
+<a href="#title10">获取热门城市</a><br>
 
 ### <a name="title1">验证用户名是否存在 </a>
 #### 请求地址
@@ -53,7 +46,7 @@ userName | Y            | String|用户名
 	</code>
 </pre>
 
-### 获取图片验证码
+### <a name="title2">获取图片验证码</a>
 #### 请求地址
  /User/getCode.do
 #### 请求方式
@@ -64,7 +57,7 @@ GET
 返回一张图片
 
 
-### 注册
+### <a name="title3">注册</a>
 #### 请求地址
  /User/register.do
 #### 请求方式
@@ -99,7 +92,7 @@ safetyAnswer  | Y            | String|安全问题答案
 
 
 
-### 登录
+### <a name="title4">登录</a>
 #### 请求地址
  /User/Login.do
 #### 请求方式
@@ -130,7 +123,7 @@ code     | Y            | String|验证码(图片)
 	</code>
 </pre>
 
-### 获取全部店铺类型
+### <a name="title5">获取全部店铺类型</a>
 #### 请求地址
  /shop/shopTypeList.do
 #### 请求方式
@@ -155,7 +148,7 @@ POST
 	</code>
 </pre>
 
-### 获取所有店铺
+### <a name="title6">获取所有店铺</a>
 #### 请求地址
  /shop/shopList.do
 #### 请求方式
@@ -197,7 +190,7 @@ POST
 	</code>
 </pre>
 
-### 获取店铺所有商品
+### <a name="title7">获取店铺所有商品</a>
 #### 请求地址
  /shop/shopFoodTypeList.do
 #### 请求方式
@@ -256,7 +249,7 @@ id       | Y            | int   |当前店铺ID
 </pre>
 
 
-### 根据经纬度获取地址
+### <a name="title8">根据经纬度获取地址</a>
 #### 请求地址
  /location/getLocation.do
 #### 请求方式
@@ -301,7 +294,7 @@ longitude| Y            | int   |经度
 </pre>
 
 
-### 获取热门城市
+### <a name="title9">获取热门城市</a>
 #### 请求地址
  /location/getHotCity.do
 #### 请求方式
@@ -319,7 +312,7 @@ POST
 	</code>
 </pre>
 
-### 获取热门城市
+### <a name="title10">获取热门城市</a>
 #### 请求地址
  /location/searchAddress.do
 #### 请求方式
