@@ -100,7 +100,7 @@ code     | Y            | String|验证码(图片)
        }
     }
 
-## 登录
+## 获取全部店铺类型
 ### 请求地址
  /shop/shopTypeList.do
 ### 请求方式
