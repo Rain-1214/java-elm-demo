@@ -62,12 +62,12 @@ safetyAnswer  | Y            | String|安全问题答案
  	    stateCode:1, // 1 成功 0 失败
  	    message:"注册成功", // "验证码错误" .....
  	    data:{
-				userName:...,
-				userImg:..., //头像
-				phoneNumber:..., 
-				activityPoints:..., //活动积分
-				address:[], //该用户的地址
-				hongbao:[]  //该用户红包
+			  userName:...,
+			  userImg:..., //头像
+			  phoneNumber:..., 
+			  activityPoints:..., //活动积分
+			  address:[], //该用户的地址
+			  hongbao:[]  //该用户红包
  	  	}
     }
 
@@ -91,12 +91,12 @@ code     | Y            | String|验证码(图片)
  	    stateCode:0, // 1 成功 0 失败
  	    message:"登录成功", // "验证码错误" .....
  	    data:{
-				userName:...,
-				userImg:..., //头像
-				phoneNumber:..., 
-				activityPoints:..., //活动积分
-				address:[], //该用户的地址
-				hongbao:[]  //该用户红包
+			  userName:...,
+			  userImg:..., //头像
+        phoneNumber:..., 
+        activityPoints:..., //活动积分
+        address:[], //该用户的地址
+        hongbao:[]  //该用户红包
  	  	}
     }
 
@@ -112,10 +112,10 @@ POST
  	    stateCode:0, // 1 成功 0 失败
  	    message:"success", // "网络问题" .....
  	    data:[
-				{
-					id:..,
-					typeName:..., //店铺类型名称
-					typeLogo:..., //店铺类型LOGO
-				}
+			  {
+          id:..,
+          typeName:..., //店铺类型名称
+          typeLogo:..., //店铺类型LOGO
+        }
  	    ]
     }
