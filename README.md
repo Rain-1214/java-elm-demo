@@ -23,7 +23,7 @@ PPS：QQ ==> 453430651 微信 ==> as453430651
 <a href="#title7">获取店铺所有商品</a><br>
 <a href="#title8">根据经纬度获取地址</a><br>
 <a href="#title9">获取热门城市</a><br>
-<a href="#title10">获取热门城市</a><br>
+<a href="#title10">根据输入文本搜索地址</a><br>
 
 ### <a name="title1">验证用户名是否存在 </a>
 #### 请求地址
@@ -312,7 +312,7 @@ POST
   </code>
 </pre>
 
-### <a name="title10">获取热门城市</a>
+### <a name="title10">根据输入文本搜索地址</a>
 #### 请求地址
  /location/searchAddress.do
 #### 请求方式
@@ -321,7 +321,7 @@ POST
 参数名称       | 是否是必须的 | 类型  | 说明
 ---------------|--------------|-------|----- 
 searchText     | Y            |String |搜索文本
-currentLocation| Y            |String |当前城市
+currentLocation| Y            |String |在哪个城市搜索
 
 #### 返回示例
 <pre>

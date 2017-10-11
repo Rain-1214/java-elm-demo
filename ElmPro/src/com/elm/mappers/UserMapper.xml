@@ -48,8 +48,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from t_user where userName = #{userName}
 	</select>
 	
+	<select id="findAddressByUserId" resultType="Address">
+		select * from t_address where userId = #{userId}
+	</select>
+	
 	<insert id="insertUser" parameterType="User">
 		insert into t_user values(null,#{userName},#{password},"","",0,#{safetyQuestion},#{safetyAnswer})
 	</insert>
+	
+	<insert id="insertUserAddress" parameterType="Address">
+		insert into t_address values(null,#{userName},#{sex},#{phoneNumber},#{addressName},#{addressDetail},#{tag},#{lat},#{lng},#{userId})
+	</insert>
+	
+	<delete id="deleteAddressById" parameterType="Integer">
+		delete from t_address where id = #{id}
+	</delete>
 	
 </mapper>

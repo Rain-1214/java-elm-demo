@@ -1,5 +1,6 @@
 package com.elm.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.elm.dao.UserDao;
+import com.elm.entity.Address;
 import com.elm.entity.User;
 import com.elm.service.UserService;
 
@@ -32,6 +34,23 @@ public class UserServiceImpl implements UserService{
 	public Integer insertUser(User user) {
 		Integer resultNum = userDao.insertUser(user);
 		return resultNum;
+	}
+
+	@Override
+	public Integer insertUserAddress(Address address) {
+		Integer resultNum = userDao.insertUserAddress(address);
+		return resultNum;
+	}
+
+	@Override
+	public List<Address> findAddressByUserId(Integer userId) {
+		List<Address> result = userDao.findAddressByUserId(userId);
+		return result;
+	}
+
+	@Override
+	public Integer deleteAddressById(Integer id) {
+		return userDao.deleteAddressById(id);
 	}
 
 

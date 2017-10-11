@@ -1,6 +1,7 @@
 package com.elm.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.elm.entity.Address;
 import com.elm.entity.User;
 import com.elm.service.UserService;
 import com.elm.util.RandomValidateCode;
@@ -53,6 +55,7 @@ public class UserController {
 				userMap.put("activityPoints",user.getActivityPoints());
 				userMap.put("address", user.getAddress());
 				userMap.put("hongbao", user.getHongBao());
+				userMap.put("id", user.getId());
 				map.put("stateCode",1);
 				map.put("data", userMap);
 				map.put("message", "登录成功");
@@ -112,8 +115,6 @@ public class UserController {
 		String sessionId = request.getSession().getId();
 		String imgcode = (String) request.getSession().getAttribute(sessionId + "imageCode");
 		
-		System.out.println(code);
-		System.out.println(imgcode);
 		Map map = new HashMap<String,Object>();
 		
 		if(imgcode.equals(code)){
@@ -128,6 +129,7 @@ public class UserController {
 				userMap.put("activityPoints",userRegistered.getActivityPoints());
 				userMap.put("address", userRegistered.getAddress());
 				userMap.put("hongbao", userRegistered.getHongBao());
+				userMap.put("id", userRegistered.getId());
 				map.put("stateCode", 1);
 				map.put("data", userMap);
 				map.put("message", "注册成功");
@@ -145,8 +147,62 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping(value="/addAddress", method = RequestMethod.POST)
+	@ResponseBody
+	public Map addAddress(@RequestBody Map obj){
+		Integer sex = (Integer) obj.get("sex");
+		String userName = (String) obj.get("userName");
+		String phoneNumber = (String) obj.get("phoneNumber");
+		String addressName = (String) obj.get("addressName");
+		String addressDetail = (String) obj.get("addressDetail");
+		Integer userId = (Integer) obj.get("userId");
+		double lat = (double) obj.get("lat");
+		double lng = (double) obj.get("lng");
+		String tag = "";
+		if (!(obj.get("tag") == "")){
+			tag = (String) obj.get("tag");
+		}
+		Address userAddress = new Address(userName, sex, phoneNumber, addressName, addressDetail, tag, lat, lng, userId);
+		Integer resultNum = userService.insertUserAddress(userAddress);
+		Map resultMap = new HashMap<String,Object>();
+		if(resultNum == 1) {
+			resultMap.put("stateCode", 1);
+			resultMap.put("message", "添加成功");
+		}else{
+			resultMap.put("stateCode", 0);
+			resultMap.put("message", "添加失败,请重试");
+		}
+		
+		return resultMap;
+	}
 	
+	@RequestMapping(value = "/findAddressByUserId", method = RequestMethod.POST)
+	@ResponseBody
+	public Map findAddressByUserId(@RequestBody Map obj){
+		Integer userId = (Integer) obj.get("userId");
+		List<Address> addressList = userService.findAddressByUserId(userId);
+		Map resultMap = new HashMap<String,Object>();
+		resultMap.put("stateCode", 1);
+		resultMap.put("data", addressList);
+		resultMap.put("message", "success");
+		return resultMap;
+	}
 	
+	@RequestMapping(value = "/deleteAddressById", method = RequestMethod.POST)
+	@ResponseBody
+	public Map deleteAddressById(@RequestBody Map obj){
+		Integer id = (Integer) obj.get("addressId");
+		Integer resultNum = userService.deleteAddressById(id);
+		Map resultMap = new HashMap<String,Object>();
+		if(resultNum == 1) {
+			resultMap.put("stateCode", 1);
+			resultMap.put("message", "删除成功");
+		}else{
+			resultMap.put("stateCode", 0);
+			resultMap.put("message", "删除失败");
+		}
+		return resultMap;
+	}
 	
 	
 	

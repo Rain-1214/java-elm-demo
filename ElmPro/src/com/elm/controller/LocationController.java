@@ -69,7 +69,6 @@ public class LocationController {
 	public Map searchAddress(@RequestBody Map obj,HttpServletRequest request){
 		String query = (String) obj.get("searchText");
 		String city = (String) obj.get("currentLocation");
-		System.out.println(obj);
 		String location= "";
 		if(obj.get("latitude") != null && obj.get("longitude") != null){
 			Double latitude = (Double) obj.get("latitude");

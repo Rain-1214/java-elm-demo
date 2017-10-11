@@ -22,7 +22,7 @@ public class Address {
 	private String addressDetail;
 	private String tag;
 	private double lat;
-	private double lon;
+	private double lng;
 	private Integer userId;
 	public Integer getId() {
 		return id;
@@ -72,11 +72,11 @@ public class Address {
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
-	public double getLon() {
-		return lon;
+	public double getLng() {
+		return lng;
 	}
-	public void setLon(double lon) {
-		this.lon = lon;
+	public void setLng(double lng) {
+		this.lng = lng;
 	}
 	public Integer getUserId() {
 		return userId;
@@ -84,9 +84,23 @@ public class Address {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
-	
-	
+	public Address(String userName, Integer sex, String phoneNumber, String addressName, String addressDetail,
+			String tag, double lat, double lng, Integer userId) {
+		super();
+		this.userName = userName;
+		this.sex = sex;
+		this.phoneNumber = phoneNumber;
+		this.addressName = addressName;
+		this.addressDetail = addressDetail;
+		this.tag = tag;
+		this.lat = lat;
+		this.lng = lng;
+		this.userId = userId;
+	}
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }
