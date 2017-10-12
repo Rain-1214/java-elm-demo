@@ -84,6 +84,21 @@ public class Address {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
+	public Address(Integer id, String userName, Integer sex, String phoneNumber, String addressName,
+			String addressDetail, String tag, double lat, double lng, Integer userId) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.sex = sex;
+		this.phoneNumber = phoneNumber;
+		this.addressName = addressName;
+		this.addressDetail = addressDetail;
+		this.tag = tag;
+		this.lat = lat;
+		this.lng = lng;
+		this.userId = userId;
+	}
 	public Address(String userName, Integer sex, String phoneNumber, String addressName, String addressDetail,
 			String tag, double lat, double lng, Integer userId) {
 		super();

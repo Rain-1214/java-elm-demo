@@ -204,7 +204,34 @@ public class UserController {
 		return resultMap;
 	}
 	
-	
+	@RequestMapping(value = "/editAddressById", method = RequestMethod.POST)
+	@ResponseBody
+	public Map editAddressById(@RequestBody Map obj){
+		Integer id = (Integer) obj.get("id");
+		Integer sex = (Integer) obj.get("sex");
+		String userName = (String) obj.get("userName");
+		String phoneNumber = (String) obj.get("phoneNumber");
+		String addressName = (String) obj.get("addressName");
+		String addressDetail = (String) obj.get("addressDetail");
+		Integer userId = (Integer) obj.get("userId");
+		double lat = (double) obj.get("lat");
+		double lng = (double) obj.get("lng");
+		String tag = "";
+		if (!(obj.get("tag") == "")){
+			tag = (String) obj.get("tag");
+		}
+		Address userAddress = new Address(id, userName, sex, phoneNumber, addressName, addressDetail, tag, lat, lng, userId);
+		Integer resultNum = userService.editAddressById(userAddress);
+		Map resultMap = new HashMap<String,Object>();
+		if(resultNum == 1) {
+			resultMap.put("stateCode", 1);
+			resultMap.put("message", "修改成功");
+		}else{
+			resultMap.put("stateCode", 0);
+			resultMap.put("message", "修改失败");
+		}
+		return resultMap;
+	}
 	
 	
 	

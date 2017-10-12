@@ -64,4 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from t_address where id = #{id}
 	</delete>
 	
+	<update id="updateAddressById" parameterType="Address">
+		update t_address set userName = #{userName},sex = #{sex},phoneNumber = #{phoneNumber},addressName = #{addressName},addressDetail = #{addressDetail},tag = #{tag},lat = #{lat},lng = #{lng} where id = #{id}
+	</update>
+	
 </mapper>

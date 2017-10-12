@@ -26,5 +26,7 @@ public interface UserDao {
 	public Integer insertUserAddress(Address address);
 	
 	public Integer deleteAddressById(Integer id);
+	
+	public Integer updateAddressById(Address address);
 
 }

@@ -14,18 +14,22 @@ elm 是模仿饿了么的一个demo java-elm-deom是java对应开发的后台应
 PS：我Java实力 比较一般。。较一般。。一般。。般。。 所以还希望各路大神指点。  
 PPS：QQ ==> 453430651 微信 ==> as453430651 
 
-<a href="#title1">验证用户名是否存在</a><br>
-<a href="#title2">获取图片验证码</a><br>
-<a href="#title3">注册</a><br>
-<a href="#title4">登录</a><br>
-<a href="#title5">获取全部店铺类型</a><br>
-<a href="#title6">获取所有店铺</a><br>
-<a href="#title7">获取店铺所有商品</a><br>
-<a href="#title8">根据经纬度获取地址</a><br>
-<a href="#title9">获取热门城市</a><br>
-<a href="#title10">根据输入文本搜索地址</a><br>
+<a href="#title1">1、验证用户名是否存在</a><br>
+<a href="#title2">2、获取图片验证码</a><br>
+<a href="#title3">3、注册</a><br>
+<a href="#title4">4、登录</a><br>
+<a href="#title5">5、获取全部店铺类型</a><br>
+<a href="#title6">6、获取所有店铺</a><br>
+<a href="#title7">7、获取店铺所有商品</a><br>
+<a href="#title8">8、根据经纬度获取地址</a><br>
+<a href="#title9">9、获取热门城市</a><br>
+<a href="#title10">10、根据输入文本搜索地址</a><br>
+<a href="#title11">11、向一个用户添加一个地址</a><br>
+<a href="#title12">12、查找一个用户的所有地址</a><br>
+<a href="#title13">13、删除一个地址</a><br>
 
-### <a name="title1">验证用户名是否存在 </a>
+
+### <a name="title1">1、验证用户名是否存在 </a>
 #### 请求地址
  /User/checkUserName.do
 #### 请求方式
@@ -46,7 +50,7 @@ userName | Y            | String|用户名
   </code>
 </pre>
 
-### <a name="title2">获取图片验证码</a>
+### <a name="title2">2、获取图片验证码</a>
 #### 请求地址
  /User/getCode.do
 #### 请求方式
@@ -57,7 +61,7 @@ GET
 返回一张图片
 
 
-### <a name="title3">注册</a>
+### <a name="title3">3、注册</a>
 #### 请求地址
  /User/register.do
 #### 请求方式
@@ -92,7 +96,7 @@ safetyAnswer  | Y            | String|安全问题答案
 
 
 
-### <a name="title4">登录</a>
+### <a name="title4">4、登录</a>
 #### 请求地址
  /User/Login.do
 #### 请求方式
@@ -123,7 +127,7 @@ code     | Y            | String|验证码(图片)
   </code>
 </pre>
 
-### <a name="title5">获取全部店铺类型</a>
+### <a name="title5">5、获取全部店铺类型</a>
 #### 请求地址
  /shop/shopTypeList.do
 #### 请求方式
@@ -148,7 +152,7 @@ POST
   </code>
 </pre>
 
-### <a name="title6">获取所有店铺</a>
+### <a name="title6">6、获取所有店铺</a>
 #### 请求地址
  /shop/shopList.do
 #### 请求方式
@@ -190,7 +194,7 @@ POST
   </code>
 </pre>
 
-### <a name="title7">获取店铺所有商品</a>
+### <a name="title7">7、获取店铺所有商品</a>
 #### 请求地址
  /shop/shopFoodTypeList.do
 #### 请求方式
@@ -249,7 +253,7 @@ id       | Y            | int   |当前店铺ID
 </pre>
 
 
-### <a name="title8">根据经纬度获取地址</a>
+### <a name="title8">8、根据经纬度获取地址</a>
 #### 请求地址
  /location/getLocation.do
 #### 请求方式
@@ -294,7 +298,7 @@ longitude| Y            | int   |经度
 </pre>
 
 
-### <a name="title9">获取热门城市</a>
+### <a name="title9">9、获取热门城市</a>
 #### 请求地址
  /location/getHotCity.do
 #### 请求方式
@@ -312,7 +316,7 @@ POST
   </code>
 </pre>
 
-### <a name="title10">根据输入文本搜索地址</a>
+### <a name="title10">10、根据输入文本搜索地址</a>
 #### 请求地址
  /location/searchAddress.do
 #### 请求方式
@@ -344,6 +348,83 @@ currentLocation| Y            |String |在哪个城市搜索
         ...
       ],
       status: 0	
+    }
+  </code>
+</pre>
+
+### <a name="title11">11、向一个用户添加一个地址</a>
+#### 请求地址
+ /User/addAddress.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+sex            | Y            |Integer|性别（1=>男 2=>女）
+userName       | Y            |String |姓名     
+phoneNumber    | Y            |String |电话     
+addressName    | Y            |String |地址名称   
+addressDetail  | Y            |String |地址详情  
+userId         | Y            |Integer|输入哪个用户
+lat            | Y            |double |经度     
+lng            | Y            |double |纬度     
+tag            | N            |String |地址标签   
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"添加成功"
+    }
+  </code>
+</pre>
+
+### <a name="title12">12、查找一个用户的所有地址</a>
+#### 请求地址
+ /User/addAddress.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+userId         | Y            |Integer|查找的用户的ID
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:[
+        {
+          sex:...,
+          userName:...,
+          phoneNumber:...,
+          ...
+        },
+        ...
+      ]
+      message:"success"
+    }
+  </code>
+</pre>
+
+### <a name="title11">13、删除一个地址</a>
+#### 请求地址
+ /User/addAddress.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+addressId      | Y            |Integer|地址的ID        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"删除成功"
     }
   </code>
 </pre>

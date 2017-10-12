@@ -19,4 +19,6 @@ public interface UserService {
 	
 	public Integer deleteAddressById(Integer id);
 	
+	public Integer editAddressById(Address address);
+	
 }

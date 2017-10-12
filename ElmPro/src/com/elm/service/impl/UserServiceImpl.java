@@ -20,8 +20,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User findUserByNameAndPass(String userName, String password) {
-		User user = userDao.findUserByNameAndPass(userName, password);
-		return user;
+		return userDao.findUserByNameAndPass(userName, password);
 	}
 
 	@Override
@@ -51,6 +50,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Integer deleteAddressById(Integer id) {
 		return userDao.deleteAddressById(id);
+	}
+
+	@Override
+	public Integer editAddressById(Address address) {
+		return userDao.updateAddressById(address);
 	}
 
 
