@@ -233,11 +233,63 @@ public class UserController {
 		return resultMap;
 	}
 	
+	@RequestMapping(value = "/getUserSafetyQuestion", method = RequestMethod.POST)
+	@ResponseBody
+	public Map getUserSafetyQuestion(@RequestBody Map obj,HttpServletRequest request){
+		String userName = (String) obj.get("userName");
+		User user = userService.findUserByName(userName);
+		Map result = new HashMap<String,Object>();
+		if(user == null){
+			result.put("stateCode", 0);
+			result.put("message", "用户名不存在");
+		}else{
+			String sessionId = request.getSession().getId();
+			request.getSession().setAttribute(sessionId + "safetyAnswer", user.getSafetyAnswer());
+			String safetyQuestion = user.getSafetyQuestion();
+			Integer id = user.getId();
+			Map data = new HashMap<String,Object>();
+			data.put("id", id);
+			data.put("safetyQuestion", safetyQuestion);
+			result.put("stateCode",1);
+			result.put("message", "success");
+			result.put("data", data);
+		}
+		return result;
+	}
 	
+	@RequestMapping(value = "/checkUserSafetyQuestion", method = RequestMethod.POST)
+	@ResponseBody
+	public Map checkUserSafetyQuestion(@RequestBody Map obj,HttpServletRequest request){
+		String safetyAnswer = (String) obj.get("safetyAnswer");
+		String sessionId = request.getSession().getId();
+		String trueSafetyAnser = (String) request.getSession().getAttribute(sessionId + "safetyAnswer");
+		Map result = new HashMap<String,Object>();
+		if (safetyAnswer.equals(trueSafetyAnser)){
+			result.put("stateCode", 1);
+			result.put("message", "success");
+		}else{
+			result.put("stateCode", 0);
+			result.put("message", "您输入的答案不正确");
+		}
+		return result;
+	}
 	
-	
-	
-	
+	@RequestMapping(value = "/setNewPassword", method = RequestMethod.POST)
+	@ResponseBody
+	public Map setNewPassword(@RequestBody Map obj){
+		String password = (String) obj.get("password");
+		Integer id = (Integer) obj.get("id");
+		Integer result = userService.setNewPassword(id, password);	
+		Map resultMap = new HashMap<String,Object>();
+		if(result == 1) {
+			resultMap.put("stateCode", 1);
+			resultMap.put("message", "success");
+		}else{
+			resultMap.put("stateCode", 0);
+			resultMap.put("message", "修改失败，请重试");
+		}
+		return resultMap;
+	}
 	
 	
 	

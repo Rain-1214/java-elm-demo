@@ -57,6 +57,11 @@ public class UserServiceImpl implements UserService{
 		return userDao.updateAddressById(address);
 	}
 
+	@Override
+	public Integer setNewPassword(Integer id, String password) {
+		return userDao.updatePasswordById(id, password);
+	}
+
 
 	
 	

@@ -21,4 +21,6 @@ public interface UserService {
 	
 	public Integer editAddressById(Address address);
 	
+	public Integer setNewPassword(Integer id,String password);
+	
 }

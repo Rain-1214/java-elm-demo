@@ -28,5 +28,7 @@ public interface UserDao {
 	public Integer deleteAddressById(Integer id);
 	
 	public Integer updateAddressById(Address address);
+	
+	public Integer updatePasswordById(Integer id,String password);
 
 }
