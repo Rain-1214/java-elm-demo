@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.elm.entity.Address;
 import com.elm.entity.Hongbao;
-import com.elm.entity.HongbaoRule;
 import com.elm.entity.User;
 
 public interface UserDao {
@@ -17,9 +16,9 @@ public interface UserDao {
 	
 	public Address findAddress(Integer id);
 	
-	public HongbaoRule findHongbaoRule(Integer id);
-	
 	public List<Address> findAddressByUserId(Integer userId);
+	
+	public Integer findHongbaoRule(Integer hongbaoId);
 	
 	public Integer insertUser(User user);
 	

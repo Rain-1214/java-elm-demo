@@ -1,5 +1,8 @@
 package com.elm.entity;
 
+import java.sql.Date;
+import java.util.List;
+
 public class Hongbao {
 	/**
 	 * id Œ®“ª±Í ∂
@@ -14,10 +17,13 @@ public class Hongbao {
 	private Integer id;
 	private String hongbaoName;
 	private double fillMoney;
-	private double minusNum;
+	private double minusMoney;
 	private Integer userId;
 	private Integer hongbaoState;
-	private HongbaoRule hongbaoRule;
+	private Date startTime;
+	private Date endTime;
+	private String phoneNumber;
+	private List shopTypeList;
 	public Integer getId() {
 		return id;
 	}
@@ -36,11 +42,11 @@ public class Hongbao {
 	public void setFillMoney(double fillMoney) {
 		this.fillMoney = fillMoney;
 	}
-	public double getMinusNum() {
-		return minusNum;
+	public double getMinusMoney() {
+		return minusMoney;
 	}
-	public void setMinusNum(double minusNum) {
-		this.minusNum = minusNum;
+	public void setMinusMoney(double minusMoney) {
+		this.minusMoney = minusMoney;
 	}
 	public Integer getUserId() {
 		return userId;
@@ -54,12 +60,34 @@ public class Hongbao {
 	public void setHongbaoState(Integer hongbaoState) {
 		this.hongbaoState = hongbaoState;
 	}
-	public HongbaoRule getHongbaoRule() {
-		return hongbaoRule;
+	public Date getStartTime() {
+		return startTime;
 	}
-	public void setHongbaoRule(HongbaoRule hongbaoRule) {
-		this.hongbaoRule = hongbaoRule;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
+	public Date getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public List getShopTypeList() {
+		return shopTypeList;
+	}
+	public void setShopTypeList(List shopTypeList) {
+		this.shopTypeList = shopTypeList;
+	}
+	
+	
+	
+	
 	
 	
 	

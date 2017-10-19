@@ -13,6 +13,8 @@ public interface ShopDao {
 	
 	public List<ShopType> findShopType();
 	
+	public String findShopTypeNameById(Integer id);
+	
 	public List<Shop> findShopList();
 	
 	public ShopProperty findShopPropery();

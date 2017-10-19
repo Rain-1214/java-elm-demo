@@ -25,19 +25,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="minusMoney" column="minusMoney"/>
 		<result property="userId" column="userId"/>
 		<result property="hongbaoState" column="hongbaoState"/>
-		<association property="hongbaoRule" column="id" select="com.elm.dao.UserDao.findHongbaoRule"></association>
+		<result property="startTime" column="startTime"/>
+		<result property="endTime" column="endTime"/>
+		<result property="phoneNumber" column="phoneNumber"/>
+		<association property="shopTypeList" column="id" select="com.elm.dao.UserDao.findHongbaoRule"></association>
 	</resultMap>
 	
 	<select id="findAddress" resultType="Address">
 		select * from t_address where userId = #{id}
 	</select>
 	
-	<select id="findHongbao" resultMap="resultHongbaoMap" resultType="Hongbao">
-		select * from t_hongbao where userId = #{id}
+	<select id="findHongbaoRule" resultType="String">
+		select shopTypeName from t_hongbaorules where hongbaoId = #{hongbaoId}
 	</select>
 	
-	<select id="findHongbaoRule" resultType="HongbaoRule">
-		select * from t_hongbaorules where hongbaoId = #{id}
+	<select id="findHongbao" resultMap="resultHongbaoMap" resultType="Hongbao">
+		select * from t_hongbao where userId = #{id}
 	</select>
 	
 	<select id="findUserByNameAndPass" resultMap="resultUserMap" resultType="User">
