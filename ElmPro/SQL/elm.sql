@@ -34,11 +34,11 @@ CREATE TABLE `t_address` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `t_address_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_address` */
 
-insert  into `t_address`(`id`,`userName`,`sex`,`phoneNumber`,`addressName`,`addressDetail`,`tag`,`lat`,`lng`,`userId`) values (15,'战鹰',1,'12345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','',31.220814,121.47167,2),(17,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','学校',31.220814,121.47167,2),(19,'vxht99249',2,'13112345678','上海市徐汇区漕河泾万丽酒店','1602','公司',31.170956,121.40361,3),(21,'爱',1,'13131479856','上海市闵行区永杰大厦','205','学校',31.09166,121.393932,3),(23,'阿什顿发',2,'12345678989','上海市徐汇区漕河泾万丽酒店','1601','公司',31.170956,121.40361,2),(24,'锦桐',2,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','公司',31.17622,121.404164,3),(25,'锦桐',3,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','学校',31.17622,121.404164,3),(28,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','公司',31.220814,121.47167,2);
+insert  into `t_address`(`id`,`userName`,`sex`,`phoneNumber`,`addressName`,`addressDetail`,`tag`,`lat`,`lng`,`userId`) values (15,'战鹰',1,'12345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','',31.220814,121.47167,2),(17,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','学校',31.220814,121.47167,2),(19,'vxht99249',2,'13112345678','上海市徐汇区漕河泾万丽酒店','1602','公司',31.170956,121.40361,3),(21,'爱',1,'13131479856','上海市徐汇区新漕河泾国际商务中心','205','家',31.16982,121.410404,3),(23,'阿什顿发',2,'12345678989','上海市徐汇区漕河泾万丽酒店','1601','公司',31.170956,121.40361,2),(24,'锦桐',2,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','公司',31.17622,121.404164,3),(25,'锦桐',3,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','学校',31.17622,121.404164,3),(28,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','公司',31.220814,121.47167,2),(29,'拉我',1,'13012345678','上海市闵行区漕河泾','205','公司',31.108386,121.511228,3);
 
 /*Table structure for table `t_city` */
 
@@ -132,23 +132,6 @@ CREATE TABLE `t_foodtypelist` (
 
 insert  into `t_foodtypelist`(`id`,`listName`,`description`,`shopId`) values (1,'早餐','好吃的早餐',1),(2,'晚餐','好吃的晚餐',1);
 
-/*Table structure for table `t_hbrules_foodtype` */
-
-DROP TABLE IF EXISTS `t_hbrules_foodtype`;
-
-CREATE TABLE `t_hbrules_foodtype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `foodTypeId` int(11) DEFAULT NULL,
-  `hongbaorulesId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `hongbaorulesId` (`hongbaorulesId`),
-  KEY `foodTypeId` (`foodTypeId`),
-  CONSTRAINT `t_hbrules_foodtype_ibfk_1` FOREIGN KEY (`hongbaorulesId`) REFERENCES `t_hongbaorules` (`id`),
-  CONSTRAINT `t_hbrules_foodtype_ibfk_2` FOREIGN KEY (`foodTypeId`) REFERENCES `t_foodtype` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `t_hbrules_foodtype` */
-
 /*Table structure for table `t_hongbao` */
 
 DROP TABLE IF EXISTS `t_hongbao`;
@@ -160,12 +143,17 @@ CREATE TABLE `t_hongbao` (
   `minusMoney` double DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   `hongbaoState` int(11) DEFAULT NULL,
+  `startTime` datetime DEFAULT NULL,
+  `endTime` datetime DEFAULT NULL,
+  `phoneNumber` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `t_hongbao_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_hongbao` */
+
+insert  into `t_hongbao`(`id`,`hongbaoName`,`fillMoney`,`minusMoney`,`userId`,`hongbaoState`,`startTime`,`endTime`,`phoneNumber`) values (1,'超级会员专享',30,20,2,1,'2017-10-01 16:32:44','2017-10-31 16:32:47','13012345678'),(2,'一个大红包',20,19.99,2,1,'2017-10-01 17:57:21','2017-10-31 17:57:24',NULL),(3,'超级会员专享',30,20,3,1,'2017-10-01 18:09:57','2017-10-31 18:10:00','13012345678'),(4,'夜宵',30,29.99,3,1,'2017-10-01 18:10:30','2017-10-31 18:10:33',NULL);
 
 /*Table structure for table `t_hongbaorules` */
 
@@ -173,16 +161,54 @@ DROP TABLE IF EXISTS `t_hongbaorules`;
 
 CREATE TABLE `t_hongbaorules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `startTime` datetime DEFAULT NULL,
-  `endTime` datetime DEFAULT NULL,
-  `phoneNumber` varchar(11) DEFAULT NULL,
   `hongbaoId` int(11) DEFAULT NULL,
+  `shopTypeId` int(11) DEFAULT NULL,
+  `shopTypeName` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `hongbaoId` (`hongbaoId`),
-  CONSTRAINT `t_hongbaorules_ibfk_1` FOREIGN KEY (`hongbaoId`) REFERENCES `t_hongbao` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `shopTypeId` (`shopTypeId`),
+  CONSTRAINT `t_hongbaorules_ibfk_1` FOREIGN KEY (`hongbaoId`) REFERENCES `t_hongbao` (`id`),
+  CONSTRAINT `t_hongbaorules_ibfk_2` FOREIGN KEY (`shopTypeId`) REFERENCES `t_shoptype` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_hongbaorules` */
+
+insert  into `t_hongbaorules`(`id`,`hongbaoId`,`shopTypeId`,`shopTypeName`) values (2,1,1,'美食'),(3,1,8,'帮买帮送'),(4,1,4,'预定早餐');
+
+/*Table structure for table `t_order` */
+
+DROP TABLE IF EXISTS `t_order`;
+
+CREATE TABLE `t_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shopId` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `addressId` int(11) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `payMethod` varchar(10) DEFAULT NULL,
+  `deliveryMethod` varchar(10) DEFAULT NULL,
+  `arrivedTime` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_order` */
+
+/*Table structure for table `t_orderproduct` */
+
+DROP TABLE IF EXISTS `t_orderproduct`;
+
+CREATE TABLE `t_orderproduct` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `orderId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orderId` (`orderId`),
+  CONSTRAINT `t_orderproduct_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `t_order` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_orderproduct` */
 
 /*Table structure for table `t_shop` */
 
@@ -209,6 +235,24 @@ CREATE TABLE `t_shop` (
 
 insert  into `t_shop`(`id`,`shopName`,`shopLogo`,`shopNptice`,`isBrand`,`serveEvaluate`,`foodEvaluate`,`countOrder`,`deliveryCost`,`startCost`,`latitude`,`longitude`,`averageUserCost`) values (1,'乐凯撒比萨（正大广场店）','//fuss10.elemecdn.com/8/bb/dee0380909002eb1a646aa5f9de0cjpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/','欢迎光临，用餐高峰期请提前下单，谢谢。',1,4.6,4.8,201,5,20,31.240448,121.49717,30);
 
+/*Table structure for table `t_shopfullminus` */
+
+DROP TABLE IF EXISTS `t_shopfullminus`;
+
+CREATE TABLE `t_shopfullminus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `full` double DEFAULT NULL,
+  `minus` double DEFAULT NULL,
+  `shopId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `shopId` (`shopId`),
+  CONSTRAINT `t_shopfullminus_ibfk_1` FOREIGN KEY (`shopId`) REFERENCES `t_shop` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_shopfullminus` */
+
+insert  into `t_shopfullminus`(`id`,`full`,`minus`,`shopId`) values (1,30,20,1),(2,50,25,1),(3,70,30,1);
+
 /*Table structure for table `t_shopproperty` */
 
 DROP TABLE IF EXISTS `t_shopproperty`;
@@ -228,6 +272,24 @@ CREATE TABLE `t_shopproperty` (
 /*Data for the table `t_shopproperty` */
 
 insert  into `t_shopproperty`(`id`,`newUserFavorable`,`safeguard`,`invoice`,`hummingbird`,`shopId`) values (1,1,1,1,1,1);
+
+/*Table structure for table `t_shopproperty_types` */
+
+DROP TABLE IF EXISTS `t_shopproperty_types`;
+
+CREATE TABLE `t_shopproperty_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shoptypeId` int(11) DEFAULT NULL,
+  `shoptypeName` varchar(20) DEFAULT NULL,
+  `shopId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `shopId` (`shopId`),
+  CONSTRAINT `t_shopproperty_types_ibfk_1` FOREIGN KEY (`shopId`) REFERENCES `t_shop` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_shopproperty_types` */
+
+insert  into `t_shopproperty_types`(`id`,`shoptypeId`,`shoptypeName`,`shopId`) values (1,1,'帮买',1),(2,4,'预定早餐',1);
 
 /*Table structure for table `t_shoptype` */
 

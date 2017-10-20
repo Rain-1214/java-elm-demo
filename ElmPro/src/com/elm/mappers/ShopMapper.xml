@@ -12,8 +12,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select typeName from t_shopType where id = #{id}
 	</select>
 	
-	<select id="findShopPropery" parameterType="Integer" resultType="ShopProperty">
+	<select id="findShopProperty" parameterType="Integer" resultType="ShopProperty">
 		select * from t_shopproperty where id = #{id}
+	</select>
+	
+	<select id="findShopPropertyType" parameterType="Integer" resultType="String">
+		select shoptypeName from t_shopproperty_types where shopId = #{shopId}
 	</select>
 	
 	<resultMap type="Shop" id="resultShopMap">
@@ -30,11 +34,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="latitude" column="latitude"/>
 		<result property="longitude" column="longitude"/>
 		<result property="averageUserCost" column="averageUserCost"/>
-		<association property="shopProperty" column="id" select="com.elm.dao.ShopDao.findShopPropery"></association>
+		<association property="shopProperty" column="id" select="com.elm.dao.ShopDao.findShopProperty"></association>
+		<association property="shopPropertyType" column="id" select="com.elm.dao.ShopDao.findShopPropertyType"></association>
+		<association property="shopFullMinus" column="id" select="com.elm.dao.OrderDao.findShopFillMinusByshopId"></association>
 	</resultMap>
 	
 	<select id="findShopList" resultMap="resultShopMap">
 		select * from t_shop
+	</select>
+	
+	<select id="findShopById" resultMap="resultShopMap">
+		select * from t_shop where id = #{id}
 	</select>
 	
 	<resultMap type="FoodType" id="resultFoodTypeMap">
@@ -42,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="listName" column="listName"/>
 		<result property="description" column="description"/>
 		<result property="shopId" column="shopId"/>
-		<association property="foodList" column="id" select="com.elm.dao.ShopDao.findFood"></association>
+		<association property="foodList" column="id" select="com.elm.dao.ShopDao.findFoodByfoodTypeId"></association>
 	</resultMap>
 	
 	<select id="findFoodType" parameterType="Integer" resultMap="resultFoodTypeMap">
@@ -63,8 +73,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="foodPropertyList" column="id" select="com.elm.dao.ShopDao.findFoodProperty"></association>
 	</resultMap>
 		
-	<select id="findFood" parameterType="Integer" resultMap="resultFoodMap">
+	<select id="findFoodByfoodTypeId" parameterType="Integer" resultMap="resultFoodMap">
 		select * from t_foodlist where foodTypeId = #{id}
+	</select>
+	
+	<select id="findFoodById" parameterType="Integer" resultMap="resultFoodMap">
+		select * from t_foodlist where id = #{id}
 	</select>
 	
 	<resultMap type="FoodProperty" id="resultFoodPropertyMap">

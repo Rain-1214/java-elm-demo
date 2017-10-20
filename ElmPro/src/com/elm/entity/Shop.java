@@ -1,5 +1,7 @@
 package com.elm.entity;
 
+import java.util.List;
+
 public class Shop {
 	/**
 	 *  id 唯一标识
@@ -14,7 +16,7 @@ public class Shop {
 	 *  startCost 起送费
 	 *  latitude,longitude 经纬度
 	 *  averageUserCost 平均每人花销
-	 *  
+	 *  shopPropertyType 店铺所属类型
 	 */
 	private Integer id;
 	private String shopName;
@@ -29,7 +31,8 @@ public class Shop {
 	private Double latitude;
 	private Double longitude;
 	private Double averageUserCost;
-	
+	private List shopPropertyType;
+	private List shopFullMinus;
 	private ShopProperty shopProperty;
 
 	public Integer getId() {
@@ -142,6 +145,22 @@ public class Shop {
 
 	public void setStartCost(Double startCost) {
 		this.startCost = startCost;
+	}
+
+	public List getShopPropertyType() {
+		return shopPropertyType;
+	}
+
+	public void setShopPropertyType(List shopPropertyType) {
+		this.shopPropertyType = shopPropertyType;
+	}
+
+	public List getShopFullMinus() {
+		return shopFullMinus;
+	}
+
+	public void setShopFullMinus(List shopFullMinus) {
+		this.shopFullMinus = shopFullMinus;
 	}
 	
 	

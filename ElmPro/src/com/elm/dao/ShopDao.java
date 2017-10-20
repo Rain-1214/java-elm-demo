@@ -2,6 +2,7 @@ package com.elm.dao;
 
 import java.util.List;
 
+import com.elm.entity.Food;
 import com.elm.entity.FoodProperty;
 import com.elm.entity.FoodPropertyDetail;
 import com.elm.entity.FoodType;
@@ -17,7 +18,15 @@ public interface ShopDao {
 	
 	public List<Shop> findShopList();
 	
-	public ShopProperty findShopPropery();
+	public Shop findShopById(Integer id);
+	
+	public ShopProperty findShopProperty();
+	
+	public String findShopPropertyType(Integer shopId);
+	
+	public Food findFoodByfoodTypeId(Integer id);
+	
+	public Food findFoodById(Integer id);
 	
 	public List<FoodType> findFoodType(Integer shopId);
 	
