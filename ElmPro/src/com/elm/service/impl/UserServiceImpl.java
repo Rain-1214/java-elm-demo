@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.elm.dao.UserDao;
 import com.elm.entity.Address;
+import com.elm.entity.Hongbao;
 import com.elm.entity.User;
 import com.elm.service.UserService;
 
@@ -59,6 +60,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Integer setNewPassword(Integer id, String password) {
 		return userDao.updatePasswordById(id, password);
+	}
+
+	@Override
+	public Hongbao findHongbaoById(Integer id) {
+		return userDao.findHongbaoById(id);
 	}
 
 

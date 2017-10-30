@@ -43,6 +43,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from t_hongbao where userId = #{id}
 	</select>
 	
+	<select id="findHongbaoById" resultType="Hongbao" parameterType="Integer">
+		select * from t_hongbao where id = #{id}
+	</select>
+	
 	<select id="findUserByNameAndPass" resultMap="resultUserMap" resultType="User">
 		select * from t_user where userName = #{0} and password = #{1}
 	</select>

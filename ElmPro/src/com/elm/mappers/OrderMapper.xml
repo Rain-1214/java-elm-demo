@@ -8,4 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from t_shopfullminus where shopId = #{shopId}
 	</select>
 	
+	<insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+		insert into t_order values(null,#{shopId},#{userId},#{addressId},#{creatTime},#{payMethod},#{deliveryMethod},#{deliveryTime},#{selectDeliveryTime},#{remark},#{redPacketId},#{payPrice},#{companyName},#{code})
+	</insert>
+	
+	<insert id="insertOrderProduct" parameterType="OrderProduct">
+		insert into t_orderproduct values(null,#{foodId},#{name},#{num},#{foodType},#{price},#{orderId})
+	</insert>
+	
 </mapper>

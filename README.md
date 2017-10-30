@@ -6,6 +6,7 @@
 elm 是模仿饿了么的一个demo java-elm-deom是java对应开发的后台应用 
 
 技术栈 => spring springMVC MyBatis MySql 
+数据库MySql 我用的是5.5版本的 .sql文件 在SQL文件夹里
 
 目前还在制作当中 前台对应 elm-demo-vue
 

@@ -14,6 +14,8 @@ public interface UserDao {
 	
 	public Hongbao findHongbao(Integer id);
 	
+	public Hongbao findHongbaoById(Integer id);
+	
 	public Address findAddress(Integer id);
 	
 	public List<Address> findAddressByUserId(Integer userId);

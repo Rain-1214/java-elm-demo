@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.elm.dao.OrderDao;
 import com.elm.dao.ShopDao;
 import com.elm.entity.Food;
+import com.elm.entity.Order;
 import com.elm.entity.OrderProduct;
 import com.elm.entity.Shop;
 import com.elm.entity.ShopFillMinus;
@@ -20,26 +21,26 @@ import com.elm.service.OrderService;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
-
-	@Resource
-	public OrderDao orderDao;
-	
-	@Resource
-	public ShopDao shopDao;
-
-	@Override
+                                     
+	@Resource                        
+	public OrderDao orderDao;        
+	                                 
+	@Resource                        
+	public ShopDao shopDao;          
+                                     
+	@Override                        
 	public Map creatOrder(List<Map> orderProductList,Integer shopId) {
 		Map<String, Object> resultMap = new HashMap<String,Object>();
-		double totalPrice = 0.00;
+		double totalPrice = 0.00;    
 		for(Map op:orderProductList){
 			Integer foodId = (Integer) op.get("foodId");
 			Integer foodNum = (Integer) op.get("foodNum");
 			Food food = shopDao.findFoodById(foodId);
 			Integer foodInventory = food.getInventory();
 			if(foodInventory != -1 && foodInventory < foodNum) {
-				resultMap.put("message", "您选的商品" + op.get("foodName") + "没有库存了");
-				return resultMap;
-			}
+				resultMap.put("message", "您选的商品" + op.get("foodName") + "库存不够了");
+				return resultMap;    
+			}                        
 			double price = food.getPrice();
 			totalPrice += price * foodNum;
 		}
@@ -47,6 +48,7 @@ public class OrderServiceImpl implements OrderService {
 		Shop shop = shopDao.findShopById(shopId);
 		resultMap.put("totalPrice", totalPrice);
 		resultMap.put("discounts", discounts);
+		resultMap.put("orderProductList", orderProductList);
 		resultMap.put("deliveryCost", shop.getDeliveryCost());
 		return resultMap;
 	}
@@ -82,5 +84,67 @@ public class OrderServiceImpl implements OrderService {
 		Shop shop = shopDao.findShopById(shopId);
 		return shop.getDeliveryCost();
 	}
+
+	@Override
+	public Integer saveOrder(Order order, List<Map> orderProductList) {
+		Integer result = orderDao.insertOrder(order);
+		Integer resultNum = 0;
+		if (result == 1){
+			Integer orderId = order.getId();
+			for(Map map:orderProductList) {
+				Integer foodId = (Integer) map.get("foodId");
+				Integer num = (Integer) map.get("foodNum");
+				String name = (String) map.get("name");
+				String foodType = (String) map.get("foodType");
+				double price = (double) map.get("price");
+				OrderProduct orderProduct = new OrderProduct(foodId, name, num, foodType, price, orderId);
+				resultNum += orderDao.insertOrderProduct(orderProduct);
+			}
+			
+		}
+		return resultNum;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

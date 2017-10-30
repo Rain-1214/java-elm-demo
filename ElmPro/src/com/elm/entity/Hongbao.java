@@ -14,6 +14,10 @@ public class Hongbao {
 	 * hongbaoRule ºì°ü¹æÔò
 	 * 
 	 */
+	public final Integer STALE = 0;
+	public final Integer ALREADY_USE = 1;
+	public final Integer CAN_USE = 2;
+	
 	private Integer id;
 	private String hongbaoName;
 	private double fillMoney;

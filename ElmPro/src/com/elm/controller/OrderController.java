@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.elm.entity.OrderProduct;
+import com.elm.entity.Hongbao;
+import com.elm.entity.Order;
 import com.elm.service.OrderService;
+import com.elm.service.UserService;
+import com.elm.util.MapEquals;
 
 @Controller
 @RequestMapping("/order")
@@ -22,7 +25,12 @@ public class OrderController {
 
 	@Resource
 	public OrderService orderService;
-
+	
+	@Resource
+	public UserService userService;
+	
+	private MapEquals mapEquals;
+	
 	@RequestMapping(value = "/createOrder",method = RequestMethod.POST)
 	@ResponseBody
 	public Map creatOrder(@RequestBody Map obj,HttpServletRequest request){
@@ -41,4 +49,98 @@ public class OrderController {
 		resultMap.put("message", "success");
 		return resultMap;
 	}
+	
+	@RequestMapping(value = "/checkOrder",method = RequestMethod.POST)
+	@ResponseBody
+	public Map checkOrder(@RequestBody Map obj,HttpServletRequest request){
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		System.out.println(obj);
+		String selectDeliveryTime = (String) obj.get("pickerValue");
+		String deliveryMethod = (String) obj.get("deliveryMethod");
+		String payMethod = (String) obj.get("payMethod");
+		String creatTime = (String) obj.get("time");
+		String remark = (String) obj.get("remarkString");
+		Integer deliveryTime = (Integer) obj.get("deliveryTime");
+		Integer addressId = (Integer) ((Map<String,Object>) obj.get("address")).get("id");
+		Integer shopId = (Integer) obj.get("shopId");
+		Integer userId = (Integer) obj.get("userId");
+		Integer redPacketId = (Integer) obj.get("redPacketId");
+		double payPrice = (double) obj.get("payPrice");
+		Boolean needInvoice = (Boolean) obj.get("needInvoice");
+		String companyName = null;
+		String code = null;
+		
+		if (needInvoice) {
+			companyName = (String) obj.get("companyName");
+			code = (String) obj.get("code");
+		}
+		
+		String sessionId = request.getSession().getId();
+		HashMap<String,Object> tempOrder = (HashMap<String, Object>) request.getSession().getAttribute(sessionId + "tempOrder");
+		List<Map> tempProductList = (List<Map>) tempOrder.get("orderProductList");
+		
+		double totalPrice = (double) tempOrder.get("totalPrice");
+		double tempDiscounts = (double) tempOrder.get("discounts");
+		double tempDeliveryCost = (double) tempOrder.get("deliveryCost");
+		
+		double tempPayPrice = totalPrice - tempDiscounts + tempDeliveryCost;
+		
+		if (redPacketId != -1) {
+			Hongbao hongbao = userService.findHongbaoById(redPacketId);
+			if (hongbao.getHongbaoState() != hongbao.CAN_USE){
+				resultMap.put("stateCode", "0");
+				resultMap.put("message", "∂©µ•≥ˆ¥Ì«Î÷ÿ ‘3");
+				return resultMap;
+			}
+			tempPayPrice = tempPayPrice - hongbao.getMinusMoney() < 1 ? 1:tempPayPrice - hongbao.getMinusMoney();
+			if (payPrice != tempPayPrice) {
+				resultMap.put("stateCode", "0");
+				resultMap.put("message", "∂©µ•≥ˆ¥Ì«Î÷ÿ ‘4");
+				return resultMap;
+			}
+		}
+
+		Order order = new Order(shopId, userId, addressId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, companyName, code);
+		
+		Integer orderNum = orderService.saveOrder(order, tempProductList);
+		
+		if (orderNum == tempProductList.size()){
+			resultMap.put("stateCode", "1");
+			resultMap.put("message", "success");
+			return resultMap;
+		}
+		
+		resultMap.put("stateCode", "0");
+		resultMap.put("message", "Œ¥÷™¥ÌŒÛ");
+		
+		return resultMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

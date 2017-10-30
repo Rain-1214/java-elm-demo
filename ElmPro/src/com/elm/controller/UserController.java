@@ -31,7 +31,7 @@ public class UserController {
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	@ResponseBody
 	public Map userLogin(@RequestBody Map obj,HttpServletRequest httpRequest,HttpServletResponse httpResponse) {
-		Map map = new HashMap<Object,String>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		String userName = (String) obj.get("userName");
 		String password = (String) obj.get("password");
 		String code = (String) obj.get("code");
@@ -48,7 +48,7 @@ public class UserController {
 				map.put("stateCode", 0);
 				map.put("message", "用户名或密码错误");
 			}else{
-				Map userMap = new HashMap<String,Object>();
+				Map<String,Object> userMap = new HashMap<String,Object>();
 				userMap.put("userName", user.getUserName());
 				userMap.put("userImg", user.getUserImg());
 				userMap.put("phoneNumber", user.getPhoneNumber());
@@ -68,7 +68,7 @@ public class UserController {
 	@RequestMapping(value = "/checkUserName",method = RequestMethod.POST)
 	@ResponseBody
 	public Map checkUserName(@RequestBody Map obj,HttpServletRequest httpRequest){
-		Map map = new HashMap<String,Object>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		String userName = (String) obj.get("userName");
 		User user = userService.findUserByName(userName);
 		if(user == null){
@@ -84,7 +84,7 @@ public class UserController {
 	@RequestMapping(value = "/getCode",method = RequestMethod.GET)
 	@ResponseBody
 	public Map getCode(HttpServletRequest request,HttpServletResponse response){
-		Map map = new HashMap<Object,String>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		response.setContentType("image/jpeg");//设置响应类型，告知浏览器输出的是图片  
         response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容  
         response.setHeader("Cache-Control", "no-cache");  
@@ -115,14 +115,14 @@ public class UserController {
 		String sessionId = request.getSession().getId();
 		String imgcode = (String) request.getSession().getAttribute(sessionId + "imageCode");
 		
-		Map map = new HashMap<String,Object>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		
 		if(imgcode.equals(code)){
 			User user = new User(userName, password, safetyQuestion, safetyAnswer);
 			Integer resultNum = userService.insertUser(user);
 			if(resultNum == 1){
 				User userRegistered = userService.findUserByName(userName);
-				Map userMap = new HashMap<String,Object>();
+				Map<String,Object> userMap = new HashMap<String,Object>();
 				userMap.put("userName", userRegistered.getUserName());
 				userMap.put("userImg", userRegistered.getUserImg());
 				userMap.put("phoneNumber", userRegistered.getPhoneNumber());
@@ -164,7 +164,7 @@ public class UserController {
 		}
 		Address userAddress = new Address(userName, sex, phoneNumber, addressName, addressDetail, tag, lat, lng, userId);
 		Integer resultNum = userService.insertUserAddress(userAddress);
-		Map resultMap = new HashMap<String,Object>();
+		Map<String,Object> resultMap = new HashMap<String,Object>();
 		if(resultNum == 1) {
 			resultMap.put("stateCode", 1);
 			resultMap.put("message", "添加成功");
@@ -181,7 +181,7 @@ public class UserController {
 	public Map findAddressByUserId(@RequestBody Map obj){
 		Integer userId = (Integer) obj.get("userId");
 		List<Address> addressList = userService.findAddressByUserId(userId);
-		Map resultMap = new HashMap<String,Object>();
+		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("stateCode", 1);
 		resultMap.put("data", addressList);
 		resultMap.put("message", "success");
@@ -193,7 +193,7 @@ public class UserController {
 	public Map deleteAddressById(@RequestBody Map obj){
 		Integer id = (Integer) obj.get("addressId");
 		Integer resultNum = userService.deleteAddressById(id);
-		Map resultMap = new HashMap<String,Object>();
+		Map<String,Object> resultMap = new HashMap<String,Object>();
 		if(resultNum == 1) {
 			resultMap.put("stateCode", 1);
 			resultMap.put("message", "删除成功");
@@ -222,7 +222,7 @@ public class UserController {
 		}
 		Address userAddress = new Address(id, userName, sex, phoneNumber, addressName, addressDetail, tag, lat, lng, userId);
 		Integer resultNum = userService.editAddressById(userAddress);
-		Map resultMap = new HashMap<String,Object>();
+		Map<String,Object> resultMap = new HashMap<String,Object>();
 		if(resultNum == 1) {
 			resultMap.put("stateCode", 1);
 			resultMap.put("message", "修改成功");
@@ -238,7 +238,7 @@ public class UserController {
 	public Map getUserSafetyQuestion(@RequestBody Map obj,HttpServletRequest request){
 		String userName = (String) obj.get("userName");
 		User user = userService.findUserByName(userName);
-		Map result = new HashMap<String,Object>();
+		Map<String, Object> result = new HashMap<String,Object>();
 		if(user == null){
 			result.put("stateCode", 0);
 			result.put("message", "用户名不存在");
@@ -247,7 +247,7 @@ public class UserController {
 			request.getSession().setAttribute(sessionId + "safetyAnswer", user.getSafetyAnswer());
 			String safetyQuestion = user.getSafetyQuestion();
 			Integer id = user.getId();
-			Map data = new HashMap<String,Object>();
+			Map<String,Object> data = new HashMap<String,Object>();
 			data.put("id", id);
 			data.put("safetyQuestion", safetyQuestion);
 			result.put("stateCode",1);
@@ -263,7 +263,7 @@ public class UserController {
 		String safetyAnswer = (String) obj.get("safetyAnswer");
 		String sessionId = request.getSession().getId();
 		String trueSafetyAnser = (String) request.getSession().getAttribute(sessionId + "safetyAnswer");
-		Map result = new HashMap<String,Object>();
+		Map<String, Object> result = new HashMap<String,Object>();
 		if (safetyAnswer.equals(trueSafetyAnser)){
 			result.put("stateCode", 1);
 			result.put("message", "success");
@@ -280,7 +280,7 @@ public class UserController {
 		String password = (String) obj.get("password");
 		Integer id = (Integer) obj.get("id");
 		Integer result = userService.setNewPassword(id, password);	
-		Map resultMap = new HashMap<String,Object>();
+		Map<String,Object> resultMap = new HashMap<String,Object>();
 		if(result == 1) {
 			resultMap.put("stateCode", 1);
 			resultMap.put("message", "success");
