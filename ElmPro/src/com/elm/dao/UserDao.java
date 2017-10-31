@@ -12,7 +12,7 @@ public interface UserDao {
 	
 	public User findUserByName(String userName);
 	
-	public Hongbao findHongbao(Integer id);
+	public List<Hongbao> findHongbaoByUserId(Integer id);
 	
 	public Hongbao findHongbaoById(Integer id);
 	

@@ -67,6 +67,12 @@ public class UserServiceImpl implements UserService{
 		return userDao.findHongbaoById(id);
 	}
 
+	@Override
+	public List<Hongbao> findHongbaoByUserId(Integer userId) {
+		List<Hongbao> result = userDao.findHongbaoByUserId(userId);
+		return result;
+	}
+
 
 	
 	

@@ -17,6 +17,7 @@ import com.elm.entity.Hongbao;
 import com.elm.entity.Order;
 import com.elm.service.OrderService;
 import com.elm.service.UserService;
+import com.elm.util.DecimalCompute;
 import com.elm.util.MapEquals;
 
 @Controller
@@ -28,8 +29,6 @@ public class OrderController {
 	
 	@Resource
 	public UserService userService;
-	
-	private MapEquals mapEquals;
 	
 	@RequestMapping(value = "/createOrder",method = RequestMethod.POST)
 	@ResponseBody
@@ -54,7 +53,6 @@ public class OrderController {
 	@ResponseBody
 	public Map checkOrder(@RequestBody Map obj,HttpServletRequest request){
 		Map<String,Object> resultMap = new HashMap<String,Object>();
-		System.out.println(obj);
 		String selectDeliveryTime = (String) obj.get("pickerValue");
 		String deliveryMethod = (String) obj.get("deliveryMethod");
 		String payMethod = (String) obj.get("payMethod");
@@ -65,10 +63,15 @@ public class OrderController {
 		Integer shopId = (Integer) obj.get("shopId");
 		Integer userId = (Integer) obj.get("userId");
 		Integer redPacketId = (Integer) obj.get("redPacketId");
-		double payPrice = (double) obj.get("payPrice");
 		Boolean needInvoice = (Boolean) obj.get("needInvoice");
 		String companyName = null;
 		String code = null;
+		double payPrice;
+		if(obj.get("payPrice") instanceof Double) {
+			payPrice = (double) obj.get("payPrice");
+		} else {
+			payPrice = (Integer) obj.get("payPrice");
+		}
 		
 		if (needInvoice) {
 			companyName = (String) obj.get("companyName");
@@ -83,7 +86,7 @@ public class OrderController {
 		double tempDiscounts = (double) tempOrder.get("discounts");
 		double tempDeliveryCost = (double) tempOrder.get("deliveryCost");
 		
-		double tempPayPrice = totalPrice - tempDiscounts + tempDeliveryCost;
+		double tempPayPrice = DecimalCompute.add(DecimalCompute.subtraction(totalPrice, tempDiscounts),tempDeliveryCost);
 		
 		if (redPacketId != -1) {
 			Hongbao hongbao = userService.findHongbaoById(redPacketId);
@@ -92,7 +95,7 @@ public class OrderController {
 				resultMap.put("message", "订单出错请重试3");
 				return resultMap;
 			}
-			tempPayPrice = tempPayPrice - hongbao.getMinusMoney() < 1 ? 1:tempPayPrice - hongbao.getMinusMoney();
+			tempPayPrice = tempPayPrice - hongbao.getMinusMoney() < 1 ? 1.00:DecimalCompute.subtraction(tempPayPrice, hongbao.getMinusMoney());
 			if (payPrice != tempPayPrice) {
 				resultMap.put("stateCode", "0");
 				resultMap.put("message", "订单出错请重试4");
@@ -100,11 +103,11 @@ public class OrderController {
 			}
 		}
 
-		Order order = new Order(shopId, userId, addressId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, companyName, code);
+		Order order = new Order(shopId, userId, addressId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, companyName, code, Order.NON_PAYMENT);
 		
-		Integer orderNum = orderService.saveOrder(order, tempProductList);
+		Boolean orderResult = orderService.saveOrder(order, tempProductList, redPacketId);
 		
-		if (orderNum == tempProductList.size()){
+		if (orderResult){
 			resultMap.put("stateCode", "1");
 			resultMap.put("message", "success");
 			return resultMap;

@@ -9,15 +9,19 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.elm.dao.OrderDao;
 import com.elm.dao.ShopDao;
 import com.elm.entity.Food;
+import com.elm.entity.Hongbao;
 import com.elm.entity.Order;
 import com.elm.entity.OrderProduct;
 import com.elm.entity.Shop;
 import com.elm.entity.ShopFillMinus;
 import com.elm.service.OrderService;
+import com.elm.util.DecimalCompute;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
@@ -42,7 +46,9 @@ public class OrderServiceImpl implements OrderService {
 				return resultMap;    
 			}                        
 			double price = food.getPrice();
-			totalPrice += price * foodNum;
+			double foodNumDouble = foodNum;
+			double tempPrice = DecimalCompute.multiply(foodNumDouble, price);
+			totalPrice =  DecimalCompute.add(totalPrice, tempPrice);
 		}
 		double discounts = computedDiscounts(shopId, totalPrice);
 		Shop shop = shopDao.findShopById(shopId);
@@ -79,14 +85,9 @@ public class OrderServiceImpl implements OrderService {
 		
 		return discounts;
 	}
-	
-	private double getDeliveryCost(Integer shopId){
-		Shop shop = shopDao.findShopById(shopId);
-		return shop.getDeliveryCost();
-	}
 
 	@Override
-	public Integer saveOrder(Order order, List<Map> orderProductList) {
+	public Boolean saveOrder(Order order, List<Map> orderProductList,Integer redPacketId) {
 		Integer result = orderDao.insertOrder(order);
 		Integer resultNum = 0;
 		if (result == 1){
@@ -94,15 +95,31 @@ public class OrderServiceImpl implements OrderService {
 			for(Map map:orderProductList) {
 				Integer foodId = (Integer) map.get("foodId");
 				Integer num = (Integer) map.get("foodNum");
-				String name = (String) map.get("name");
+				String name = (String) map.get("foodName");
 				String foodType = (String) map.get("foodType");
-				double price = (double) map.get("price");
+				double price;
+				if (map.get("price") instanceof Double){
+					price = (double) map.get("price");
+				} else {
+					Integer priceInt = (Integer) map.get("price");
+					price = priceInt;
+				}
 				OrderProduct orderProduct = new OrderProduct(foodId, name, num, foodType, price, orderId);
 				resultNum += orderDao.insertOrderProduct(orderProduct);
 			}
-			
 		}
-		return resultNum;
+		if (redPacketId != -1) {
+			Integer redPacketResult = updateHonbaoState(redPacketId, Hongbao.ALREADY_USE);
+			if (redPacketResult != 1) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public Integer updateHonbaoState(Integer id, Integer hongbaoState) {
+		return orderDao.updateHongbaoStateById(id, hongbaoState);
 	}
 	
 	

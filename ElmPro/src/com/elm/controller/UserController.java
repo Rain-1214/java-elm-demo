@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.elm.entity.Address;
+import com.elm.entity.Hongbao;
 import com.elm.entity.User;
 import com.elm.service.UserService;
 import com.elm.util.RandomValidateCode;
@@ -184,6 +185,18 @@ public class UserController {
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("stateCode", 1);
 		resultMap.put("data", addressList);
+		resultMap.put("message", "success");
+		return resultMap;
+	}
+	
+	@RequestMapping(value = "/findHongbaoByUserId", method = RequestMethod.POST)
+	@ResponseBody
+	public Map findHongbaoByUserId(@RequestBody Map obj){
+		Integer userId = (Integer) obj.get("userId");
+		List<Hongbao> hongbaoList = userService.findHongbaoByUserId(userId);
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		resultMap.put("stateCode", 1);
+		resultMap.put("data", hongbaoList);
 		resultMap.put("message", "success");
 		return resultMap;
 	}

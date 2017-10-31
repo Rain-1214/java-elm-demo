@@ -1,6 +1,7 @@
 package com.elm.entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class Hongbao {
@@ -14,9 +15,9 @@ public class Hongbao {
 	 * hongbaoRule ºì°ü¹æÔò
 	 * 
 	 */
-	public final Integer STALE = 0;
-	public final Integer ALREADY_USE = 1;
-	public final Integer CAN_USE = 2;
+	public static final Integer STALE = 0;
+	public static final Integer ALREADY_USE = 1;
+	public static final Integer CAN_USE = 2;
 	
 	private Integer id;
 	private String hongbaoName;
@@ -24,8 +25,8 @@ public class Hongbao {
 	private double minusMoney;
 	private Integer userId;
 	private Integer hongbaoState;
-	private Date startTime;
-	private Date endTime;
+	private Timestamp startTime;
+	private Timestamp endTime;
 	private String phoneNumber;
 	private List shopTypeList;
 	public Integer getId() {
@@ -64,16 +65,16 @@ public class Hongbao {
 	public void setHongbaoState(Integer hongbaoState) {
 		this.hongbaoState = hongbaoState;
 	}
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Date startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 	public String getPhoneNumber() {
@@ -88,11 +89,6 @@ public class Hongbao {
 	public void setShopTypeList(List shopTypeList) {
 		this.shopTypeList = shopTypeList;
 	}
-	
-	
-	
-	
-	
 	
 	
 }

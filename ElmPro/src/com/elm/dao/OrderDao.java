@@ -14,4 +14,5 @@ public interface OrderDao {
 	
 	public Integer insertOrderProduct(OrderProduct orderProduct);
 	
+	public Integer updateHongbaoStateById(Integer id,Integer hongbaoState);
 }

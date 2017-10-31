@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="safetyQuestion" column="safetyQuestion"/>
 		<result property="safetyAnswer" column="safetyAnswer"/>
 		<association property="address" column="id" select="com.elm.dao.UserDao.findAddress"></association>
-		<association property="hongbao" column="id" select="com.elm.dao.UserDao.findHongbao"></association>
+		<association property="hongbao" column="id" select="com.elm.dao.UserDao.findHongbaoByUserId"></association>
 	</resultMap>
 	
 	<resultMap type="Hongbao" id="resultHongbaoMap">
@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select shopTypeName from t_hongbaorules where hongbaoId = #{hongbaoId}
 	</select>
 	
-	<select id="findHongbao" resultMap="resultHongbaoMap" resultType="Hongbao">
+	<select id="findHongbaoByUserId" resultMap="resultHongbaoMap" resultType="Hongbao">
 		select * from t_hongbao where userId = #{id}
 	</select>
 	

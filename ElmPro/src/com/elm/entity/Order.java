@@ -16,6 +16,13 @@ public class Order {
 	private double payPrice;
 	private String companyName;
 	private String code;
+	private Integer orderState;
+	
+	public static final Integer NON_PAYMENT = 1; 
+	public static final Integer ALREADY_CLOSE = 2;
+	public static final Integer WAIT_COMPLETE = 3;
+	public static final Integer ALREADY_COMPLETE = 4;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -100,13 +107,20 @@ public class Order {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
+	public Integer getOrderState() {
+		return orderState;
+	}
+	public void setOrderState(Integer orderState) {
+		this.orderState = orderState;
+	}
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Order(Integer shopId, Integer userId, Integer addressId, Integer deliveryTime, String selectDeliveryTime,
 			String creatTime, String payMethod, String deliveryMethod, String remark, Integer redPacketId,
-			double payPrice, String companyName, String code) {
+			double payPrice, String companyName, String code, Integer orderState) {
 		super();
 		this.shopId = shopId;
 		this.userId = userId;
@@ -121,7 +135,9 @@ public class Order {
 		this.payPrice = payPrice;
 		this.companyName = companyName;
 		this.code = code;
+		this.orderState = orderState;
 	}
+	
 	
 	
 	

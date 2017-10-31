@@ -18,6 +18,8 @@ public interface UserService {
 	
 	public List<Address> findAddressByUserId(Integer userId);
 	
+	public List<Hongbao> findHongbaoByUserId(Integer userId);
+	
 	public Integer deleteAddressById(Integer id);
 	
 	public Integer editAddressById(Address address);

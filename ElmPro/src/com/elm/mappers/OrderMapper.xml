@@ -16,4 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into t_orderproduct values(null,#{foodId},#{name},#{num},#{foodType},#{price},#{orderId})
 	</insert>
 	
+	<update id="updateHongbaoStateById">
+		update t_hongbao set hongbaoState = #{1} where id = #{0}
+	</update>
+	
 </mapper>

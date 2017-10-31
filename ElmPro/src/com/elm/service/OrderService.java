@@ -9,5 +9,7 @@ public interface OrderService {
 
 	public Map creatOrder(List<Map> orderProductList,Integer shopId);
 	
-	public Integer saveOrder(Order order,List<Map> orderProductList);
+	public Boolean saveOrder(Order order,List<Map> orderProductList,Integer redPacketId);
+	
+	public Integer updateHonbaoState(Integer id,Integer hongbaoState);
 }
