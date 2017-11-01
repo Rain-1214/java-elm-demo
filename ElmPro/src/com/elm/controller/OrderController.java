@@ -110,6 +110,7 @@ public class OrderController {
 		if (orderResult){
 			resultMap.put("stateCode", "1");
 			resultMap.put("message", "success");
+			resultMap.put("data",tempPayPrice);
 			return resultMap;
 		}
 		

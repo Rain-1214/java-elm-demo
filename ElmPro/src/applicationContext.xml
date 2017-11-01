@@ -6,16 +6,20 @@
     xmlns:context="http://www.springframework.org/schema/context"  
     xmlns:jee="http://www.springframework.org/schema/jee"  
     xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
     xsi:schemaLocation="    
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
-        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+        http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd  
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">    
         
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.elm.dao" />
 	<context:component-scan base-package="com.elm.service" />
+	
+	
 	
 	<!-- 配置数据源 -->
 	<bean id="dataSource"

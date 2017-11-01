@@ -29,7 +29,7 @@ public class UserController {
 	
 	
 	
-	@RequestMapping(value = "/login",method = RequestMethod.POST)
+	@RequestMapping(value = "/login",method = RequestMethod.GET)
 	@ResponseBody
 	public Map userLogin(@RequestBody Map obj,HttpServletRequest httpRequest,HttpServletResponse httpResponse) {
 		Map<String,Object> map = new HashMap<String,Object>();
