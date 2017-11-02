@@ -34,11 +34,11 @@ CREATE TABLE `t_address` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `t_address_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_address` */
 
-insert  into `t_address`(`id`,`userName`,`sex`,`phoneNumber`,`addressName`,`addressDetail`,`tag`,`lat`,`lng`,`userId`) values (15,'战鹰',1,'13012345678','上海市卢湾区阿三烤鸭店(复兴中路)','202','',31.220814,121.47167,2),(17,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','学校',31.220814,121.47167,2),(19,'vxht99249',2,'13112345678','上海市徐汇区漕河泾万丽酒店','1602','公司',31.170956,121.40361,3),(21,'爱',1,'13131479856','上海市徐汇区新漕河泾国际商务中心','205','家',31.16982,121.410404,3),(23,'阿什顿发',2,'13345678989','上海市徐汇区漕河泾万丽酒店','1601','公司',31.170956,121.40361,2),(24,'锦桐',2,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','公司',31.17622,121.404164,3),(25,'锦桐',3,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','学校',31.17622,121.404164,3),(28,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','公司',31.220814,121.47167,2),(29,'拉我',1,'13012345678','上海市闵行区漕河泾','205','公司',31.108386,121.511228,3),(30,'asdf',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','公司',31.220814,121.47167,2);
+insert  into `t_address`(`id`,`userName`,`sex`,`phoneNumber`,`addressName`,`addressDetail`,`tag`,`lat`,`lng`,`userId`) values (15,'战鹰',1,'13012345678','上海市卢湾区阿三烤鸭店(复兴中路)','202','',31.220814,121.47167,2),(17,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','学校',31.220814,121.47167,2),(19,'vxht99249',2,'13112345678','上海市徐汇区漕河泾万丽酒店','1602','公司',31.170956,121.40361,3),(21,'爱',1,'13012345678','上海市徐汇区新漕河泾国际商务中心','205','家',31.16982,121.410404,3),(23,'阿什顿发',2,'13345678989','上海市徐汇区漕河泾万丽酒店','1601','公司',31.170956,121.40361,2),(24,'锦桐',2,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','公司',31.17622,121.404164,3),(25,'锦桐',3,'13212345678','上海市徐汇区漕河泾开发区-地铁站','202','学校',31.17622,121.404164,3),(28,'战鹰',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','公司',31.220814,121.47167,2),(29,'拉我',1,'13012345678','上海市闵行区漕河泾','205','公司',31.108386,121.511228,3),(30,'asdf',1,'13345678989','上海市卢湾区阿三烤鸭店(复兴中路)','202','公司',31.220814,121.47167,2),(31,'哭',1,'13012345678','上海市黄浦区迪士尼(南京东路店)','101','',31.241051,121.484063,3),(32,'4764',1,'13112345678','上海市浦东新区东方明珠塔-2号门','489','公司',31.24442,121.506257,3),(33,'bxb',1,'13012345678','上海市徐汇区漕河泾万丽酒店','202','公司',31.170956,121.40361,1);
 
 /*Table structure for table `t_city` */
 
@@ -153,7 +153,7 @@ CREATE TABLE `t_hongbao` (
 
 /*Data for the table `t_hongbao` */
 
-insert  into `t_hongbao`(`id`,`hongbaoName`,`fillMoney`,`minusMoney`,`userId`,`hongbaoState`,`startTime`,`endTime`,`phoneNumber`) values (1,'超级会员专享',30,20,2,2,'2017-10-01 16:32:44','2017-10-31 16:32:47','13012345678'),(2,'一个大红包',20,19.99,2,2,'2017-10-01 17:57:21','2017-10-31 17:57:24',NULL),(3,'超级会员专享',30,20,3,2,'2017-10-01 18:09:57','2017-10-31 18:10:00','13012345678'),(4,'夜宵',30,29.99,3,2,'2017-10-01 18:10:30','2017-10-31 18:10:33',NULL);
+insert  into `t_hongbao`(`id`,`hongbaoName`,`fillMoney`,`minusMoney`,`userId`,`hongbaoState`,`startTime`,`endTime`,`phoneNumber`) values (1,'超级会员专享',30,20,2,1,'2017-10-01 16:32:44','2017-10-31 23:59:59','13012345678'),(2,'一个大红包',20,19.99,2,2,'2017-10-01 17:57:21','2017-10-31 17:57:24',NULL),(3,'超级会员专享',30,20,3,2,'2017-10-01 18:09:57','2017-10-31 18:10:00','13012345678'),(4,'夜宵',30,29.99,3,2,'2017-10-01 18:10:30','2017-10-31 18:10:33',NULL);
 
 /*Table structure for table `t_hongbaorules` */
 
@@ -194,12 +194,13 @@ CREATE TABLE `t_order` (
   `payPrice` double DEFAULT NULL,
   `companyName` varchar(30) DEFAULT NULL,
   `code` varchar(50) DEFAULT NULL,
+  `orderState` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_order` */
 
-insert  into `t_order`(`id`,`shopId`,`userId`,`addressId`,`creatTime`,`payMethod`,`deliveryMethod`,`deliveryTime`,`selectDeliveryTime`,`remark`,`redpacketId`,`payPrice`,`companyName`,`code`) values (5,1,2,15,'2017-10-30 17:42:16','在线支付','蜂鸟专送','80','19:02','多点葱',-1,15.219999999999999,NULL,NULL);
+insert  into `t_order`(`id`,`shopId`,`userId`,`addressId`,`creatTime`,`payMethod`,`deliveryMethod`,`deliveryTime`,`selectDeliveryTime`,`remark`,`redpacketId`,`payPrice`,`companyName`,`code`,`orderState`) values (16,1,2,15,'2017-10-31 15:34:27','在线支付','蜂鸟专送','80','16:54','多点葱',1,10.22,NULL,NULL,1),(17,1,2,15,'2017-11-01 13:54:27','在线支付','蜂鸟专送','80','21:24','多点辣',-1,40,NULL,NULL,2),(18,1,2,15,'2017-11-01 13:55:47','在线支付','蜂鸟专送','80','15:15','',-1,40,NULL,NULL,3),(19,1,1,33,'2017-11-01 16:50:13','在线支付','蜂鸟专送','240','20:50','',-1,30,NULL,NULL,2),(20,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2);
 
 /*Table structure for table `t_orderproduct` */
 
@@ -216,9 +217,11 @@ CREATE TABLE `t_orderproduct` (
   PRIMARY KEY (`id`),
   KEY `orderId` (`orderId`),
   CONSTRAINT `t_orderproduct_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `t_order` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_orderproduct` */
+
+insert  into `t_orderproduct`(`id`,`foodId`,`name`,`num`,`foodType`,`price`,`orderId`) values (17,7,'米饭',3,'',15,16),(18,10,'米饭',1,'',0.22,16),(19,7,'米饭',4,'',15,17),(20,7,'米饭',4,'',15,18),(21,7,'米饭',3,'',15,19);
 
 /*Table structure for table `t_shop` */
 

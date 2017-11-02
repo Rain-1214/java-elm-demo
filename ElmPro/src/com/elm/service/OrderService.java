@@ -12,4 +12,6 @@ public interface OrderService {
 	public Boolean saveOrder(Order order,List<Map> orderProductList,Integer redPacketId);
 	
 	public Integer updateHonbaoState(Integer id,Integer hongbaoState);
+	
+	public List<Map> findOrderByUserId(Integer userId);
 }

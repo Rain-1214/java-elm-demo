@@ -121,7 +121,17 @@ public class OrderController {
 	}
 	
 	
-	
+	@RequestMapping(value = "/getOrder",method = RequestMethod.POST)
+	@ResponseBody
+	public Map getOrder(@RequestBody Map obj,HttpServletRequest request){
+		Integer userId = (Integer) obj.get("userId");
+		Map<String,Object> result = new HashMap<String,Object>();
+		List<Map> orderList = orderService.findOrderByUserId(userId);
+		result.put("stateCode", 1);
+		result.put("data", orderList);
+		result.put("message", "success");
+		return result;
+	}
 	
 	
 	

@@ -15,4 +15,8 @@ public interface OrderDao {
 	public Integer insertOrderProduct(OrderProduct orderProduct);
 	
 	public Integer updateHongbaoStateById(Integer id,Integer hongbaoState);
+	
+	public List<Order> findOrderByUserId(Integer userId);
+	
+	public List<OrderProduct> findOrderProductByOrderId(Integer orderId);
 }

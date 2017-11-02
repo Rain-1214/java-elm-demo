@@ -1,5 +1,6 @@
 package com.elm.service.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -9,8 +10,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.elm.dao.OrderDao;
 import com.elm.dao.ShopDao;
@@ -120,6 +119,24 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Integer updateHonbaoState(Integer id, Integer hongbaoState) {
 		return orderDao.updateHongbaoStateById(id, hongbaoState);
+	}
+
+	@Override
+	public List<Map> findOrderByUserId(Integer userId) {
+		List<Map> result = new ArrayList();
+		List<Order> orderList = orderDao.findOrderByUserId(userId);
+		orderList.forEach((item) -> {
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("order", item);
+			Integer orderId = item.getId();
+			List<OrderProduct> orderProductList = orderDao.findOrderProductByOrderId(orderId);
+			map.put("orderProduct", orderProductList);
+			Integer shopId = item.getShopId();
+			Shop shop = shopDao.findShopById(shopId);
+			map.put("shop", shop);
+			result.add(map);
+		});
+		return result;
 	}
 	
 	
