@@ -14,6 +14,7 @@ public class Order {
 	private String remark;
 	private Integer redPacketId;
 	private double payPrice;
+	private double discounts;
 	private String companyName;
 	private String code;
 	private Integer orderState;
@@ -114,13 +115,20 @@ public class Order {
 	public void setOrderState(Integer orderState) {
 		this.orderState = orderState;
 	}
+	
+	public double getDiscounts() {
+		return discounts;
+	}
+	public void setDiscounts(double discounts) {
+		this.discounts = discounts;
+	}
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Order(Integer shopId, Integer userId, Integer addressId, Integer deliveryTime, String selectDeliveryTime,
 			String creatTime, String payMethod, String deliveryMethod, String remark, Integer redPacketId,
-			double payPrice, String companyName, String code, Integer orderState) {
+			double payPrice, double discounts, String companyName, String code, Integer orderState) {
 		super();
 		this.shopId = shopId;
 		this.userId = userId;
@@ -133,6 +141,7 @@ public class Order {
 		this.remark = remark;
 		this.redPacketId = redPacketId;
 		this.payPrice = payPrice;
+		this.discounts = discounts;
 		this.companyName = companyName;
 		this.code = code;
 		this.orderState = orderState;

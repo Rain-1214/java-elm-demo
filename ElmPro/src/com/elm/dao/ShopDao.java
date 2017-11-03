@@ -34,4 +34,6 @@ public interface ShopDao {
 	
 	public List<FoodPropertyDetail> findFoodPropertyDetail(Integer id);
 	
+	public double fingFoodTypePriceByFoodType(String foodType);
+	
 }

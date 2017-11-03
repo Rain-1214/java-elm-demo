@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
-		insert into t_order values(null,#{shopId},#{userId},#{addressId},#{creatTime},#{payMethod},#{deliveryMethod},#{deliveryTime},#{selectDeliveryTime},#{remark},#{redPacketId},#{payPrice},#{companyName},#{code},#{orderState})
+		insert into t_order values(null,#{shopId},#{userId},#{addressId},#{creatTime},#{payMethod},#{deliveryMethod},#{deliveryTime},#{selectDeliveryTime},#{remark},#{redPacketId},#{payPrice},#{discounts},#{companyName},#{code},#{orderState})
 	</insert>
 	
 	<insert id="insertOrderProduct" parameterType="OrderProduct">

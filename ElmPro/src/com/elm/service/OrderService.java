@@ -3,6 +3,7 @@ package com.elm.service;
 import java.util.List;
 import java.util.Map;
 
+import com.elm.entity.Hongbao;
 import com.elm.entity.Order;
 
 public interface OrderService {
@@ -14,4 +15,6 @@ public interface OrderService {
 	public Integer updateHonbaoState(Integer id,Integer hongbaoState);
 	
 	public List<Map> findOrderByUserId(Integer userId);
+	
+	public Hongbao findHongbaoById(Integer hongbaoId);
 }

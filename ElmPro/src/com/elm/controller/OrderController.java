@@ -91,30 +91,29 @@ public class OrderController {
 		if (redPacketId != -1) {
 			Hongbao hongbao = userService.findHongbaoById(redPacketId);
 			if (hongbao.getHongbaoState() != hongbao.CAN_USE){
-				resultMap.put("stateCode", "0");
+				resultMap.put("stateCode", 0);
 				resultMap.put("message", "订单出错请重试3");
 				return resultMap;
 			}
-			tempPayPrice = tempPayPrice - hongbao.getMinusMoney() < 1 ? 1.00:DecimalCompute.subtraction(tempPayPrice, hongbao.getMinusMoney());
+			tempPayPrice = tempPayPrice - hongbao.getMinusMoney() < 1 ? 1.00 : DecimalCompute.subtraction(tempPayPrice, hongbao.getMinusMoney());
 			if (payPrice != tempPayPrice) {
-				resultMap.put("stateCode", "0");
+				resultMap.put("stateCode", 0);
 				resultMap.put("message", "订单出错请重试4");
 				return resultMap;
 			}
 		}
 
-		Order order = new Order(shopId, userId, addressId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, companyName, code, Order.NON_PAYMENT);
-		
+		Order order = new Order(shopId, userId, addressId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, tempDiscounts, companyName, code, Order.NON_PAYMENT);
 		Boolean orderResult = orderService.saveOrder(order, tempProductList, redPacketId);
 		
 		if (orderResult){
-			resultMap.put("stateCode", "1");
+			resultMap.put("stateCode", 1);
 			resultMap.put("message", "success");
 			resultMap.put("data",tempPayPrice);
 			return resultMap;
 		}
 		
-		resultMap.put("stateCode", "0");
+		resultMap.put("stateCode", 0);
 		resultMap.put("message", "未知错误");
 		
 		return resultMap;
@@ -133,7 +132,17 @@ public class OrderController {
 		return result;
 	}
 	
-	
+	@RequestMapping(value = "/getHongbao",method = RequestMethod.POST)
+	@ResponseBody
+	public Map getHongbao(@RequestBody Map obj,HttpServletRequest request){
+		Integer hongbaoId = (Integer) obj.get("redPacketId");
+		Map<String,Object> result = new HashMap<String,Object>();
+		Hongbao hongbao = orderService.findHongbaoById(hongbaoId);
+		result.put("stateCode", 1);
+		result.put("data", hongbao);
+		result.put("message", "success");
+		return result;
+	}
 	
 	
 	

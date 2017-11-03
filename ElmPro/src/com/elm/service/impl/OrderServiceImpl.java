@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.elm.dao.OrderDao;
 import com.elm.dao.ShopDao;
+import com.elm.dao.UserDao;
 import com.elm.entity.Food;
 import com.elm.entity.Hongbao;
 import com.elm.entity.Order;
@@ -29,7 +32,10 @@ public class OrderServiceImpl implements OrderService {
 	public OrderDao orderDao;        
 	                                 
 	@Resource                        
-	public ShopDao shopDao;          
+	public ShopDao shopDao;   
+	
+	@Resource
+	public UserDao userDao;
                                      
 	@Override                        
 	public Map creatOrder(List<Map> orderProductList,Integer shopId) {
@@ -38,7 +44,19 @@ public class OrderServiceImpl implements OrderService {
 		for(Map op:orderProductList){
 			Integer foodId = (Integer) op.get("foodId");
 			Integer foodNum = (Integer) op.get("foodNum");
+			String foodType = (String) op.get("foodType");
 			Food food = shopDao.findFoodById(foodId);
+			Integer isFoodType = food.getType();
+			double foodTypePrice = 0.00;
+			if (isFoodType.equals(1) && foodType != "") {
+				Pattern pattern = Pattern.compile("(\\[[^\\]]*\\])");
+		    	Matcher matcher = pattern.matcher(foodType);
+		    	while(matcher.find()){  
+		            String foodTypeStr = matcher.group().substring(1, matcher.group().length()-1);  
+		            double price = shopDao.fingFoodTypePriceByFoodType(foodTypeStr);
+		            foodTypePrice = DecimalCompute.add(foodTypePrice, price);
+		        }
+			}
 			Integer foodInventory = food.getInventory();
 			if(foodInventory != -1 && foodInventory < foodNum) {
 				resultMap.put("message", "您选的商品" + op.get("foodName") + "库存不够了");
@@ -47,7 +65,8 @@ public class OrderServiceImpl implements OrderService {
 			double price = food.getPrice();
 			double foodNumDouble = foodNum;
 			double tempPrice = DecimalCompute.multiply(foodNumDouble, price);
-			totalPrice =  DecimalCompute.add(totalPrice, tempPrice);
+			totalPrice = DecimalCompute.add(totalPrice, foodTypePrice);
+			totalPrice = DecimalCompute.add(totalPrice, tempPrice);
 		}
 		double discounts = computedDiscounts(shopId, totalPrice);
 		Shop shop = shopDao.findShopById(shopId);
@@ -137,6 +156,11 @@ public class OrderServiceImpl implements OrderService {
 			result.add(map);
 		});
 		return result;
+	}
+
+	@Override
+	public Hongbao findHongbaoById(Integer hongbaoId) {
+		return userDao.findHongbaoById(hongbaoId);
 	}
 	
 	
