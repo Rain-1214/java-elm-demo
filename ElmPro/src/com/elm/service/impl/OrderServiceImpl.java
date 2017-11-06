@@ -65,7 +65,8 @@ public class OrderServiceImpl implements OrderService {
 			double price = food.getPrice();
 			double foodNumDouble = foodNum;
 			double tempPrice = DecimalCompute.multiply(foodNumDouble, price);
-			totalPrice = DecimalCompute.add(totalPrice, foodTypePrice);
+			double tempFoodTypePrice = DecimalCompute.multiply(foodTypePrice, foodNumDouble);
+			totalPrice = DecimalCompute.add(totalPrice, tempFoodTypePrice);
 			totalPrice = DecimalCompute.add(totalPrice, tempPrice);
 		}
 		double discounts = computedDiscounts(shopId, totalPrice);
@@ -105,11 +106,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Boolean saveOrder(Order order, List<Map> orderProductList,Integer redPacketId) {
+	public Integer saveOrder(Order order, List<Map> orderProductList,Integer redPacketId) {
 		Integer result = orderDao.insertOrder(order);
+		Integer orderId = order.getId();
 		Integer resultNum = 0;
 		if (result == 1){
-			Integer orderId = order.getId();
 			for(Map map:orderProductList) {
 				Integer foodId = (Integer) map.get("foodId");
 				Integer num = (Integer) map.get("foodNum");
@@ -129,10 +130,10 @@ public class OrderServiceImpl implements OrderService {
 		if (redPacketId != -1) {
 			Integer redPacketResult = updateHonbaoState(redPacketId, Hongbao.ALREADY_USE);
 			if (redPacketResult != 1) {
-				return false;
+				return 0;
 			}
 		}
-		return true;
+		return orderId;
 	}
 
 	@Override
@@ -161,6 +162,11 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Hongbao findHongbaoById(Integer hongbaoId) {
 		return userDao.findHongbaoById(hongbaoId);
+	}
+
+	@Override
+	public Integer updateOrderState(Integer orderId, Integer orderState) {
+		return orderDao.updateOrderState(orderId, orderState);
 	}
 	
 	

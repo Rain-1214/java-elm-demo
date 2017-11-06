@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.Resource;
 import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -15,10 +16,15 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.web.context.ContextLoader;
+
+import com.elm.entity.Order;
+import com.elm.service.OrderService;
+
 import net.sf.json.JSONObject;
 
 @ServerEndpoint("/websocket")
-public class Websocket {
+public class Websocket{
 
 	//静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
@@ -30,6 +36,7 @@ public class Websocket {
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
     private String id;
+    private OrderService orderService;
 
     /**
      * 连接建立成功调用的方法
@@ -40,6 +47,7 @@ public class Websocket {
     @OnOpen
     public void onOpen(Session session,EndpointConfig config) throws IOException {
         this.session = session;
+        orderService = (OrderService) ContextLoader.getCurrentWebApplicationContext().getBean("orderService");
         addOnlineCount(); //在线数加1
         System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
     }
@@ -67,8 +75,8 @@ public class Websocket {
         System.out.println("来自客户端的消息:" + message);
         Map<String,Object> map = new HashMap<String,Object>();
         map = JSONObject.fromObject(message);
+        String id = (String) map.get("id").toString();
         if (map.get("message").equals("getTime")) {
-        	String id = (String) map.get("id").toString();
         	Map data = dataMap.get(id);
         	JSONObject json = JSONObject.fromObject(data);
         	try {
@@ -77,7 +85,6 @@ public class Websocket {
 				e.printStackTrace();
 			}
         } else if (map.get("message").equals("init")) {
-        	String id = (String) map.get("id").toString();
         	this.id = id;
         	webSocketMap.put(id + "this", this);
         	if (!dataMap.containsKey(id)) {
@@ -92,8 +99,10 @@ public class Websocket {
             } else {
             	long oldTime = (long) dataMap.get(id).get("time");
             	long nowTime = new Date().getTime();
-            	long fifteenMs = 15 * 60 * 1000;
+            	long fifteenMs = 2 * 60 * 1000;
             	if ((nowTime - oldTime) >= fifteenMs){
+            		Integer orderId = (Integer) map.get("orderId");
+            		orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
             		webSocketMap.get(id + "this").sendMessage("close");
             		webSocketMap.remove(id + "this");
             		dataMap.remove(id);
@@ -102,6 +111,11 @@ public class Websocket {
         	Map data = dataMap.get(id);
         	JSONObject json = JSONObject.fromObject(data);
         	webSocketMap.get(id + "this").sendMessage(json.toString());
+        } else if (map.get("message").equals("cancle")) {
+        	Integer orderId = (Integer) map.get("orderId");
+        	orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
+        	webSocketMap.remove(id + "this");
+    		dataMap.remove(id);
         }
         
     }

@@ -1,5 +1,6 @@
 package com.elm.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,6 @@ import com.elm.entity.Order;
 import com.elm.service.OrderService;
 import com.elm.service.UserService;
 import com.elm.util.DecimalCompute;
-import com.elm.util.MapEquals;
 
 @Controller
 @RequestMapping("/order")
@@ -33,16 +33,21 @@ public class OrderController {
 	@RequestMapping(value = "/createOrder",method = RequestMethod.POST)
 	@ResponseBody
 	public Map creatOrder(@RequestBody Map obj,HttpServletRequest request){
+		String sessionId = request.getSession().getId();
+		Map<String, Object> resultMap = new HashMap<String,Object>();
+		if (request.getSession().getAttribute(sessionId + "currentOrder") != null) {
+			resultMap.put("stateCode", 0);
+			resultMap.put("message", "您还有未支付订单，请先去支付或取消，再添加新订单");
+			return resultMap;
+		}
 		List<Map> orderProductList = (List<Map>) obj.get("shoppingCartProducts");
 		Integer shopId = (Integer) obj.get("shopId");
 		Map map = orderService.creatOrder(orderProductList,shopId);
-		Map<String, Object> resultMap = new HashMap<String,Object>();
 		if(map.get("message") != null) {
 			resultMap.put("stateCode", 0);
 			resultMap.put("message", map.get("message"));
 			return resultMap;
 		}
-		String sessionId = request.getSession().getId();
 		request.getSession().setAttribute(sessionId + "tempOrder", map);
 		resultMap.put("stateCode", 1);
 		resultMap.put("message", "success");
@@ -52,6 +57,7 @@ public class OrderController {
 	@RequestMapping(value = "/checkOrder",method = RequestMethod.POST)
 	@ResponseBody
 	public Map checkOrder(@RequestBody Map obj,HttpServletRequest request){
+		System.out.println(obj);
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		String selectDeliveryTime = (String) obj.get("pickerValue");
 		String deliveryMethod = (String) obj.get("deliveryMethod");
@@ -59,11 +65,11 @@ public class OrderController {
 		String creatTime = (String) obj.get("time");
 		String remark = (String) obj.get("remarkString");
 		Integer deliveryTime = (Integer) obj.get("deliveryTime");
-		Integer addressId = (Integer) ((Map<String,Object>) obj.get("address")).get("id");
 		Integer shopId = (Integer) obj.get("shopId");
 		Integer userId = (Integer) obj.get("userId");
 		Integer redPacketId = (Integer) obj.get("redPacketId");
 		Boolean needInvoice = (Boolean) obj.get("needInvoice");
+		Map<String,Object> address = (Map) obj.get("address");
 		String companyName = null;
 		String code = null;
 		double payPrice;
@@ -72,7 +78,6 @@ public class OrderController {
 		} else {
 			payPrice = (Integer) obj.get("payPrice");
 		}
-		
 		if (needInvoice) {
 			companyName = (String) obj.get("companyName");
 			code = (String) obj.get("code");
@@ -102,14 +107,26 @@ public class OrderController {
 				return resultMap;
 			}
 		}
-
-		Order order = new Order(shopId, userId, addressId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, tempDiscounts, companyName, code, Order.NON_PAYMENT);
-		Boolean orderResult = orderService.saveOrder(order, tempProductList, redPacketId);
+		String userSex =(Integer) address.get("sex") == 1 ? "先生" : "女士";
+		String userName = (String) address.get("userName") + userSex;
+		String userAddressName = (String) address.get("addressName");
+		String userAddressDetail = (String) address.get("addressDetail");
+		String userPhoneNumber = (String) address.get("phoneNumber");
 		
-		if (orderResult){
+		Order order = new Order(shopId, userId, deliveryTime, selectDeliveryTime, creatTime, payMethod, deliveryMethod, remark, redPacketId, tempPayPrice, tempDiscounts, tempDeliveryCost, companyName, code, Order.NON_PAYMENT, userName, userAddressName, userAddressDetail, userPhoneNumber);
+		
+		Integer orderId = orderService.saveOrder(order, tempProductList, redPacketId);
+		
+		if (!orderId.equals(0)){
 			resultMap.put("stateCode", 1);
 			resultMap.put("message", "success");
 			resultMap.put("data",tempPayPrice);
+			resultMap.put("orderId",orderId);
+			request.getSession().removeAttribute(sessionId + "tempOrder");
+			Map<String,Object> currentOrder = new HashMap<String,Object>();
+			currentOrder.put("orderId", orderId);
+			currentOrder.put("creatTime", new Date().getTime());
+			request.getSession().setAttribute(sessionId + "currentOrder", currentOrder);
 			return resultMap;
 		}
 		
@@ -145,12 +162,55 @@ public class OrderController {
 	}
 	
 	
+	@RequestMapping(value = "/pay",method = RequestMethod.POST)
+	@ResponseBody
+	public Map pay(HttpServletRequest request){
+		String sessionId = request.getSession().getId();
+		Map<String,Object> currentOrder = (Map<String, Object>) request.getSession().getAttribute(sessionId + "currentOrder");
+		long oldTime = (long) currentOrder.get("creatTime");
+		long newTime = new Date().getTime();
+		Integer orderId = (Integer) currentOrder.get("orderId");
+		Map<String,Object> result = new HashMap<String,Object>();
+		if ((newTime - oldTime) > (15 * 60 * 1000)) {
+			Integer resultNum = orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
+			result.put("stateCode", 0);
+			result.put("message", "支付超时，订单已关闭");
+			return result;
+		}
+		
+		Integer resultNum = orderService.updateOrderState(orderId, Order.WAIT_COMPLETE);
+		
+		if (resultNum.equals(1)){
+			result.put("stateCode", 1);
+			result.put("message", "success");
+			request.getSession().removeAttribute(sessionId + "currentOrder");
+			return result;
+		}
+		
+		result.put("stateCode", 0);
+		result.put("message", "未知错误");
+		return result;
+		
+	}
 	
 	
-	
-	
-	
-	
+	@RequestMapping(value = "/orderCompleted",method = RequestMethod.POST)
+	@ResponseBody
+	public Map orderCompleted(@RequestBody Map obj){
+		System.out.println(obj);
+		Integer orderId = (Integer) obj.get("orderId");
+		Integer resultNum = orderService.updateOrderState(orderId, Order.ALREADY_COMPLETE);
+		Map<String,Object> result = new HashMap<String,Object>();
+		if (resultNum.equals(1)){
+			result.put("stateCode", 1);
+			result.put("message", "success");
+			return result;
+		}
+		result.put("stateCode", 0);
+		result.put("message", "未知错误");
+		return result;
+		
+	}
 	
 	
 	

@@ -10,11 +10,13 @@ public interface OrderService {
 
 	public Map creatOrder(List<Map> orderProductList,Integer shopId);
 	
-	public Boolean saveOrder(Order order,List<Map> orderProductList,Integer redPacketId);
+	public Integer saveOrder(Order order,List<Map> orderProductList,Integer redPacketId);
 	
 	public Integer updateHonbaoState(Integer id,Integer hongbaoState);
 	
 	public List<Map> findOrderByUserId(Integer userId);
 	
 	public Hongbao findHongbaoById(Integer hongbaoId);
+	
+	public Integer updateOrderState(Integer orderId,Integer orderState);
 }

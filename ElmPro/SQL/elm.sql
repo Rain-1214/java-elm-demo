@@ -77,7 +77,7 @@ CREATE TABLE `t_foodlist` (
 
 /*Data for the table `t_foodlist` */
 
-insert  into `t_foodlist`(`id`,`foodName`,`foodInfo`,`foodPic`,`price`,`countMonth`,`goodEvaluate`,`type`,`inventory`,`foodTypeId`) values (1,'水饺','好吃的水饺','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',3,58,0.98,1,-1,1),(2,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',2.5,88,0.99,1,-1,2),(3,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',10,98,0.99,1,-1,2),(4,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',15,108,0.99,1,-1,2),(5,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',11,111,0.99,1,-1,2),(6,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',20,23,0.99,1,-1,2),(7,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',15,222,0.99,1,-1,2),(8,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',1.5,15,0.99,1,-1,2),(10,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',0.22,145,0.99,1,-1,2),(11,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',0.33,36,0.99,1,-1,2),(12,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',0.99,22,0.99,1,-1,2),(13,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',1.99,33,0.99,1,-1,2),(14,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',11,44,0.99,1,-1,2),(15,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',1.11,55,0.99,1,-1,2),(16,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',11.11,66,0.99,1,-1,2),(17,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',12.12,77,0.99,1,-1,2),(18,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',13.13,88,0.99,1,-1,2);
+insert  into `t_foodlist`(`id`,`foodName`,`foodInfo`,`foodPic`,`price`,`countMonth`,`goodEvaluate`,`type`,`inventory`,`foodTypeId`) values (1,'水饺','好吃的水饺','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',3,58,0.98,1,-1,1),(2,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',2.5,88,0.99,2,-1,2),(3,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',10,98,0.99,2,-1,2),(4,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',15,108,0.99,2,-1,2),(5,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',11,111,0.99,2,-1,2),(6,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',20,23,0.99,2,-1,2),(7,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',15,222,0.99,2,-1,2),(8,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',1.5,15,0.99,2,-1,2),(10,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',0.22,145,0.99,2,-1,2),(11,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',0.33,36,0.99,2,-1,2),(12,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',0.99,22,0.99,2,-1,2),(13,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',1.99,33,0.99,2,-1,2),(14,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',11,44,0.99,2,-1,2),(15,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',1.11,55,0.99,2,-1,2),(16,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',11.11,66,0.99,2,-1,2),(17,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',12.12,77,0.99,2,-1,2),(18,'米饭','好吃的米饭','https://fuss10.elemecdn.com/7/aa/d409b4aa4a9abbe42d4ce04c2d8d0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/',13.13,88,0.99,2,-1,2);
 
 /*Table structure for table `t_foodtype` */
 
@@ -149,11 +149,11 @@ CREATE TABLE `t_hongbao` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `t_hongbao_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_hongbao` */
 
-insert  into `t_hongbao`(`id`,`hongbaoName`,`fillMoney`,`minusMoney`,`userId`,`hongbaoState`,`startTime`,`endTime`,`phoneNumber`) values (1,'超级会员专享',30,20,2,1,'2017-10-01 16:32:44','2017-10-31 23:59:59','13012345678'),(2,'一个大红包',20,19.99,2,2,'2017-10-01 17:57:21','2017-10-31 17:57:24',NULL),(3,'超级会员专享',30,20,3,2,'2017-10-01 18:09:57','2017-10-31 18:10:00','13012345678'),(4,'夜宵',30,29.99,3,2,'2017-10-01 18:10:30','2017-10-31 18:10:33',NULL);
+insert  into `t_hongbao`(`id`,`hongbaoName`,`fillMoney`,`minusMoney`,`userId`,`hongbaoState`,`startTime`,`endTime`,`phoneNumber`) values (1,'超级会员专享',30,20,2,1,'2017-10-01 16:32:44','2017-10-31 23:59:59','13012345678'),(2,'一个大红包',20,19.99,2,2,'2017-10-01 17:57:21','2017-10-31 17:57:24',NULL),(3,'超级会员专享',30,20,3,2,'2017-10-01 18:09:57','2017-10-31 18:10:00','13012345678'),(4,'夜宵',30,29.99,3,2,'2017-10-01 18:10:30','2017-10-31 18:10:33',NULL),(5,'红包一号',35,15.55,2,1,'2017-11-01 00:00:00','2017-11-30 23:59:59',NULL);
 
 /*Table structure for table `t_hongbaorules` */
 
@@ -183,24 +183,29 @@ CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `shopId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
-  `addressId` int(11) DEFAULT NULL,
   `creatTime` datetime DEFAULT NULL,
   `payMethod` varchar(10) DEFAULT NULL,
   `deliveryMethod` varchar(10) DEFAULT NULL,
   `deliveryTime` varchar(20) DEFAULT NULL,
+  `deliveryCost` double DEFAULT NULL,
   `selectDeliveryTime` varchar(10) DEFAULT NULL,
   `remark` varchar(150) DEFAULT NULL,
   `redpacketId` int(11) DEFAULT NULL,
   `payPrice` double DEFAULT NULL,
+  `discounts` double DEFAULT NULL,
   `companyName` varchar(30) DEFAULT NULL,
   `code` varchar(50) DEFAULT NULL,
   `orderState` int(11) DEFAULT NULL,
+  `userName` varchar(20) DEFAULT NULL,
+  `userAddressName` varchar(50) DEFAULT NULL,
+  `userAddressDetail` varchar(50) DEFAULT NULL,
+  `userPhoneNumber` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_order` */
 
-insert  into `t_order`(`id`,`shopId`,`userId`,`addressId`,`creatTime`,`payMethod`,`deliveryMethod`,`deliveryTime`,`selectDeliveryTime`,`remark`,`redpacketId`,`payPrice`,`companyName`,`code`,`orderState`) values (16,1,2,15,'2017-10-31 15:34:27','在线支付','蜂鸟专送','80','16:54','多点葱',1,10.22,NULL,NULL,1),(17,1,2,15,'2017-11-01 13:54:27','在线支付','蜂鸟专送','80','21:24','多点辣',-1,40,NULL,NULL,2),(18,1,2,15,'2017-11-01 13:55:47','在线支付','蜂鸟专送','80','15:15','',-1,40,NULL,NULL,3),(19,1,1,33,'2017-11-01 16:50:13','在线支付','蜂鸟专送','240','20:50','',-1,30,NULL,NULL,2),(20,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2);
+insert  into `t_order`(`id`,`shopId`,`userId`,`creatTime`,`payMethod`,`deliveryMethod`,`deliveryTime`,`deliveryCost`,`selectDeliveryTime`,`remark`,`redpacketId`,`payPrice`,`discounts`,`companyName`,`code`,`orderState`,`userName`,`userAddressName`,`userAddressDetail`,`userPhoneNumber`) values (33,1,2,'2017-11-06 17:40:43','在线支付','蜂鸟专送','80',5,'19:00','',-1,108.94,30,NULL,NULL,2,'战鹰先生','上海市卢湾区阿三烤鸭店(复兴中路)','202','13012345678'),(34,1,2,'2017-11-06 17:59:35','在线支付','蜂鸟专送','80',5,'19:19','',-1,108.94,30,NULL,NULL,4,'战鹰先生','上海市卢湾区阿三烤鸭店(复兴中路)','202','13345678989'),(35,1,2,'2017-11-06 18:24:17','在线支付','蜂鸟专送','80',5,'19:44','',-1,47.94,30,NULL,NULL,4,'战鹰先生','上海市卢湾区阿三烤鸭店(复兴中路)','202','13012345678');
 
 /*Table structure for table `t_orderproduct` */
 
@@ -217,11 +222,11 @@ CREATE TABLE `t_orderproduct` (
   PRIMARY KEY (`id`),
   KEY `orderId` (`orderId`),
   CONSTRAINT `t_orderproduct_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `t_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_orderproduct` */
 
-insert  into `t_orderproduct`(`id`,`foodId`,`name`,`num`,`foodType`,`price`,`orderId`) values (17,7,'米饭',3,'',15,16),(18,10,'米饭',1,'',0.22,16),(19,7,'米饭',4,'',15,17),(20,7,'米饭',4,'',15,18),(21,7,'米饭',3,'',15,19);
+insert  into `t_orderproduct`(`id`,`foodId`,`name`,`num`,`foodType`,`price`,`orderId`) values (104,7,'米饭',2,'',15,33),(105,10,'米饭',2,'',0.22,33),(106,5,'米饭',2,'',11,33),(107,4,'米饭',2,'',15,33),(108,3,'米饭',2,'',10,33),(109,1,'水饺',2,'[变态辣][中份]',8,33),(110,1,'水饺',1,'[中辣][大份]',13,33),(111,2,'米饭',1,'',2.5,33),(112,7,'米饭',2,'',15,34),(113,10,'米饭',2,'',0.22,34),(114,5,'米饭',2,'',11,34),(115,4,'米饭',2,'',15,34),(116,3,'米饭',2,'',10,34),(117,1,'水饺',2,'[变态辣][中份]',8,34),(118,1,'水饺',1,'[中辣][大份]',13,34),(119,2,'米饭',1,'',2.5,34),(120,7,'米饭',2,'',15,35),(121,10,'米饭',2,'',0.22,35),(122,4,'米饭',2,'',15,35),(123,3,'米饭',1,'',10,35),(124,2,'米饭',1,'',2.5,35);
 
 /*Table structure for table `t_shop` */
 

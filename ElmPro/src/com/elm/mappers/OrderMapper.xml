@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
-		insert into t_order values(null,#{shopId},#{userId},#{addressId},#{creatTime},#{payMethod},#{deliveryMethod},#{deliveryTime},#{selectDeliveryTime},#{remark},#{redPacketId},#{payPrice},#{discounts},#{companyName},#{code},#{orderState})
+		insert into t_order values(null,#{shopId},#{userId},#{creatTime},#{payMethod},#{deliveryMethod},#{deliveryTime},#{deliveryCost},#{selectDeliveryTime},#{remark},#{redPacketId},#{payPrice},#{discounts},#{companyName},#{code},#{orderState},#{userName},#{userAddressName},#{userAddressDetail},#{userPhoneNumber});
 	</insert>
 	
 	<insert id="insertOrderProduct" parameterType="OrderProduct">
@@ -27,4 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findOrderProductByOrderId" parameterType="Integer" resultType="OrderProduct">
 		select * from t_orderproduct where orderId = #{orderId}
 	</select>
+	
+	<update id="updateOrderState">
+		update t_order set orderState = #{1} where id = #{0}
+	</update>
 </mapper>

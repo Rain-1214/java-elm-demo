@@ -19,4 +19,6 @@ public interface OrderDao {
 	public List<Order> findOrderByUserId(Integer userId);
 	
 	public List<OrderProduct> findOrderProductByOrderId(Integer orderId);
+	
+	public Integer updateOrderState(Integer orderId,Integer orderState);
 }
