@@ -89,19 +89,26 @@ public class OrderServiceImpl implements OrderService {
                 return new Double(o2.getFull()).compareTo(new Double(o1.getFull()));
             }
         });
-		
+		Integer minusIndex = null;
+		Boolean findFlag = true;
 		for(int i = 0; i < shopFillMinusList.size();i++){
 			if(shopFillMinusList.get(i).getFull() == totalPrice){
-				try {
-					discounts = shopFillMinusList.get(i + 1).getMinus();
-				} catch (Exception e) {
-					discounts = 0.00;
-				} finally {
+				if (findFlag) {
+					findFlag = false;
+					minusIndex = i;
+				}
+				if (shopFillMinusList.get(i).getId() == null){
 					shopFillMinusList.remove(i);
 				}
 			}
 		}
-		
+		try {
+			discounts = shopFillMinusList.get(minusIndex).getMinus();
+		} catch (Exception e) {
+			discounts = 0.00;
+		}
+
+		System.out.println(discounts);
 		return discounts;
 	}
 

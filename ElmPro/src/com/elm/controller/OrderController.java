@@ -19,6 +19,7 @@ import com.elm.entity.Order;
 import com.elm.service.OrderService;
 import com.elm.service.UserService;
 import com.elm.util.DecimalCompute;
+import com.elm.websocket.Websocket;
 
 @Controller
 @RequestMapping("/order")
@@ -52,12 +53,12 @@ public class OrderController {
 		resultMap.put("stateCode", 1);
 		resultMap.put("message", "success");
 		return resultMap;
+		
 	}
 	
 	@RequestMapping(value = "/checkOrder",method = RequestMethod.POST)
 	@ResponseBody
 	public Map checkOrder(@RequestBody Map obj,HttpServletRequest request){
-		System.out.println(obj);
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		String selectDeliveryTime = (String) obj.get("pickerValue");
 		String deliveryMethod = (String) obj.get("deliveryMethod");
@@ -120,7 +121,7 @@ public class OrderController {
 		if (!orderId.equals(0)){
 			resultMap.put("stateCode", 1);
 			resultMap.put("message", "success");
-			resultMap.put("data",tempPayPrice);
+			resultMap.put("payPrice",tempPayPrice);
 			resultMap.put("orderId",orderId);
 			request.getSession().removeAttribute(sessionId + "tempOrder");
 			Map<String,Object> currentOrder = new HashMap<String,Object>();
@@ -162,56 +163,24 @@ public class OrderController {
 	}
 	
 	
-	@RequestMapping(value = "/pay",method = RequestMethod.POST)
+	@RequestMapping(value = "/orderCompleted",method = RequestMethod.POST)
 	@ResponseBody
-	public Map pay(HttpServletRequest request){
-		String sessionId = request.getSession().getId();
-		Map<String,Object> currentOrder = (Map<String, Object>) request.getSession().getAttribute(sessionId + "currentOrder");
-		long oldTime = (long) currentOrder.get("creatTime");
-		long newTime = new Date().getTime();
-		Integer orderId = (Integer) currentOrder.get("orderId");
+	public Map orderCompleted(@RequestBody Map obj,HttpServletRequest request){
+		Integer orderId = (Integer) obj.get("orderId");
+		Integer resultNum = orderService.updateOrderState(orderId, Order.ALREADY_COMPLETE);
 		Map<String,Object> result = new HashMap<String,Object>();
-		if ((newTime - oldTime) > (15 * 60 * 1000)) {
-			Integer resultNum = orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
-			result.put("stateCode", 0);
-			result.put("message", "支付超时，订单已关闭");
-			return result;
-		}
-		
-		Integer resultNum = orderService.updateOrderState(orderId, Order.WAIT_COMPLETE);
-		
+		String sessionId = request.getSession().getId();
 		if (resultNum.equals(1)){
 			result.put("stateCode", 1);
 			result.put("message", "success");
 			request.getSession().removeAttribute(sessionId + "currentOrder");
 			return result;
 		}
-		
 		result.put("stateCode", 0);
 		result.put("message", "未知错误");
+		request.getSession().removeAttribute(sessionId + "currentOrder");
 		return result;
-		
 	}
-	
-	
-	@RequestMapping(value = "/orderCompleted",method = RequestMethod.POST)
-	@ResponseBody
-	public Map orderCompleted(@RequestBody Map obj){
-		System.out.println(obj);
-		Integer orderId = (Integer) obj.get("orderId");
-		Integer resultNum = orderService.updateOrderState(orderId, Order.ALREADY_COMPLETE);
-		Map<String,Object> result = new HashMap<String,Object>();
-		if (resultNum.equals(1)){
-			result.put("stateCode", 1);
-			result.put("message", "success");
-			return result;
-		}
-		result.put("stateCode", 0);
-		result.put("message", "未知错误");
-		return result;
-		
-	}
-	
 	
 	
 	

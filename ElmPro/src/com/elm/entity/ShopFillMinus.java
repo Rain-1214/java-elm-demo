@@ -30,6 +30,10 @@ public class ShopFillMinus {
 	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
+	@Override
+	public String toString() {
+		return "ShopFillMinus [id=" + id + ", full=" + full + ", minus=" + minus + ", shopId=" + shopId + "]";
+	}
 	
 	
 	

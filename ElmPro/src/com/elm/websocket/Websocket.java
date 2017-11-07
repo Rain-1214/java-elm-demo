@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -23,7 +23,7 @@ import com.elm.service.OrderService;
 
 import net.sf.json.JSONObject;
 
-@ServerEndpoint("/websocket")
+@ServerEndpoint(value = "/websocket",configurator=GetHttpSessionConfigurator.class)
 public class Websocket{
 
 	//静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
@@ -37,6 +37,7 @@ public class Websocket{
     private Session session;
     private String id;
     private OrderService orderService;
+    private HttpSession httpSession;
 
     /**
      * 连接建立成功调用的方法
@@ -47,6 +48,8 @@ public class Websocket{
     @OnOpen
     public void onOpen(Session session,EndpointConfig config) throws IOException {
         this.session = session;
+        this.httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
+        System.out.println(this.httpSession.getId());
         orderService = (OrderService) ContextLoader.getCurrentWebApplicationContext().getBean("orderService");
         addOnlineCount(); //在线数加1
         System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
@@ -73,54 +76,35 @@ public class Websocket{
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
         System.out.println("来自客户端的消息:" + message);
+        
         Map<String,Object> map = new HashMap<String,Object>();
         map = JSONObject.fromObject(message);
         String id = (String) map.get("id").toString();
+        
         if (map.get("message").equals("getTime")) {
-        	Map data = dataMap.get(id);
-        	JSONObject json = JSONObject.fromObject(data);
-        	try {
-				webSocketMap.get(id + "this").sendMessage(json.toString());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+        	getTime(id);
         } else if (map.get("message").equals("init")) {
         	this.id = id;
         	webSocketMap.put(id + "this", this);
         	if (!dataMap.containsKey(id)) {
-            	Map<String,Object> data = new HashMap<String,Object>();
-            	long nowTime = new Date().getTime();
-            	data.put("time", nowTime);
-            	dataMap.put(id.toString(), data);
-            } else if (!dataMap.get(id).containsKey("time")){
-            	Map data = dataMap.get(id);
-            	long nowTime = new Date().getTime();
-            	data.put("time", nowTime);
+            	initOrder();
             } else {
-            	long oldTime = (long) dataMap.get(id).get("time");
-            	long nowTime = new Date().getTime();
-            	long fifteenMs = 2 * 60 * 1000;
-            	if ((nowTime - oldTime) >= fifteenMs){
-            		Integer orderId = (Integer) map.get("orderId");
-            		orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
-            		webSocketMap.get(id + "this").sendMessage("close");
-            		webSocketMap.remove(id + "this");
-            		dataMap.remove(id);
-            	}
+            	Integer orderId = (Integer) map.get("orderId");
+            	checkOldOrder(orderId);
             }
-        	Map data = dataMap.get(id);
-        	JSONObject json = JSONObject.fromObject(data);
-        	webSocketMap.get(id + "this").sendMessage(json.toString());
         } else if (map.get("message").equals("cancle")) {
         	Integer orderId = (Integer) map.get("orderId");
-        	orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
-        	webSocketMap.remove(id + "this");
-    		dataMap.remove(id);
+        	cancleOrder(orderId);
+        } else if (map.get("message").equals("pay")) {
+        	Integer orderId = (Integer) map.get("orderId");
+        	payOrder(orderId);
         }
         
     }
 
-    /**
+    
+
+	/**
      * 发生错误时调用
      *
      * @param session
@@ -141,7 +125,6 @@ public class Websocket{
      */
     public void sendMessage(String message) throws IOException {
         this.session.getBasicRemote().sendText(message);
-
     }
     
     public void sendMessageToAllUser(String message) {
@@ -156,6 +139,55 @@ public class Websocket{
                 continue;
         	}
         }
+    }
+    
+    public void getTime(String id) throws IOException {
+    	Map data = dataMap.get(this.id);
+    	JSONObject json = JSONObject.fromObject(data);
+    	sendMessage(json.toString());
+    }
+    
+    public void initOrder() throws IOException {
+    	Map<String,Object> data = new HashMap<String,Object>();
+    	long nowTime = new Date().getTime();
+    	data.put("time", nowTime);
+    	dataMap.put(this.id.toString(), data);
+    	JSONObject json = JSONObject.fromObject(data);
+    	sendMessage(json.toString());
+    }
+    
+    public void checkOldOrder(Integer orderId) throws IOException{
+    	long oldTime = (long) dataMap.get(this.id).get("time");
+    	long nowTime = new Date().getTime();
+    	long fifteenMs = 15 * 60 * 1000;
+    	if ((nowTime - oldTime) >= fifteenMs){
+    		orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
+    		removeAllAssets();
+    	} else {
+    		Map data = dataMap.get(this.id);
+    		JSONObject json = JSONObject.fromObject(data);
+        	sendMessage(json.toString());
+    	}
+    }
+    
+    private void payOrder(Integer orderId) throws IOException {
+    	orderService.updateOrderState(orderId, Order.WAIT_COMPLETE);
+    	sendMessage("paySuccess");
+    	removeAllAssets();
+	}
+    
+    public void cancleOrder(Integer orderId) throws IOException {
+    	orderService.updateOrderState(orderId, Order.ALREADY_CLOSE);
+    	sendMessage("cancleSuccess");
+    	removeAllAssets();
+    }
+    
+    public void removeAllAssets(){
+    	String sessionId = this.httpSession.getId();
+		this.httpSession.removeAttribute(sessionId + "currentOrder");
+		System.out.println(httpSession.getAttribute(sessionId + "currentOrder"));
+    	webSocketMap.remove(this.id + "this");
+		dataMap.remove(this.id);
     }
     
     public static synchronized int getOnlineCount() {
