@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="findShopProperty" parameterType="Integer" resultType="ShopProperty">
-		select * from t_shopproperty where id = #{id}
+		select * from t_shopproperty where shopId = #{id}
 	</select>
 	
 	<select id="findShopPropertyType" parameterType="Integer" resultType="String">
