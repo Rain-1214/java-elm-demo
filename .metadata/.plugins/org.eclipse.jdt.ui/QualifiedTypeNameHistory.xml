@@ -32,7 +32,6 @@
 <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.elm.util.DecimalCompute"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.elm.entity.Order"/>
 <fullyQualifiedTypeName name="org.springframework.web.context.ContextLoaderListener"/>
 <fullyQualifiedTypeName name="org.springframework.web.context.ContextLoader"/>
@@ -50,4 +49,5 @@
 <fullyQualifiedTypeName name="org.jsoup.nodes.Document"/>
 <fullyQualifiedTypeName name="org.jsoup.Jsoup"/>
 <fullyQualifiedTypeName name="org.jsoup.nodes.Element"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

@@ -46,6 +46,7 @@ public class OrderServiceImpl implements OrderService {
 			Integer foodNum = (Integer) op.get("foodNum");
 			String foodType = (String) op.get("foodType");
 			Food food = shopDao.findFoodById(foodId);
+			System.out.println(food.getId());
 			Integer isFoodType = food.getType();
 			double foodTypePrice = 0.00;
 			if (isFoodType.equals(1) && foodType != "") {
