@@ -1,13 +1,12 @@
 package com.elm.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.elm.dao.OrderDao;
+import com.elm.dao.ShopDao;
 import com.elm.dao.UserDao;
 import com.elm.entity.Address;
 import com.elm.entity.Hongbao;
@@ -19,10 +18,10 @@ public class UserServiceImpl implements UserService{
 	
 	@Resource
 	public UserDao userDao;
-	
-	@Resource
-	public OrderDao orderDao;
 
+	@Resource
+	public ShopDao shopDao;
+	
 	@Override
 	public User findUserByNameAndPass(String userName, String password) {
 		return userDao.findUserByNameAndPass(userName, password);
@@ -75,16 +74,32 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<Hongbao> findHongbaoByUserId(Integer userId) {
 		List<Hongbao> result = userDao.findHongbaoByUserId(userId);
-//		for(int i = 0;i < result.size();i++){
-//			long nowTime = new Date().getTime();
-//			Hongbao hongbao = result.get(i);
-//			long endTime = hongbao.getEndTime().getTime();
-//			if(nowTime > endTime){
-//				orderDao.updateHongbaoStateById(userId, Hongbao.STALE);
-//				hongbao.setHongbaoState(Hongbao.STALE);
-//			}
-//		}
 		return result;
+	}
+
+	@Override
+	public Integer findActivityPointByUserId(Integer id) {
+		return userDao.findActivityPointByUserId(id);
+	}
+
+	@Override
+	public List<Hongbao> insertHongbaoToUser(Hongbao hongbao, Integer expendActivityPoint, List<Integer> shopTypeIdList) {
+		Integer userActivityPoint = userDao.findActivityPointByUserId(hongbao.getUserId());
+		if (userActivityPoint < expendActivityPoint){
+			return null;
+		}
+		Integer newUserAcitivityPoint = userActivityPoint - expendActivityPoint;
+		userDao.insertHongbao(hongbao);
+		userDao.updateUserActivityPointByUserId(hongbao.getUserId(), newUserAcitivityPoint);
+		Integer hongbaoId = hongbao.getId();
+		if (shopTypeIdList.size() > 0){
+			shopTypeIdList.forEach((e) -> {
+				String shoptypeName = shopDao.findShopTypeNameById(e);
+				userDao.insertHongbaoRules(hongbaoId, e, shoptypeName);
+			});
+		}
+		List<Hongbao> hongbaoList = userDao.findHongbaoByUserId(hongbao.getUserId());
+		return hongbaoList;
 	}
 
 

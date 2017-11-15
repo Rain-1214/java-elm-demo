@@ -6384,3 +6384,373 @@ org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://do
 
 !ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-14 14:16:10.673
 !MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+!SESSION 2017-11-15 09:29:27.934 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 2 0 2017-11-15 09:29:35.525
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-11-15 09:29:35.525
+!MESSAGE Defining a key binding with no key sequence has no effect: plug-in='runjettyrun', id='runjettyrun.runJettyShortcut.run'
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-11-15 09:29:49.328
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\admin'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 09:36:37.899
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 09:36:37.900
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:43:08.588
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2017-11-15 09:43:10.924
+!MESSAGE Unable to read repository at http://m2eclipse.sonatype.org/update-dev.
+!STACK 0
+java.io.IOException: http://m2eclipse.sonatype.org/update-dev is not a valid repository location.
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:102)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:43:50.521
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2017-11-15 09:43:52.925
+!MESSAGE Unable to read repository at http://m2eclipse.sonatype.org.
+!STACK 0
+java.io.IOException: http://m2eclipse.sonatype.org is not a valid repository location.
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:102)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor62.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-15 09:44:00.693
+!MESSAGE No repository found at http://download.eclipse.org/birt/update-site/2.5/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-11-15 09:44:21.503
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.jboss.org/jbosstools/updates/requirements/webtools/3.3.2-20120210195245/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.fail(CachingRepositoryManager.java:340)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:239)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor62.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor62.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-15 09:44:21.518
+!MESSAGE No repository found at http://download.jboss.org/jbosstools/updates/requirements/webtools/3.3.2-20120210195245/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-15 09:44:24.487
+!MESSAGE No repository found at file:/E:/Program%20Files/TortoiseSVN/.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:44:41.547
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:44:46.694
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:44:55.165
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:00.048
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:08.148
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:13.132
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:21.679
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:27.099
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:35.262
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:40.224
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:48.591
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:45:52.895
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:46:01.679
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 09:46:06.856
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+!SESSION 2017-11-15 14:04:19.573 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 2 0 2017-11-15 14:04:23.815
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-11-15 14:04:23.815
+!MESSAGE Defining a key binding with no key sequence has no effect: plug-in='runjettyrun', id='runjettyrun.runJettyShortcut.run'
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-11-15 14:04:37.453
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\admin'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 14:05:46.641
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 14:05:46.641
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 14:08:49.854
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 14:08:49.854
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 14:10:52.914
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-15 14:10:52.914
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:53:54.317
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2017-11-15 14:53:56.891
+!MESSAGE Unable to read repository at http://m2eclipse.sonatype.org/update-dev.
+!STACK 0
+java.io.IOException: http://m2eclipse.sonatype.org/update-dev is not a valid repository location.
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:102)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:54:38.517
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2017-11-15 14:54:40.982
+!MESSAGE Unable to read repository at http://m2eclipse.sonatype.org.
+!STACK 0
+java.io.IOException: http://m2eclipse.sonatype.org is not a valid repository location.
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:102)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor67.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-15 14:54:45.148
+!MESSAGE No repository found at http://download.eclipse.org/birt/update-site/2.5/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-11-15 14:55:06.655
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.jboss.org/jbosstools/updates/requirements/webtools/3.3.2-20120210195245/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.fail(CachingRepositoryManager.java:340)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:239)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor67.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor67.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:396)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:199)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:463)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-15 14:55:06.655
+!MESSAGE No repository found at http://download.jboss.org/jbosstools/updates/requirements/webtools/3.3.2-20120210195245/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-15 14:55:10.758
+!MESSAGE No repository found at file:/E:/Program%20Files/TortoiseSVN/.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:55:28.074
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:55:32.193
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:55:40.682
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:55:46.033
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:55:54.335
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:55:58.516
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:07.470
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:11.667
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:20.155
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:24.480
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:32.454
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:36.697
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:44.996
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/update-dev/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2017-11-15 14:56:49.211
+!MESSAGE Server returned lastModified <= 0 for http://m2eclipse.sonatype.org/content.jar
+
+!ENTRY org.eclipse.recommenders.rcp 4 18 2017-11-15 15:42:32.602
+!MESSAGE Failed to resolve selection in ‘=ElmPro/src<com.elm.entity{Hongbao.java’ at offset 2,742.
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromTypeRootInEditor(JavaElementSelections.java:164)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromEditor(JavaElementSelections.java:119)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromEditor(JavaElementSelections.java:102)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:108)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)

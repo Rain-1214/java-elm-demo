@@ -1,23 +1,20 @@
 package com.elm.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
+import com.elm.entity.FoodType;
+import com.elm.entity.Shop;
+import com.elm.entity.ShopType;
+import com.elm.service.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.elm.entity.FoodType;
-import com.elm.entity.Shop;
-import com.elm.entity.ShopType;
-import com.elm.service.ShopService;
-import com.elm.util.HttpRequest;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/shop")
@@ -37,7 +34,7 @@ public class ShopController {
 			map.put("message","success");
 		}else{
 			map.put("stateCode", 1);
-			map.put("message","ÍøÂçÎÊÌâ");
+			map.put("message","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 		return map;
 	}
@@ -53,7 +50,7 @@ public class ShopController {
 			map.put("message","success");
 		}else{
 			map.put("stateCode", 1);
-			map.put("message","ÍøÂçÎÊÌâ");
+			map.put("message","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 		return map;
 	}
@@ -73,7 +70,7 @@ public class ShopController {
 			map.put("message", "SUCCESS");
 		}else {
 			map.put("stateCode", 1);
-			map.put("message", "ÍøÂçÎÊÌâ");
+			map.put("message", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 		return map;
 	}

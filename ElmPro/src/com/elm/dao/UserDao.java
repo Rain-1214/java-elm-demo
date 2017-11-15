@@ -31,5 +31,13 @@ public interface UserDao {
 	public Integer updateAddressById(Address address);
 	
 	public Integer updatePasswordById(Integer id,String password);
+	
+	public Integer findActivityPointByUserId(Integer userId);
+	
+	public Integer updateUserActivityPointByUserId(Integer userId,Integer activityPoint);
+	
+	public Integer insertHongbao(Hongbao hongbao);
+	
+	public Integer insertHongbaoRules(Integer hongbaoId,Integer shoptypeId,String shoptypeName);
 
 }

@@ -1,5 +1,8 @@
 package com.elm.controller;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.elm.entity.Address;
 import com.elm.entity.Hongbao;
 import com.elm.entity.User;
+import com.elm.service.OrderService;
 import com.elm.service.UserService;
 import com.elm.util.RandomValidateCode;
 
@@ -27,7 +31,8 @@ public class UserController {
 	@Resource
 	public UserService userService;
 	
-	
+	@Resource
+	public OrderService orderService;
 	
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	@ResponseBody
@@ -194,6 +199,15 @@ public class UserController {
 	public Map findHongbaoByUserId(@RequestBody Map obj){
 		Integer userId = (Integer) obj.get("userId");
 		List<Hongbao> hongbaoList = userService.findHongbaoByUserId(userId);
+		for(int i = 0;i < hongbaoList.size();i++){
+			long nowTime = new Date().getTime();
+			Hongbao hongbao = hongbaoList.get(i);
+			long endTime = hongbao.getEndTime().getTime();
+			if(nowTime > endTime){
+				orderService.updateHonbaoState(userId, Hongbao.STALE);
+				hongbao.setHongbaoState(Hongbao.STALE);
+			}
+		}
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("stateCode", 1);
 		resultMap.put("data", hongbaoList);
@@ -305,9 +319,46 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping(value = "/getUserActivityScore", method = RequestMethod.POST)
+	@ResponseBody
+	public Map getUserActivityScore(@RequestBody Map obj){
+		Integer userId = (Integer) obj.get("userId");
+		Integer userActivityPoint = userService.findActivityPointByUserId(userId);
+		Map<String,Object> result = new HashMap<>();
+		result.put("stateCode", 1);
+		result.put("data", userActivityPoint);
+		result.put("message", "success");
+		return result;
+	}
 	
-	
-	
+	@RequestMapping(value = "/creatHongbao", method = RequestMethod.POST)
+	@ResponseBody
+	public Map creatHongbao(@RequestBody Map obj){
+		Integer userId = (Integer) obj.get("userId");
+		Integer expendActivityPoint = (Integer) obj.get("expendActivityPoint");
+		String hongbaoName = (String) obj.get("redPacketName");
+		double fillMoney = (Integer) obj.get("fillMoney");
+		Double minusMoney = (Double) obj.get("minusMoney");
+		long startTimeLong = (long) obj.get("startTime");
+		long endTimeLong = (long) obj.get("endTime");
+		Timestamp startTime = new Timestamp(startTimeLong);
+		Timestamp endTime = new Timestamp(endTimeLong);
+		String phoneNumber = (String) obj.get("phoneNumber");
+		ArrayList<Integer> shopTypeIdList = (ArrayList<Integer>) obj.get("shopTypeIdList");
+		Hongbao hongbao = new Hongbao(hongbaoName, fillMoney, minusMoney, userId, Hongbao.CAN_USE, startTime, endTime, phoneNumber);
+		List<Hongbao> hongbaoList = userService.insertHongbaoToUser(hongbao, expendActivityPoint, shopTypeIdList);
+		Map<String,Object> result = new HashMap<>();
+		if (hongbaoList == null){
+			result.put("stateCode",0);
+			result.put("message", "您的积分不够兑换此商品");
+			return result;
+		} 
+		
+		result.put("stateCode", 1);
+		result.put("data", hongbaoList);
+		result.put("message", "success");
+		return result;
+	}
 	
 	
 	

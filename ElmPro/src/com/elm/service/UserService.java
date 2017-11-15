@@ -28,4 +28,8 @@ public interface UserService {
 	
 	public Hongbao findHongbaoById(Integer id);
 	
+	public Integer findActivityPointByUserId(Integer id);
+	
+	public List<Hongbao> insertHongbaoToUser(Hongbao hongbao, Integer expendActivityPoint,List<Integer> shopTypeIdList);
+	
 }

@@ -79,4 +79,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update t_user set password = #{1} where id = #{0}
 	</update>
 	
+	<select id="findActivityPointByUserId" parameterType="Integer" resultType="Integer">
+		select activityPoints from t_user where id = #{userId}
+	</select>
+
+	<update id="updateUserActivityPointByUserId">
+		update t_user set activityPoint += #{1} where id = #{0}
+	</update>
+	
+	<insert id="insertHongbao" parameterType="Hongbao" useGeneratedKeys="true" keyProperty="id">
+		insert into t_hongbao values(null,#{hongbaoName},#{fillMoney},#{minusMoney},#{userId},#{hongbaoState},#{startTime},#{endTime},#{phoneNumber})
+	</insert>
+	
+	<insert id="insertHongbaoRules">
+		insert into t_hongbaorules values(null,#{0},#{1},#{2})
+	</insert>
 </mapper>

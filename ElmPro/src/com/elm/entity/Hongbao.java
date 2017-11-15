@@ -89,6 +89,22 @@ public class Hongbao {
 	public void setShopTypeList(List shopTypeList) {
 		this.shopTypeList = shopTypeList;
 	}
+	public Hongbao() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Hongbao(String hongbaoName, double fillMoney, double minusMoney, Integer userId, Integer hongbaoState,
+			Timestamp startTime, Timestamp endTime, String phoneNumber) {
+		super();
+		this.hongbaoName = hongbaoName;
+		this.fillMoney = fillMoney;
+		this.minusMoney = minusMoney;
+		this.userId = userId;
+		this.hongbaoState = hongbaoState;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.phoneNumber = phoneNumber;
+	}
 	
 	
 }

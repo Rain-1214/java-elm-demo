@@ -26,23 +26,23 @@ import net.sf.json.JSONObject;
 @ServerEndpoint(value = "/websocket",configurator=GetHttpSessionConfigurator.class)
 public class Websocket{
 
-	//¾²Ì¬±äÁ¿£¬ÓÃÀ´¼ÇÂ¼µ±Ç°ÔÚÏßÁ¬½ÓÊý¡£Ó¦¸Ã°ÑËüÉè¼Æ³ÉÏß³Ì°²È«µÄ¡£
+	//ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ß³Ì°ï¿½È«ï¿½Ä¡ï¿½
     private static int onlineCount = 0;
 
-    //concurrent°üµÄÏß³Ì°²È«Set£¬ÓÃÀ´´æ·ÅÃ¿¸ö¿Í»§¶Ë¶ÔÓ¦µÄMyWebSocket¶ÔÏó¡£ÈôÒªÊµÏÖ·þÎñ¶ËÓëµ¥Ò»¿Í»§¶ËÍ¨ÐÅµÄ»°£¬¿ÉÒÔÊ¹ÓÃMapÀ´´æ·Å£¬ÆäÖÐKey¿ÉÒÔÎªÓÃ»§±êÊ¶
+    //concurrentï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì°ï¿½È«Setï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë¶ï¿½Ó¦ï¿½ï¿½MyWebSocketï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÊµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ëµ¥Ò»ï¿½Í»ï¿½ï¿½ï¿½Í¨ï¿½ÅµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Mapï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½Keyï¿½ï¿½ï¿½ï¿½Îªï¿½Ã»ï¿½ï¿½ï¿½Ê¶
     public static ConcurrentHashMap<String,Websocket> webSocketMap = new ConcurrentHashMap<String,Websocket>();
     public static ConcurrentHashMap<String,Map> dataMap = new ConcurrentHashMap<String,Map>();
 
-    //ÓëÄ³¸ö¿Í»§¶ËµÄÁ¬½Ó»á»°£¬ÐèÒªÍ¨¹ýËüÀ´¸ø¿Í»§¶Ë·¢ËÍÊý¾Ý
+    //ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ó»á»°ï¿½ï¿½ï¿½ï¿½ÒªÍ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private Session session;
     private String id;
     private OrderService orderService;
     private HttpSession httpSession;
 
     /**
-     * Á¬½Ó½¨Á¢³É¹¦µ÷ÓÃµÄ·½·¨
+     * ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½
      *
-     * @param session ¿ÉÑ¡µÄ²ÎÊý¡£sessionÎªÓëÄ³¸ö¿Í»§¶ËµÄÁ¬½Ó»á»°£¬ÐèÒªÍ¨¹ýËüÀ´¸ø¿Í»§¶Ë·¢ËÍÊý¾Ý
+     * @param session ï¿½ï¿½Ñ¡ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½sessionÎªï¿½ï¿½Ä³ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ó»á»°ï¿½ï¿½ï¿½ï¿½ÒªÍ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @throws IOException 
      */
     @OnOpen
@@ -51,31 +51,31 @@ public class Websocket{
         this.httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
         System.out.println(this.httpSession.getId());
         orderService = (OrderService) ContextLoader.getCurrentWebApplicationContext().getBean("orderService");
-        addOnlineCount(); //ÔÚÏßÊý¼Ó1
-        System.out.println("ÓÐÐÂÁ¬½Ó¼ÓÈë£¡µ±Ç°ÔÚÏßÈËÊýÎª" + getOnlineCount());
+        addOnlineCount(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ë£¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª" + getOnlineCount());
     }
 
     /**
-     * Á¬½Ó¹Ø±Õµ÷ÓÃµÄ·½·¨
+     * ï¿½ï¿½ï¿½Ó¹Ø±Õµï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½
      */
     @OnClose
     public void onClose(Session session) {
         String sessionId = session.getId();
-        webSocketMap.remove(this.id + "this"); // É¾³ý
-        subOnlineCount(); //ÔÚÏßÊý¼õ1
-        System.out.println("ÓÐÒ»Á¬½Ó¹Ø±Õ£¡µ±Ç°ÔÚÏßÈËÊýÎª" + getOnlineCount());
+        webSocketMap.remove(this.id + "this"); // É¾ï¿½ï¿½
+        subOnlineCount(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
+        System.out.println("ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ó¹Ø±Õ£ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª" + getOnlineCount());
     }
 
     /**
-     * ÊÕµ½¿Í»§¶ËÏûÏ¢ºóµ÷ÓÃµÄ·½·¨
+     * ï¿½Õµï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½
      *
-     * @param message ¿Í»§¶Ë·¢ËÍ¹ýÀ´µÄÏûÏ¢
-     * @param session ¿ÉÑ¡µÄ²ÎÊý
+     * @param message ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+     * @param session ï¿½ï¿½Ñ¡ï¿½Ä²ï¿½ï¿½ï¿½
      * @throws IOException 
      */
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
-        System.out.println("À´×Ô¿Í»§¶ËµÄÏûÏ¢:" + message);
+        System.out.println("ï¿½ï¿½ï¿½Ô¿Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ï¢:" + message);
         
         Map<String,Object> map = new HashMap<String,Object>();
         map = JSONObject.fromObject(message);
@@ -105,20 +105,20 @@ public class Websocket{
     
 
 	/**
-     * ·¢Éú´íÎóÊ±µ÷ÓÃ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
      *
      * @param session
      * @param error
      */
     @OnError
     public void onError(Session session, Throwable error) {
-        System.out.println("·¢Éú´íÎó");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         webSocketMap.remove(this.id + "this");
         error.printStackTrace();
     }
 
     /**
-     * Õâ¸ö·½·¨ÓëÉÏÃæ¼¸¸ö·½·¨²»Ò»Ñù¡£Ã»ÓÐÓÃ×¢½â£¬ÊÇ¸ù¾Ý×Ô¼ºÐèÒªÌí¼ÓµÄ·½·¨¡£
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¼¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½×¢ï¿½â£¬ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Òªï¿½ï¿½ÓµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½
      *
      * @param message
      * @throws IOException
@@ -128,7 +128,7 @@ public class Websocket{
     }
     
     public void sendMessageToAllUser(String message) {
-    	//Èº·¢ÏûÏ¢
+    	//Èºï¿½ï¿½ï¿½ï¿½Ï¢
         Iterator<String> entries = webSocketMap.keySet().iterator();
         while(entries.hasNext()){
         	String entry = entries.next();
