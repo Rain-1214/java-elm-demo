@@ -360,7 +360,23 @@ public class UserController {
 		return result;
 	}
 	
-	
+	@RequestMapping(value = "/addActivityPoint", method = RequestMethod.POST)
+	@ResponseBody
+	public Map addActivityPoint(@RequestBody Map obj){
+		Integer activityPoint = (Integer) obj.get("activityPoint");
+		Integer userId = (Integer) obj.get("userId");
+		Integer result = userService.updateActivityPointByUserId(userId, activityPoint);
+		Map<String,Object> map = new HashMap<>();
+		if (result != null){
+			map.put("stateCode", 1);
+			map.put("data",result);
+			map.put("message", "success");
+			return map;
+		}
+		map.put("stateCode", 0);
+		map.put("message", "Î´Öª´íÎó");
+		return map;
+	}
 	
 	
 }

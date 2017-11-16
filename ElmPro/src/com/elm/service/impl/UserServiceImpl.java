@@ -102,6 +102,17 @@ public class UserServiceImpl implements UserService{
 		return hongbaoList;
 	}
 
+	@Override
+	public Integer updateActivityPointByUserId(Integer userId,Integer activityPoint) {
+		Integer userActivityPoint = userDao.findActivityPointByUserId(userId);
+		Integer newUserActivityPoint = userActivityPoint + activityPoint;
+		Integer result = userDao.updateUserActivityPointByUserId(userId, newUserActivityPoint);
+		if (result == 1){
+			return newUserActivityPoint;
+		} 
+		return null;
+	}
+
 
 	
 	

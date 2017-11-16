@@ -32,4 +32,6 @@ public interface UserService {
 	
 	public List<Hongbao> insertHongbaoToUser(Hongbao hongbao, Integer expendActivityPoint,List<Integer> shopTypeIdList);
 	
+	public Integer updateActivityPointByUserId(Integer userId,Integer activityPoint);
+	
 }

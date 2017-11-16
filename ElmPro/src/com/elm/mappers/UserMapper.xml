@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<update id="updateUserActivityPointByUserId">
-		update t_user set activityPoint += #{1} where id = #{0}
+		update t_user set activityPoints = #{1} where id = #{0}
 	</update>
 	
 	<insert id="insertHongbao" parameterType="Hongbao" useGeneratedKeys="true" keyProperty="id">
