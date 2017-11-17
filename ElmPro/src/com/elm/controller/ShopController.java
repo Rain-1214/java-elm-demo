@@ -29,12 +29,12 @@ public class ShopController {
 		List<ShopType> shopTypeList = shopService.findShopType();
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(shopTypeList != null){
-			map.put("stateCode", 0);
+			map.put("stateCode", 1);
 			map.put("data", shopTypeList);
 			map.put("message","success");
 		}else{
-			map.put("stateCode", 1);
-			map.put("message","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			map.put("stateCode", 0);
+			map.put("message","ÍøÂç´íÎóÇëÖØÊÔ");
 		}
 		return map;
 	}
@@ -45,12 +45,12 @@ public class ShopController {
 		List<Shop> shopList = shopService.findShopList();
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(shopList != null){
-			map.put("stateCode", 0);
+			map.put("stateCode", 1);
 			map.put("data", shopList);
 			map.put("message","success");
 		}else{
-			map.put("stateCode", 1);
-			map.put("message","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			map.put("stateCode", 0);
+			map.put("message","ÍøÂç´íÎóÇëÖØÊÔ");
 		}
 		return map;
 	}
@@ -65,12 +65,12 @@ public class ShopController {
 		List<FoodType> foodTypeList = shopService.findFoodType(shopId);
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(foodTypeList != null) {
-			map.put("stateCode", 0);
+			map.put("stateCode", 1);
 			map.put("data", foodTypeList);
 			map.put("message", "SUCCESS");
 		}else {
 			map.put("stateCode", 1);
-			map.put("message", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			map.put("message", "ÍøÂç´íÎóÇëÖØÊÔ");
 		}
 		return map;
 	}
