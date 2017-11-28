@@ -28,6 +28,18 @@ PPS：QQ ==> 453430651 微信 ==> as453430651
 <a href="#title11">11、向一个用户添加一个地址</a><br>
 <a href="#title12">12、查找一个用户的所有地址</a><br>
 <a href="#title13">13、删除一个地址</a><br>
+<a href="#title14">14、修改一个用户的地址</a><br>
+<a href="#title15">15、查找一个用户所有的红包</a><br>
+<a href="#title16">16、获取一个用户的安全问题</a><br>
+<a href="#title17">17、检测用户回答的安全问题是否正确</a><br>
+<a href="#title18">18、设置用户新密码</a><br>
+<a href="#title19">19、获取用户积分</a><br>
+<a href="#title20">20、给一个用户添加一个红包</a><br>
+<a href="#title21">21、给一个用户添加积分</a><br>
+<a href="#title22">22、创建一个订单</a><br>
+<a href="#title23">23、检测订单是否符合支付条件</a><br>
+<a href="#title24">24、获取一个用户的所有订单</a><br>
+<a href="#title25">25、完成一个订单</a><br>
 
 
 ### <a name="title1">1、验证用户名是否存在 </a>
@@ -383,7 +395,7 @@ tag            | N            |String |地址标签
 
 ### <a name="title12">12、查找一个用户的所有地址</a>
 #### 请求地址
- /User/addAddress.do
+ /User/findAddressByUserId.do
 #### 请求方式
 POST
 #### 参数
@@ -410,9 +422,9 @@ userId         | Y            |Integer|查找的用户的ID
   </code>
 </pre>
 
-### <a name="title11">13、删除一个地址</a>
+### <a name="title13">13、删除一个地址</a>
 #### 请求地址
- /User/addAddress.do
+ /User/deleteAddressById.do
 #### 请求方式
 POST
 #### 参数
@@ -426,6 +438,318 @@ addressId      | Y            |Integer|地址的ID
     {
       stateCode:1,
       message:"删除成功"
+    }
+  </code>
+</pre>
+
+### <a name="title14">14、修改一个用户的地址</a>
+#### 请求地址
+ /User/editAddressById.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+id             | Y            |Integer|地址ID
+sex            | Y            |Integer|性别（1=>男 2=>女）
+userName       | Y            |String |姓名     
+phoneNumber    | Y            |String |电话     
+addressName    | Y            |String |地址名称   
+addressDetail  | Y            |String |地址详情  
+userId         | Y            |Integer|输入哪个用户
+lat            | Y            |double |经度     
+lng            | Y            |double |纬度     
+tag            | N            |String |地址标签   
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"修改成功"
+    }
+  </code>
+</pre>
+
+### <a name="title15">15、查找一个用户所有的红包</a>
+#### 请求地址
+ /User/findHongbaoByUserId.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+userID         | Y            |Integer|用户的ID        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:[
+        {
+          endTime: 1509465599000,
+          fillMoney: 30,
+          hongbaoName: "超级会员专享",
+          hongbaoState: 0,
+          id: 1,
+          minusMoney: 20,
+          phoneNumber: "13012345678",
+          shopTypeList: Array(3),
+          startTime: 1506846764000,
+          userId: 2,
+        }
+        ...
+      ]
+      message:"success"
+    }
+  </code>
+</pre>
+
+### <a name="title16">16、获取一个用户的安全问题</a>
+#### 请求地址
+ /User/getUserSafetyQuestion.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+userName       | Y            |String |用户名        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:{
+        id:userId,
+        safetyQuestion:"aaa",
+      },
+      message:"success"
+    }
+  </code>
+</pre>
+
+### <a name="title17">17、检测用户回答的安全问题是否正确</a>
+#### 请求地址
+ /User/checkUserSafetyQuestion.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+safetyAnswer   | Y            |String |用户回答的答案        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"success"
+    }
+  </code>
+</pre>
+
+
+### <a name="title18">18、设置新密码</a>
+#### 请求地址
+ /User/setNewPassword.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+password       | Y            |String |用户的新密码
+id             | Y            |Integer|userid        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"success"
+    }
+  </code>
+</pre>  
+
+
+### <a name="title19">19、获取用户的活动积分</a>
+#### 请求地址
+ /User/getUserActivityScore.do
+#### 请求方式
+POST
+#### 参数
+参数名称       | 是否是必须的 | 类型  | 说明
+---------------|--------------|-------|----- 
+userId         | Y            |Integer|userid        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:2000,
+      message:"success"
+    }
+  </code>
+</pre>
+
+
+### <a name="title20">20、给一个用户添加一个红包</a>
+#### 请求地址
+ /User/creatHongbao.do
+#### 请求方式
+POST
+#### 参数
+参数名称           | 是否是必须的 | 类型  | 说明
+-------------------|--------------|-------------|----- 
+userId             | Y            |Integer      |userid        
+expendActivityPoint| Y            |Integer      |本次用户消耗的积分        
+redPacketName      | Y            |String       |红包名称        
+fillMoney          | Y            |double       |满多少        
+minusMoney         | Y            |double       |减多少        
+startTime          | Y            |Integer      |红包起始时间        
+endTime            | Y            |Integer      |红包结束时间        
+phoneNumber        | Y            |String       |限那个手机号使用        
+shopTypeIdList     | Y            |Array<String>|限哪些类型店铺使用
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:[ // 添加成功后用户的红包列表
+        { 
+          fillMoney:20,
+          ...
+        }
+      ],
+      message:"success"
+    }
+  </code>
+</pre>
+
+### <a name="title21">21、给一个用户添加积分</a>
+#### 请求地址
+ /User/addActivityPoint.do
+#### 请求方式
+POST
+#### 参数
+参数名称           | 是否是必须的 | 类型  | 说明
+-------------------|--------------|-------------|----- 
+userId             | Y            |Integer      |userid        
+activityPoint      | Y            |Integer      |本次添加的的积分        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:2000,// 添加完成之后的用户积分
+      message:"success"
+    }
+  </code>
+</pre>
+
+### <a name="title22">22、创建一个订单</a>
+#### 请求地址
+ /order/createOrder.do
+#### 请求方式
+POST
+#### 参数
+参数名称             | 是否是必须的 | 类型                                            | 说明
+---------------------|--------------|-------------------------------------------------|----- 
+shopId               | Y            |Integer                                          |shopid        
+shoppingCartProducts | Y            |Array<Object> object -> {foodId,foodNum,foodType}|购物车中的商品        
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"success", // 您还有未支付订单，请先去支付或取消，再添加新订单 || 购买的商品库存不足 ..
+    }
+  </code>
+</pre>
+
+### <a name="title23">23、检测订单是否符合支付条件</a>
+#### 请求地址
+ /order/checkOrder.do
+#### 请求方式
+POST
+#### 参数
+参数名称             | 是否是必须的 | 类型        | 说明
+---------------------|--------------|-------------|----- 
+pickerValue          | Y            |String       |选择的配送时间        
+deliveryMethod       | Y            |String       |选择的配送方法        
+time                 | Y            |String       |下单时间        
+remarkString         | Y            |String       |备注        
+deliveryTime         | Y            |Integer      |配送时间        
+shopId               | Y            |Integer      |店铺ID        
+userId               | Y            |Integer      |用户ID       
+redPacketId          | Y            |Integer      |红包ID（如果使用了红包 否则为-1） 
+address              | Y            |Object       |配送的地址        
+payPrice             | Y            |double       |支付了多少钱        
+needInvoice          | Y            |Boolean      |是否需要发票        
+companyName          | Y            |String       |如果需要发票 发票公司名        
+code                 | Y            |String       |如果需要发票 纳税人识别码     
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:{
+        payPrice:22.22, 支付金额
+        orderId: 1, 订单ID
+      } 
+      message:"success", // 订单出错请重试4
+    }
+  </code>
+</pre>
+
+### <a name="title24">24、获取一个用户的所有订单</a>
+#### 请求地址
+ /order/getOrder.do
+#### 请求方式
+POST
+#### 参数
+参数名称             | 是否是必须的 | 类型        | 说明
+---------------------|--------------|-------------|----- 
+userID               | Y            |Integer      |用户ID
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      data:[
+        {
+          orderId:1,
+          ...
+        }
+      ]
+      message:"success", // 订单出错请重试4
+    }
+  </code>
+</pre>
+
+
+### <a name="title25">25、完成一个订单</a>
+#### 请求地址
+ /order/orderCompleted.do
+#### 请求方式
+POST
+#### 参数
+参数名称             | 是否是必须的 | 类型        | 说明
+---------------------|--------------|-------------|----- 
+orderId              | Y            |Integer      |订单ID
+
+#### 返回示例
+<pre>
+  <code>
+    {
+      stateCode:1,
+      message:"success", 
     }
   </code>
 </pre>
